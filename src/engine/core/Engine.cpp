@@ -2,7 +2,7 @@
 
 #include <GLFW/glfw3.h>
 #include <glad/glad.h>
-#include "engine/core/Input.h"
+#include "engine/core/input/Input.h"
 #include "engine/utils/Time.h"
 #include "engine/utils/ResourcePath.h"
 

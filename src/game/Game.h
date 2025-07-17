@@ -21,7 +21,7 @@
 #include "../engine/scene/Scene.h"
 #include "../engine/scene/component/CommonComponents.h"
 #include "../engine/scene/system/CommonSystems.h"
-#include "../engine/core/Input.h"
+#include <engine/core/input/Input.h>
 #include "../engine/utils/Logger.h"
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
@@ -212,7 +212,7 @@ private:
             if (!obstacleTransform || !obstacle) continue;
             
             if (CheckCollision(resolvedPos, player->size, 
-                             glm::vec2(obstacleTransform->position), obstacle->size)) {
+                            glm::vec2(obstacleTransform->position), obstacle->size)) {
                 
                 // Calculate bounds
                 glm::vec2 playerMin = resolvedPos - player->size * 0.5f;

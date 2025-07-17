@@ -3,9 +3,9 @@
 #include <memory>
 #include <string>
 #include <GLFW/glfw3.h>
-#include "../../scene/Scene.h"
-#include "../../scene/entity/Entity.h"
-#include "../../scene/component/Component.h"
+#include <engine/scene/Scene.h>
+#include <engine/scene/entity/Entity.h>
+#include <engine/scene/component/Component.h>
 
 // Forward declarations to avoid full ImGui include in header
 struct ImGuiIO;
@@ -21,6 +21,7 @@ public:
     
     // Rendering
     virtual void Render(Scene* scene);
+    virtual void RenderContent(Scene* scene);  // Renders content without frame management
     
     // State management
     void SetVisible(bool visible) { m_showInspector = visible; }

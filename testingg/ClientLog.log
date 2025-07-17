@@ -1,0 +1,76 @@
+[2025-07-18 00:57:57.675][INFO ] Fog shader created with ID: 6
+[2025-07-18 00:57:57.676][INFO ] Vision shader created with ID: 9
+[2025-07-18 00:57:57.677][INFO ] Light shader created with ID: 12
+[2025-07-18 00:57:57.678][INFO ] ECS Scene setup complete with 6 entities
+[2025-07-18 00:57:57.678][INFO ] Game Init
+[2025-07-18 00:57:57.678][INFO ] Press TAB to cycle between Fog, Vision, and Lighting systems
+[2025-07-18 00:57:57.678][INFO ] Use WASD to move and change facing direction
+[2025-07-18 00:57:57.678][INFO ] Press F5 to save scene, F9 to load scene
+[2025-07-18 00:57:57.678][INFO ] Press F1 to toggle ECS Inspector
+[2025-07-18 00:57:57.678][INFO ] Press F6 to toggle Network UI
+[2025-07-18 00:57:57.678][INFO ] Press F7 to disconnect from server
+[2025-07-18 00:57:57.679][INFO ] Initializing ImGui Inspector UI
+[2025-07-18 00:57:57.680][INFO ] ImGui Inspector UI initialized successfully
+[2025-07-18 00:57:57.681][INFO ] NetworkManager initialized successfully
+[2025-07-18 00:57:57.681][INFO ] Network thread started
+[2025-07-18 00:57:57.681][INFO ] NetworkUI initialized successfully
+[2025-07-18 00:57:57.681][INFO ] Network packet handlers initialized
+[2025-07-18 00:57:57.683][INFO ] Found 1 player entities to render
+[2025-07-18 00:58:01.018][INFO ] Game Closing
+[2025-07-18 00:58:01.018][INFO ] Game Shutdown
+[2025-07-18 00:58:01.025][INFO ] Auto-saved scene to autosave_scene.yaml
+[2025-07-18 00:58:01.026][INFO ] ImGui Inspector UI shutdown complete
+[2025-07-18 00:58:01.026][INFO ] Network thread stopped
+[2025-07-18 00:58:01.026][INFO ] NetworkManager shut down
+[2025-07-18 00:58:01.026][INFO ] NetworkUI shut down
+[2025-07-18 00:58:07.005][INFO ] Fog shader created with ID: 6
+[2025-07-18 00:58:07.007][INFO ] Vision shader created with ID: 9
+[2025-07-18 00:58:07.008][INFO ] Light shader created with ID: 12
+[2025-07-18 00:58:07.008][INFO ] ECS Scene setup complete with 6 entities
+[2025-07-18 00:58:07.008][INFO ] Game Init
+[2025-07-18 00:58:07.008][INFO ] Press TAB to cycle between Fog, Vision, and Lighting systems
+[2025-07-18 00:58:07.008][INFO ] Use WASD to move and change facing direction
+[2025-07-18 00:58:07.008][INFO ] Press F5 to save scene, F9 to load scene
+[2025-07-18 00:58:07.008][INFO ] Press F1 to toggle ECS Inspector
+[2025-07-18 00:58:07.009][INFO ] Press F6 to toggle Network UI
+[2025-07-18 00:58:07.009][INFO ] Press F7 to disconnect from server
+[2025-07-18 00:58:07.009][INFO ] Initializing ImGui Inspector UI
+[2025-07-18 00:58:07.009][INFO ] ImGui Inspector UI initialized successfully
+[2025-07-18 00:58:07.010][INFO ] NetworkManager initialized successfully
+[2025-07-18 00:58:07.010][INFO ] NetworkUI initialized successfully
+[2025-07-18 00:58:07.010][INFO ] Network thread started
+[2025-07-18 00:58:07.010][INFO ] Network packet handlers initialized
+[2025-07-18 00:58:07.011][INFO ] Found 1 player entities to render
+[2025-07-18 00:58:11.620][INFO ] Server started on port 7777 with max 10 clients
+[2025-07-18 00:58:11.625][INFO ] Server started on Server started on port 7777
+[2025-07-18 00:58:15.836][INFO ] Client connected from 127.0.0.1:51970
+[2025-07-18 00:58:15.836][INFO ] === CLIENT CONNECTED ===
+[2025-07-18 00:58:15.836][INFO ] Client connected from Client 1 connected, Peer ID: 1
+[2025-07-18 00:58:15.836][INFO ] Total clients now: 1
+[2025-07-18 00:58:15.836][INFO ] Server sending player join info to new client...
+[2025-07-18 00:58:15.836][INFO ] Broadcasted server player join packet to clients
+[2025-07-18 00:58:15.846][INFO ] Processing PLAYER_JOIN packet for player Player_46637 (senderID: 1, packetID: 46637)
+[2025-07-18 00:58:15.847][INFO ] RenderableComponent added and configured for network player
+[2025-07-18 00:58:15.847][INFO ] PlayerComponent added and configured for network player
+[2025-07-18 00:58:15.847][INFO ] Network player Player_46637 joined and entity created (ID: 1, EntityID: 7)
+[2025-07-18 00:58:15.847][INFO ] Total network players now: 1
+[2025-07-18 00:58:15.847][INFO ] Entity components check - Transform: YES, Player: YES, Renderable: YES
+[2025-07-18 00:58:15.852][INFO ] Found 2 player entities to render
+[2025-07-18 00:58:20.219][INFO ] Client 1 disconnected
+[2025-07-18 00:58:20.219][INFO ] === CLIENT DISCONNECTED ===
+[2025-07-18 00:58:20.219][INFO ] Client disconnected: Client disconnected, Peer ID: 1
+[2025-07-18 00:58:20.219][INFO ] Total clients now: 0
+[2025-07-18 00:58:20.219][INFO ] Server handling client disconnection...
+[2025-07-18 00:58:20.219][INFO ] Found player entity to remove (ID: 1, EntityID: 7)
+[2025-07-18 00:58:20.219][INFO ] Removed disconnected player entity
+[2025-07-18 00:58:20.219][INFO ] Notifying other clients about disconnection...
+[2025-07-18 00:58:20.219][INFO ] Broadcasted player leave packet to clients for player ID: 1
+[2025-07-18 00:58:20.225][INFO ] Found 1 player entities to render
+[2025-07-18 00:58:22.646][INFO ] Game Closing
+[2025-07-18 00:58:22.646][INFO ] Game Shutdown
+[2025-07-18 00:58:22.651][INFO ] Auto-saved scene to autosave_scene.yaml
+[2025-07-18 00:58:22.652][INFO ] ImGui Inspector UI shutdown complete
+[2025-07-18 00:58:22.652][INFO ] Network thread stopped
+[2025-07-18 00:58:22.753][INFO ] Server stopped
+[2025-07-18 00:58:22.753][INFO ] NetworkManager shut down
+[2025-07-18 00:58:22.753][INFO ] NetworkUI shut down

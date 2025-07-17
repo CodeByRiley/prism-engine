@@ -1,6 +1,6 @@
 #include "GameInspectorUI.h"
-#include "../../utils/Logger.h"
-#include "../../scene/component/CommonComponents.h"
+#include <engine/utils/Logger.h>
+#include <engine/scene/component/CommonComponents.h>
 #include <cstring>
 #include <algorithm>
 #include <cmath>

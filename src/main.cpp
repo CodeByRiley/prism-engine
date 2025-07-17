@@ -1,9 +1,9 @@
 #include <iostream>
-#include "engine/utils/Logger.h"
+#include <engine/utils/Logger.h>
 #include "game/Game.h"
 
 int main() {
-    Logger::Initialize("GLFWEng ECS");
+    Logger::Initialize("PrismEngine.log");
     
     std::cout << "=== GLFWEng ECS Game ===" << std::endl;
     

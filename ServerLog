@@ -1,0 +1,164 @@
+[2025-07-17 23:23:41.904][INFO ] Fog shader created with ID: 6
+[2025-07-17 23:23:41.905][INFO ] Vision shader created with ID: 9
+[2025-07-17 23:23:41.907][INFO ] Light shader created with ID: 12
+[2025-07-17 23:23:41.907][INFO ] ECS Scene setup complete with 6 entities
+[2025-07-17 23:23:41.907][INFO ] Game Init
+[2025-07-17 23:23:41.907][INFO ] Press TAB to cycle between Fog, Vision, and Lighting systems
+[2025-07-17 23:23:41.908][INFO ] Use WASD to move and change facing direction
+[2025-07-17 23:23:41.908][INFO ] Press F5 to save scene, F9 to load scene
+[2025-07-17 23:23:41.908][INFO ] Press F1 to toggle ECS Inspector
+[2025-07-17 23:23:41.908][INFO ] Initializing ImGui Inspector UI
+[2025-07-17 23:23:41.910][INFO ] ImGui Inspector UI initialized successfully
+[2025-07-17 23:23:45.735][INFO ] Framebuffer resized to: 2560x1369
+[2025-07-17 23:23:52.654][INFO ] Inspector DISABLED
+[2025-07-17 23:23:53.664][INFO ] Inspector ENABLED
+[2025-07-17 23:24:04.652][INFO ] Game Closing
+[2025-07-17 23:24:04.652][INFO ] Game Shutdown
+[2025-07-17 23:24:04.658][INFO ] Auto-saved scene to autosave_scene.yaml
+[2025-07-17 23:24:04.658][INFO ] ImGui Inspector UI shutdown complete
+[2025-07-17 23:49:58.601][INFO ] Fog shader created with ID: 6
+[2025-07-17 23:49:58.602][INFO ] Vision shader created with ID: 9
+[2025-07-17 23:49:58.603][INFO ] Light shader created with ID: 12
+[2025-07-17 23:49:58.603][INFO ] ECS Scene setup complete with 6 entities
+[2025-07-17 23:49:58.603][INFO ] Game Init
+[2025-07-17 23:49:58.604][INFO ] Press TAB to cycle between Fog, Vision, and Lighting systems
+[2025-07-17 23:49:58.604][INFO ] Use WASD to move and change facing direction
+[2025-07-17 23:49:58.604][INFO ] Press F5 to save scene, F9 to load scene
+[2025-07-17 23:49:58.604][INFO ] Press F1 to toggle ECS Inspector
+[2025-07-17 23:49:58.604][INFO ] Press F6 to toggle Network UI
+[2025-07-17 23:49:58.604][INFO ] Initializing ImGui Inspector UI
+[2025-07-17 23:49:58.605][INFO ] ImGui Inspector UI initialized successfully
+[2025-07-17 23:49:58.607][INFO ] NetworkManager initialized successfully
+[2025-07-17 23:49:58.607][INFO ] NetworkUI initialized successfully
+[2025-07-17 23:50:41.781][INFO ] Fog shader created with ID: 6
+[2025-07-17 23:50:41.783][INFO ] Vision shader created with ID: 9
+[2025-07-17 23:50:41.784][INFO ] Light shader created with ID: 12
+[2025-07-17 23:50:41.785][INFO ] ECS Scene setup complete with 6 entities
+[2025-07-17 23:50:41.785][INFO ] Game Init
+[2025-07-17 23:50:41.785][INFO ] Press TAB to cycle between Fog, Vision, and Lighting systems
+[2025-07-17 23:50:41.785][INFO ] Use WASD to move and change facing direction
+[2025-07-17 23:50:41.785][INFO ] Press F5 to save scene, F9 to load scene
+[2025-07-17 23:50:41.785][INFO ] Press F1 to toggle ECS Inspector
+[2025-07-17 23:50:41.785][INFO ] Press F6 to toggle Network UI
+[2025-07-17 23:50:41.785][INFO ] Initializing ImGui Inspector UI
+[2025-07-17 23:50:41.786][INFO ] ImGui Inspector UI initialized successfully
+[2025-07-17 23:50:41.787][INFO ] NetworkManager initialized successfully
+[2025-07-17 23:50:41.787][INFO ] NetworkUI initialized successfully
+[2025-07-17 23:50:43.164][INFO ] Framebuffer resized to: 2560x1369
+[2025-07-17 23:50:44.507][INFO ] Server started on port 7777 with max 10 clients
+[2025-07-17 23:50:48.943][INFO ] Game Closing
+[2025-07-17 23:50:48.944][INFO ] Game Shutdown
+[2025-07-17 23:50:48.949][INFO ] Auto-saved scene to autosave_scene.yaml
+[2025-07-17 23:50:48.951][INFO ] ImGui Inspector UI shutdown complete
+[2025-07-17 23:50:49.051][INFO ] Server stopped
+[2025-07-17 23:50:49.051][INFO ] NetworkManager shut down
+[2025-07-17 23:50:49.052][INFO ] NetworkUI shut down
+[2025-07-17 23:58:56.679][INFO ] Fog shader created with ID: 6
+[2025-07-17 23:58:56.681][INFO ] Vision shader created with ID: 9
+[2025-07-17 23:58:56.683][INFO ] Light shader created with ID: 12
+[2025-07-17 23:58:56.683][INFO ] ECS Scene setup complete with 6 entities
+[2025-07-17 23:58:56.683][INFO ] Game Init
+[2025-07-17 23:58:56.683][INFO ] Press TAB to cycle between Fog, Vision, and Lighting systems
+[2025-07-17 23:58:56.683][INFO ] Use WASD to move and change facing direction
+[2025-07-17 23:58:56.683][INFO ] Press F5 to save scene, F9 to load scene
+[2025-07-17 23:58:56.684][INFO ] Press F1 to toggle ECS Inspector
+[2025-07-17 23:58:56.684][INFO ] Press F6 to toggle Network UI
+[2025-07-17 23:58:56.684][INFO ] Initializing ImGui Inspector UI
+[2025-07-17 23:58:56.685][INFO ] ImGui Inspector UI initialized successfully
+[2025-07-17 23:58:56.686][INFO ] NetworkManager initialized successfully
+[2025-07-17 23:58:56.686][INFO ] NetworkUI initialized successfully
+[2025-07-17 23:58:56.686][INFO ] Network packet handlers initialized
+[2025-07-17 23:59:06.511][ERROR][14NetworkManager] Connection to server timed out
+[2025-07-17 23:59:08.350][INFO ] Server started on port 7777 with max 10 clients
+[2025-07-17 23:59:08.355][INFO ] Server started on Server started on port 7777
+[2025-07-17 23:59:10.568][INFO ] Scene save: SUCCESS
+[2025-07-17 23:59:12.315][INFO ] Game Closing
+[2025-07-17 23:59:12.315][INFO ] Game Shutdown
+[2025-07-17 23:59:12.322][INFO ] Auto-saved scene to autosave_scene.yaml
+[2025-07-17 23:59:12.323][INFO ] ImGui Inspector UI shutdown complete
+[2025-07-17 23:59:12.424][INFO ] Server stopped
+[2025-07-17 23:59:12.424][INFO ] NetworkManager shut down
+[2025-07-17 23:59:12.425][INFO ] NetworkUI shut down
+[2025-07-18 00:07:26.296][INFO ] Fog shader created with ID: 6
+[2025-07-18 00:07:26.298][INFO ] Vision shader created with ID: 9
+[2025-07-18 00:07:26.299][INFO ] Light shader created with ID: 12
+[2025-07-18 00:07:26.300][INFO ] ECS Scene setup complete with 6 entities
+[2025-07-18 00:07:26.300][INFO ] Game Init
+[2025-07-18 00:07:26.300][INFO ] Press TAB to cycle between Fog, Vision, and Lighting systems
+[2025-07-18 00:07:26.300][INFO ] Use WASD to move and change facing direction
+[2025-07-18 00:07:26.300][INFO ] Press F5 to save scene, F9 to load scene
+[2025-07-18 00:07:26.300][INFO ] Press F1 to toggle ECS Inspector
+[2025-07-18 00:07:26.300][INFO ] Press F6 to toggle Network UI
+[2025-07-18 00:07:26.300][INFO ] Initializing ImGui Inspector UI
+[2025-07-18 00:07:26.302][INFO ] ImGui Inspector UI initialized successfully
+[2025-07-18 00:07:26.303][INFO ] NetworkManager initialized successfully
+[2025-07-18 00:07:26.303][INFO ] NetworkUI initialized successfully
+[2025-07-18 00:07:26.303][INFO ] Network thread started
+[2025-07-18 00:07:26.304][INFO ] Network packet handlers initialized
+[2025-07-18 00:07:26.306][INFO ] Found 1 player entities to render
+[2025-07-18 00:07:29.083][INFO ] Fog system enabled
+[2025-07-18 00:07:29.411][INFO ] Vision system enabled
+[2025-07-18 00:07:29.616][INFO ] Lighting system enabled
+[2025-07-18 00:07:30.600][INFO ] Server started on port 7777 with max 10 clients
+[2025-07-18 00:07:30.605][INFO ] Server started on Server started on port 7777
+[2025-07-18 00:07:31.916][INFO ] Server stopped
+[2025-07-18 00:07:32.395][INFO ] Network thread: Attempting connection to localhost:7777
+[2025-07-18 00:07:32.395][INFO ] Starting async connection to localhost:7777
+[2025-07-18 00:07:33.084][ERROR][14NetworkManager] Connection already in progress
+[2025-07-18 00:07:33.250][ERROR][14NetworkManager] Connection already in progress
+[2025-07-18 00:07:37.400][ERROR][14NetworkManager] Connection to server timed out
+[2025-07-18 00:07:37.400][ERROR][14NetworkManager] Failed to connect to server: Connection to server timed out
+[2025-07-18 00:07:49.783][INFO ] Server started on port 7777 with max 10 clients
+[2025-07-18 00:07:49.787][INFO ] Server started on Server started on port 7777
+[2025-07-18 00:07:56.228][INFO ] Client connected from 127.0.0.1:35773
+[2025-07-18 00:07:56.228][INFO ] Client connected from Client 1 connected
+[2025-07-18 00:07:56.228][INFO ] Broadcasted server player join packet to clients
+[2025-07-18 00:08:03.154][INFO ] Client 1 disconnected
+[2025-07-18 00:08:03.155][INFO ] Client disconnected: Client disconnected
+[2025-07-18 00:08:40.637][INFO ] Fog system enabled
+[2025-07-18 00:08:42.348][INFO ] Vision system enabled
+[2025-07-18 00:08:45.181][INFO ] Lighting system enabled
+[2025-07-18 00:08:45.509][INFO ] Fog system enabled
+[2025-07-18 00:08:46.198][INFO ] Vision system enabled
+[2025-07-18 00:09:02.382][INFO ] Client connected from 127.0.0.1:61084
+[2025-07-18 00:09:02.382][INFO ] Processing PLAYER_JOIN packet for player Player (ID: 1)
+[2025-07-18 00:09:02.382][INFO ] RenderableComponent added and configured for network player
+[2025-07-18 00:09:02.382][INFO ] PlayerComponent added and configured for network player
+[2025-07-18 00:09:02.382][INFO ] Network player Player joined and entity created (ID: 1, EntityID: 7)
+[2025-07-18 00:09:02.383][INFO ] Entity components check - Transform: YES, Player: YES, Renderable: YES
+[2025-07-18 00:09:02.383][INFO ] Client connected from Client 2 connected
+[2025-07-18 00:09:02.383][INFO ] Broadcasted server player join packet to clients
+[2025-07-18 00:09:02.389][INFO ] Found 2 player entities to render
+[2025-07-18 00:09:07.640][INFO ] Framebuffer resized to: 2560x1369
+[2025-07-18 00:09:08.304][INFO ] Lighting system enabled
+[2025-07-18 00:09:09.532][INFO ] Fog system enabled
+[2025-07-18 00:09:10.192][INFO ] Vision system enabled
+[2025-07-18 00:09:24.959][INFO ] Lighting system enabled
+[2025-07-18 00:09:25.403][INFO ] Fog system enabled
+[2025-07-18 00:09:38.131][INFO ] Server stopped
+[2025-07-18 00:09:47.283][INFO ] Framebuffer resized to: 1278x1360
+[2025-07-18 00:09:50.981][INFO ] Starting async connection to localhost:7777
+[2025-07-18 00:09:50.981][INFO ] Network thread: Attempting connection to localhost:7777
+[2025-07-18 00:09:51.654][ERROR][14NetworkManager] Connection already in progress
+[2025-07-18 00:09:53.326][ERROR][14NetworkManager] Connection already in progress
+[2025-07-18 00:09:55.982][ERROR][14NetworkManager] Connection to server timed out
+[2025-07-18 00:09:55.982][ERROR][14NetworkManager] Failed to connect to server: Connection to server timed out
+[2025-07-18 00:10:01.310][INFO ] Server started on port 7777 with max 10 clients
+[2025-07-18 00:10:01.316][INFO ] Server started on Server started on port 7777
+[2025-07-18 00:10:02.077][INFO ] Client connected from 127.0.0.1:38221
+[2025-07-18 00:10:02.077][INFO ] Processing PLAYER_JOIN packet for player Player (ID: 1)
+[2025-07-18 00:10:02.077][INFO ] RenderableComponent added and configured for network player
+[2025-07-18 00:10:02.077][INFO ] PlayerComponent added and configured for network player
+[2025-07-18 00:10:02.077][INFO ] Network player Player joined and entity created (ID: 1, EntityID: 8)
+[2025-07-18 00:10:02.078][INFO ] Entity components check - Transform: YES, Player: YES, Renderable: YES
+[2025-07-18 00:10:02.078][INFO ] Client connected from Client 3 connected
+[2025-07-18 00:10:02.078][INFO ] Broadcasted server player join packet to clients
+[2025-07-18 00:10:02.082][INFO ] Found 3 player entities to render
+[2025-07-18 00:10:07.209][INFO ] Game Closing
+[2025-07-18 00:10:07.209][INFO ] Game Shutdown
+[2025-07-18 00:10:07.218][INFO ] Auto-saved scene to autosave_scene.yaml
+[2025-07-18 00:10:07.222][INFO ] ImGui Inspector UI shutdown complete
+[2025-07-18 00:10:07.222][INFO ] Network thread stopped
+[2025-07-18 00:10:07.327][INFO ] Server stopped
+[2025-07-18 00:10:07.327][INFO ] NetworkManager shut down
+[2025-07-18 00:10:07.327][INFO ] NetworkUI shut down

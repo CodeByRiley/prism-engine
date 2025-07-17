@@ -1,19 +1,21 @@
 #include "Game.h"
 
-#include <engine/core/Input.h>
-#include <engine/utils/Time.h>
 #include <glad/glad.h>
 #include <glm/ext/matrix_clip_space.hpp>
-#include "engine/utils/Logger.h"
 #include <GLFW/glfw3.h>
-#include "../engine/renderer/fog/FogRenderer2D.h"
-#include "../engine/renderer/vision/VisionRenderer2D.h"
-#include "../engine/renderer/lighting/LightRenderer2D.h"
-#include "../engine/renderer/lighting/Light.h"
+#include <engine/renderer/fog/FogRenderer2D.h>
+#include <engine/renderer/vision/VisionRenderer2D.h>
+#include <engine/renderer/lighting/LightRenderer2D.h>
+#include <engine/renderer/lighting/Light.h>
 #include <engine/renderer/QuadBatch.h>
 #include <engine/renderer/Shader.h>
 #include <glm/glm.hpp>
 #include <algorithm>
+
+// ImGui includes for centralized UI rendering
+#include "imgui.h"
+#include "backends/imgui_impl_glfw.h"
+#include "backends/imgui_impl_opengl3.h"
 
 void framebufferSizeCallback(GLFWwindow* window, int width, int height) {
     Game* game = static_cast<Game*>(glfwGetWindowUserPointer(window));
@@ -53,7 +55,8 @@ Game::Game(int width, int height, const char* title)
       visionRenderer(nullptr),
       lightRenderer(nullptr),
       m_RenderMode(RenderMode::LIGHTING),
-      m_playerMovementSystem(nullptr)
+      m_playerMovementSystem(nullptr),
+      m_localPlayerNetworkID(0)
 {
     glfwSetWindowUserPointer(m_Window, this);
     glfwSetFramebufferSizeCallback(m_Window, framebufferSizeCallback);
@@ -61,7 +64,7 @@ Game::Game(int width, int height, const char* title)
     fogRenderer = new FogRenderer2D(width, height);
     visionRenderer = new VisionRenderer2D(width, height);
     lightRenderer = new LightRenderer2D(width, height);
-    
+
     // Create ECS scene
     m_scene = std::make_unique<Scene>("GameScene", 1);
     
@@ -102,6 +105,8 @@ void Game::OnInit() {
     Logger::Info("Use WASD to move and change facing direction");
     Logger::Info("Press F5 to save scene, F9 to load scene");
     Logger::Info("Press F1 to toggle ECS Inspector");
+    Logger::Info("Press F6 to toggle Network UI");
+    Logger::Info("Press F7 to disconnect from server");
     
     // Initialize Inspector UI
     m_inspectorUI = std::make_unique<GameInspectorUI>();
@@ -113,6 +118,369 @@ void Game::OnInit() {
             m_scene->DestroyEntity(entityID);
         });
     }
+    
+    // Initialize Network UI
+    m_networkUI = std::make_unique<NetworkUI>();
+    if (!m_networkUI->Initialize(m_Window)) {
+        Logger::Error<Game>("Failed to initialize Network UI", this);
+    }
+    
+    // Set up networking packet handlers for game events
+    SetupNetworkingHandlers();
+}
+
+void Game::SetupNetworkingHandlers() {
+    auto& manager = Network::GetManager();
+    
+    // Handle player join events
+    manager.RegisterPacketHandler(PacketType::PLAYER_JOIN,
+        [this](const Packet& packet, uint32_t senderID) {
+            PacketData::PlayerJoin joinData;
+            Packet mutablePacket = packet;
+            joinData.ReadFrom(mutablePacket);
+            
+            // Use senderID as the actual player ID for consistency
+            uint32_t actualPlayerID = senderID;
+            
+            Logger::Info("Processing PLAYER_JOIN packet for player " + joinData.playerName + 
+                        " (senderID: " + std::to_string(actualPlayerID) + ", packetID: " + std::to_string(joinData.playerID) + ")");
+            
+            // Create new player entity for the joining player
+            Entity newPlayer = m_scene->CreateEntity("NetworkPlayer_" + std::to_string(actualPlayerID));
+            
+            // Add Transform component
+            newPlayer.AddComponent<TransformComponent>(
+                glm::vec3(joinData.spawnPosition.x, joinData.spawnPosition.y, 0.0f)
+            );
+            
+            // Add Renderable component FIRST and configure it immediately
+            auto* renderable = newPlayer.AddComponent<RenderableComponent>();
+            if (renderable) {
+                renderable->color = glm::vec4(0.0f, 1.0f, 0.0f, 1.0f); // Green for network players
+                renderable->visible = true; // Ensure it's visible
+                Logger::Info("RenderableComponent added and configured for network player");
+            } else {
+                Logger::Error<Game>("Failed to add RenderableComponent to network player", this);
+            }
+            
+            // Add Player component
+            auto* playerComp = newPlayer.AddComponent<PlayerComponent>();
+            if (playerComp) {
+                playerComp->speed = 700.0f;
+                playerComp->size = glm::vec2(32.0f, 32.0f);
+                Logger::Info("PlayerComponent added and configured for network player");
+            } else {
+                Logger::Error<Game>("Failed to add PlayerComponent to network player", this);
+            }
+            
+            // Add Tag component with joining player id
+            newPlayer.AddComponent<TagComponent>("network_player_" + std::to_string(actualPlayerID));
+            
+            // Store the mapping of network ID to entity
+            m_networkPlayers[actualPlayerID] = newPlayer;
+            
+            Logger::Info("Network player " + joinData.playerName + " joined and entity created (ID: " + std::to_string(actualPlayerID) + ", EntityID: " + std::to_string(newPlayer.GetID()) + ")");
+            Logger::Info("Total network players now: " + std::to_string(m_networkPlayers.size()));
+            
+            // Verify the entity has all required components
+            bool hasTransform = newPlayer.GetComponent<TransformComponent>() != nullptr;
+            bool hasPlayer = newPlayer.GetComponent<PlayerComponent>() != nullptr;
+            bool hasRenderable = newPlayer.GetComponent<RenderableComponent>() != nullptr;
+            
+            Logger::Info("Entity components check - Transform: " + std::string(hasTransform ? "YES" : "NO") +
+                        ", Player: " + std::string(hasPlayer ? "YES" : "NO") +
+                        ", Renderable: " + std::string(hasRenderable ? "YES" : "NO"));
+        });
+    
+    // Handle player leave events
+    manager.RegisterPacketHandler(PacketType::PLAYER_LEAVE,
+        [this](const Packet& packet, uint32_t senderID) {
+            Packet mutablePacket = packet;
+            uint32_t playerID = mutablePacket.ReadUint32();
+            
+            auto it = m_networkPlayers.find(playerID);
+            if (it != m_networkPlayers.end()) {
+                // Immediately make the entity invisible to prevent ghost rendering
+                auto* renderable = it->second.GetComponent<RenderableComponent>();
+                if (renderable) {
+                    renderable->visible = false;
+                }
+                
+                m_scene->DestroyEntity(it->second.GetID());
+                m_networkPlayers.erase(it);
+                Logger::Info("Network player disconnected (ID: " + std::to_string(playerID) + ")");
+            }
+        });
+    
+    // Handle player movement updates
+    manager.RegisterPacketHandler(PacketType::PLAYER_MOVE,
+        [this](const Packet& packet, uint32_t senderID) {
+            PacketData::PlayerMove moveData;
+            Packet mutablePacket = packet;
+            moveData.ReadFrom(mutablePacket);
+            
+            // Use senderID instead of packet playerID for consistency
+            uint32_t actualPlayerID = senderID;
+            
+            auto it = m_networkPlayers.find(actualPlayerID);
+            if (it != m_networkPlayers.end()) {
+                auto* transform = it->second.GetComponent<TransformComponent>();
+                auto* playerComp = it->second.GetComponent<PlayerComponent>();
+                
+                if (transform && playerComp) {
+                    // Update position smoothly
+                    transform->position = glm::vec3(moveData.position.x, moveData.position.y, 0.0f);
+                    transform->rotation.z = moveData.rotation;
+                    
+                    // Update player direction
+                    float dirX = cos(moveData.rotation);
+                    float dirY = sin(moveData.rotation);
+                    playerComp->direction = glm::vec2(dirX, dirY);
+                }
+            } else {
+                Logger::Warn<Game>("Received movement for unknown player ID: " + std::to_string(actualPlayerID), this);
+            }
+        });
+    
+    // Set up network event handler for connection management
+    manager.SetEventCallback([this](const NetworkEvent& event) {
+        switch (event.type) {
+            case NetworkEventType::CLIENT_CONNECTED:
+                Logger::Info("=== CLIENT CONNECTED ===");
+                Logger::Info("Client connected from " + event.message + ", Peer ID: " + std::to_string(event.peerID));
+                Logger::Info("Total clients now: " + std::to_string(Network::GetManager().GetPeerCount()));
+                
+                // If we're the server, send our player info to the new client
+                if (Network::GetManager().IsServer()) {
+                    Logger::Info("Server sending player join info to new client...");
+                    SendPlayerJoinToClients();
+                }
+                break;
+                
+            case NetworkEventType::CLIENT_DISCONNECTED:
+                Logger::Info("=== CLIENT DISCONNECTED ===");
+                Logger::Info("Client disconnected: " + event.message + ", Peer ID: " + std::to_string(event.peerID));
+                Logger::Info("Total clients now: " + std::to_string(Network::GetManager().GetPeerCount()));
+                
+                // If we're the server, handle the disconnection
+                if (Network::GetManager().IsServer()) {
+                    Logger::Info("Server handling client disconnection...");
+                    // Remove the player from the network players map
+                    auto it = m_networkPlayers.find(event.peerID);
+                    if (it != m_networkPlayers.end()) {
+                        Logger::Info("Found player entity to remove (ID: " + std::to_string(event.peerID) + ", EntityID: " + std::to_string(it->second.GetID()) + ")");
+                        m_scene->DestroyEntity(it->second.GetID());
+                        m_networkPlayers.erase(it);
+                        Logger::Info("Removed disconnected player entity");
+                    } else {
+                        Logger::Info("No player entity found for disconnected peer ID: " + std::to_string(event.peerID));
+                    }
+                    
+                    // Notify other clients about the disconnection
+                    Logger::Info("Notifying other clients about disconnection...");
+                    SendPlayerLeaveToClients(event.peerID);
+                }
+                break;
+                
+            case NetworkEventType::SERVER_STARTED:
+                Logger::Info("Server started on " + event.message);
+                // Server always has ID 0
+                m_localPlayerNetworkID = 0;
+                break;
+                
+            case NetworkEventType::SERVER_CONNECTED:
+                Logger::Info("=== CONNECTED TO SERVER ===");
+                Logger::Info("Connected to server: " + event.message);
+                // Client gets their peer ID from the event
+                m_localPlayerNetworkID = event.peerID;
+                Logger::Info("Assigned client network ID: " + std::to_string(m_localPlayerNetworkID));
+                Logger::Info("Current network players at connection: " + std::to_string(m_networkPlayers.size()));
+                
+                // Send our player join packet to server
+                Logger::Info("Sending player join packet to server...");
+                SendPlayerJoinToServer();
+                break;
+                
+            case NetworkEventType::SERVER_DISCONNECTED:
+                Logger::Info("=== SERVER DISCONNECTED ===");
+                Logger::Info("Disconnected from server: " + event.message);
+                Logger::Info("Network players before SERVER_DISCONNECTED cleanup: " + std::to_string(m_networkPlayers.size()));
+                
+                // Reset our network ID
+                m_localPlayerNetworkID = 0;
+                Logger::Info("Reset network ID to 0");
+                
+                // Clear all network players (this should remove server player if still present)
+                Logger::Info("Clearing all network players...");
+                ClearNetworkPlayers();
+                
+                break;
+        }
+    });
+    
+    Logger::Info("Network packet handlers initialized");
+}
+
+void Game::SendPlayerJoinToServer() {
+    // Check if we're the client
+    if (!Network::GetManager().IsClient()) {
+        return;
+    }
+    
+    // Get our local player position
+    glm::vec2 spawnPos(windowWidth * 0.5f, windowHeight * 0.5f);
+    if (m_playerEntity.IsValid()) {
+        auto* transform = m_playerEntity.GetComponent<TransformComponent>();
+        if (transform) {
+            spawnPos = glm::vec2(transform->position);
+        }
+    }
+    
+    // Create player join packet
+    PacketData::PlayerJoin joinData;
+    // Use our assigned network ID
+    joinData.playerID = m_localPlayerNetworkID;
+    joinData.playerName = "Player_" + std::to_string(m_localPlayerNetworkID);
+    joinData.spawnPosition = spawnPos;
+    
+    Packet joinPacket = PacketFactory::CreatePlayerJoinPacket(joinData);
+    Network::GetManager().SendPacket(joinPacket);
+    
+    Logger::Info("Sent player join packet to server");
+}
+
+void Game::SendPlayerLeaveToServer(uint32_t playerID) {
+    // Check if we're the client
+    if (!Network::GetManager().IsClient()) {
+        return;
+    }
+    // Send leave packet to server
+    Packet leavePacket = PacketFactory::CreatePlayerLeavePacket(playerID);
+    Network::GetManager().SendPacket(leavePacket);
+    // Clear all network players
+    ClearNetworkPlayers();
+    Logger::Info("Sent player leave packet to server for player ID: " + std::to_string(playerID));
+}
+
+void Game::SendPlayerLeaveToClients(uint32_t playerID) {
+    // Check if we're the server
+    if (!Network::GetManager().IsServer()) {
+        return;
+    }
+    
+    Packet leavePacket = PacketFactory::CreatePlayerLeavePacket(playerID);
+    Network::GetManager().BroadcastPacket(leavePacket);
+    Logger::Info("Broadcasted player leave packet to clients for player ID: " + std::to_string(playerID));
+}
+
+void Game::SendPlayerJoinToClients() {
+    if (!Network::GetManager().IsServer()) {
+        return;
+    }
+    
+    // Get server player position (local player)
+    glm::vec2 serverPos(windowWidth * 0.5f, windowHeight * 0.5f);
+    if (m_playerEntity.IsValid()) {
+        auto* transform = m_playerEntity.GetComponent<TransformComponent>();
+        if (transform) {
+            serverPos = glm::vec2(transform->position);
+        }
+    }
+    
+    // Create player join packet for server player
+    PacketData::PlayerJoin joinData;
+    joinData.playerID = 0; // Server host player is always ID 0
+    joinData.playerName = "Player_"+std::to_string(joinData.playerID);
+    joinData.spawnPosition = serverPos; // Set host position
+    
+    Packet joinPacket = PacketFactory::CreatePlayerJoinPacket(joinData);
+    Network::GetManager().BroadcastPacket(joinPacket);
+    
+    Logger::Info("Broadcasted server player join packet to clients");
+}
+
+void Game::SendPlayerMovement() {
+    auto& manager = Network::GetManager();
+    if (!manager.IsServer() && !manager.IsClient()) {
+        return;
+    }
+    
+    if (!m_playerEntity.IsValid()) {
+        return;
+    }
+    
+    auto* transform = m_playerEntity.GetComponent<TransformComponent>();
+    auto* playerComp = m_playerEntity.GetComponent<PlayerComponent>();
+    
+    if (!transform || !playerComp) {
+        return;
+    }
+    
+    // Create movement packet
+    PacketData::PlayerMove moveData;
+    moveData.playerID = m_localPlayerNetworkID; // Use our stored network ID
+    moveData.position = glm::vec2(transform->position);
+    moveData.velocity = glm::vec2(0.0f); // Could calculate velocity
+    moveData.rotation = transform->rotation.z;
+    
+    Packet movePacket = PacketFactory::CreatePlayerMovePacket(moveData);
+    
+    if (manager.IsServer()) {
+        manager.BroadcastPacket(movePacket);
+    } else {
+        manager.SendPacket(movePacket);
+    }
+}
+
+void Game::ClearNetworkPlayers() {
+    Logger::Info("Clearing " + std::to_string(m_networkPlayers.size()) + " network players:");
+    for (auto& pair : m_networkPlayers) {
+        Logger::Info("  - Removing player ID: " + std::to_string(pair.first) + ", Entity ID: " + std::to_string(pair.second.GetID()));
+        if (pair.second.IsValid()) {
+            // Immediately make the entity invisible to prevent ghost rendering
+            auto* renderable = pair.second.GetComponent<RenderableComponent>();
+            if (renderable) {
+                renderable->visible = false;
+                Logger::Info("    Made entity invisible before destruction");
+            }
+            
+            m_scene->DestroyEntity(pair.second.GetID());
+        }
+    }
+    m_networkPlayers.clear();
+    Logger::Info("All network players cleared");
+}
+
+void Game::DisconnectFromServer() {
+    Logger::Info("=== DisconnectFromServer() CALLED ===");
+    
+    auto& manager = Network::GetManager();
+    
+    Logger::Info("Checking if we're a client...");
+    Logger::Info("manager.IsClient() = " + std::string(manager.IsClient() ? "TRUE" : "FALSE"));
+    Logger::Info("manager.IsServer() = " + std::string(manager.IsServer() ? "TRUE" : "FALSE"));
+    
+    if (!manager.IsClient()) {
+        Logger::Info("Not connected to server, nothing to disconnect from");
+        return;
+    }
+    
+    Logger::Info("=== INITIATING CLIENT DISCONNECT ===");
+    Logger::Info("Current network players before disconnect: " + std::to_string(m_networkPlayers.size()));
+    
+    // Clear network players immediately as safety measure
+    // The SERVER_DISCONNECTED event may not be processed due to thread shutdown timing
+    Logger::Info("Clearing network players before disconnect...");
+    ClearNetworkPlayers();
+    
+    // Reset our network ID
+    m_localPlayerNetworkID = 0;
+    Logger::Info("Reset local player network ID to 0");
+    
+    // Disconnect from server (this is already threaded in NetworkManager)
+    manager.DisconnectFromServer("Client disconnecting");
+    
+    Logger::Info("Disconnect command sent, network players cleared");
 }
 
 void Game::SetupECSScene() {
@@ -258,6 +626,20 @@ void Game::OnUpdate() {
         }
     }
     
+    // Toggle Network UI
+    if (Input::IsKeyPressed(GLFW_KEY_F6)) {
+        if (m_networkUI) {
+            m_networkUI->ToggleVisibility();
+            Logger::Info("Network UI " + std::string(m_networkUI->IsVisible() ? "ENABLED" : "DISABLED"));
+        }
+    }
+    
+    // Disconnect from server
+    if (Input::IsKeyPressed(GLFW_KEY_F7)) {
+        Logger::Info("=== F7 KEY PRESSED ===");
+        DisconnectFromServer();
+    }
+    
     // Save/Load scene
     if (Input::IsKeyPressed(GLFW_KEY_F5)) {
         bool success = m_scene->SaveToFile("game_scene.yaml");
@@ -288,6 +670,14 @@ void Game::OnUpdate() {
     
     // Update ECS scene
     m_scene->Update(Time::DeltaTime());
+    
+    // Send movement updates if connected to network
+    static float movementUpdateTimer = 0.0f;
+    movementUpdateTimer += Time::DeltaTime();
+    if (movementUpdateTimer >= 0.1f) { // Send movement updates 10 times per second
+        SendPlayerMovement();
+        movementUpdateTimer = 0.0f;
+    }
 }
 
 void Game::OnDraw() {
@@ -299,6 +689,15 @@ void Game::OnDraw() {
     
     // Draw player from ECS
     auto playerEntities = m_scene->GetEntitiesWith<TransformComponent, PlayerComponent, RenderableComponent>();
+    
+    // Debug: Log how many player entities we found
+    static int lastPlayerCount = -1;
+    int currentPlayerCount = static_cast<int>(playerEntities.size());
+    if (currentPlayerCount != lastPlayerCount) {
+        Logger::Info("Found " + std::to_string(currentPlayerCount) + " player entities to render");
+        lastPlayerCount = currentPlayerCount;
+    }
+    
     for (const Entity& entity : playerEntities) {
         auto* transform = entity.GetComponent<TransformComponent>();
         auto* player = entity.GetComponent<PlayerComponent>();
@@ -312,6 +711,12 @@ void Game::OnDraw() {
             glm::vec2 directionPos = player->GetDirectionIndicatorPos(position);
             glm::vec4 indicatorColor(-renderable->color.x, -renderable->color.y, -renderable->color.z, 1.0f);
             renderer->DrawRect(directionPos, glm::vec2(8, 8), indicatorColor);
+        } else {
+            // Debug: Log why entity wasn't rendered
+            if (!transform) Logger::Info("Entity " + std::to_string(entity.GetID()) + " missing TransformComponent");
+            if (!player) Logger::Info("Entity " + std::to_string(entity.GetID()) + " missing PlayerComponent");
+            if (!renderable) Logger::Info("Entity " + std::to_string(entity.GetID()) + " missing RenderableComponent");
+            if (renderable && !renderable->visible) Logger::Info("Entity " + std::to_string(entity.GetID()) + " not visible");
         }
     }
     
@@ -369,12 +774,47 @@ void Game::OnDraw() {
     
     glDisable(GL_BLEND);
     
-    // Render Inspector UI
-    if (m_inspectorUI) {
-        m_inspectorUI->Render(m_scene.get());
+    // Render UI - centralized ImGui frame handling
+    RenderUI();
+}
+
+void Game::RenderUI() {
+    // Only render UI if at least one system is initialized and visible
+    bool shouldRenderUI = false;
+    if (m_inspectorUI && m_inspectorUI->IsInitialized() && m_inspectorUI->IsVisible()) {
+        shouldRenderUI = true;
+    }
+    if (m_networkUI && m_networkUI->IsInitialized() && m_networkUI->IsVisible()) {
+        shouldRenderUI = true;
+    }
+    
+    if (!shouldRenderUI) {
+        return;
+    }
+    
+    // Start ImGui frame (only once for all UI systems)
+    if (m_inspectorUI && m_inspectorUI->IsInitialized()) {
+        // Use the inspector's backend to start the frame
+        ImGui_ImplOpenGL3_NewFrame();
+        ImGui_ImplGlfw_NewFrame();
+        ImGui::NewFrame();
         
-        // Update renderers if any changes were made in the inspector
-        UpdateRenderersFromECS();
+        // Render Inspector UI content only
+        if (m_inspectorUI->IsVisible()) {
+            m_inspectorUI->RenderContent(m_scene.get());
+            
+            // Update renderers if any changes were made in the inspector
+            UpdateRenderersFromECS();
+        }
+        
+        // Render Network UI content only
+        if (m_networkUI && m_networkUI->IsVisible()) {
+            m_networkUI->RenderContent();
+        }
+        
+        // End ImGui frame (only once for all UI systems)
+        ImGui::Render();
+        ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
     }
 }
 
@@ -405,6 +845,12 @@ void Game::OnShutdown() {
     if (m_inspectorUI) {
         m_inspectorUI->Shutdown();
         m_inspectorUI.reset();
+    }
+    
+    // Shutdown network UI
+    if (m_networkUI) {
+        m_networkUI->Shutdown();
+        m_networkUI.reset();
     }
     
     delete renderer;

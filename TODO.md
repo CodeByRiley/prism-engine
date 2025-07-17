@@ -1,6 +1,6 @@
 ### In Progress
 - [ ] Audio System
-- [ ] Networking
+- [X] Networking
 
 ### TODO
 - [ ] Physics

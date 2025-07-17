@@ -102,6 +102,27 @@ void InspectorUI::Render(Scene* scene) {
     ImGui_ImplGlfw_NewFrame();
     ImGui::NewFrame();
     
+    // Render content
+    RenderContent(scene);
+    
+    // Render
+    ImGui::Render();
+    ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+}
+
+void InspectorUI::RenderContent(Scene* scene) {
+    if (!m_initialized) {
+        return;
+    }
+    
+    if (!scene) {
+        return;
+    }
+    
+    if (!m_showInspector) {
+        return; // Inspector is hidden
+    }
+    
     // Main Inspector Window
     if (ImGui::Begin("ECS Inspector", &m_showInspector)) {
         ImGui::Text("Scene: %s (ID: %u)", scene->GetName().c_str(), scene->GetId());
@@ -116,10 +137,6 @@ void InspectorUI::Render(Scene* scene) {
         RenderEntityDetails(scene);
     }
     ImGui::End();
-    
-    // Render
-    ImGui::Render();
-    ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 }
 
 void InspectorUI::RenderEntityList(Scene* scene) {
