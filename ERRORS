@@ -1,0 +1,130 @@
+F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp: In constructor 'Game::Game(int, int, const char*)':
+[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp:59:7: error: class 'Game' does not have any field named 'm_localPlayerNetworkID'
+[build]    59 |       m_localPlayerNetworkID(0)
+[build]       |       ^~~~~~~~~~~~~~~~~~~~~~
+[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp: In member function 'virtual void Game::OnInit()':
+[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp:123:5: error: 'm_networkUI' was not declared in this scope
+[build]   123 |     m_networkUI = std::make_unique<NetworkUI>();
+[build]       |     ^~~~~~~~~~~
+[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp:123:36: error: 'NetworkUI' was not declared in this scope
+[build]   123 |     m_networkUI = std::make_unique<NetworkUI>();
+[build]       |                                    ^~~~~~~~~
+[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp:123:46: error: no matching function for call to 'make_unique<<expression error> >()'
+[build]   123 |     m_networkUI = std::make_unique<NetworkUI>();
+[build]       |                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~^~
+[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp:123:46: note: there are 3 candidates
+[build] In file included from C:/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/c++/memory:80,
+[build]                  from F:\Dev Stuff\C++\GLFWEng\src\game\Game.h:8:
+[build] C:/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/c++/bits/unique_ptr.h:1084:5: note: candidate 1: 'template<class _Tp, class ... _Args> std::__detail::__unique_ptr_t<_Tp> std::make_unique(_Args&& ...)'
+[build]  1084 |     make_unique(_Args&&... __args)
+[build]       |     ^~~~~~~~~~~
+[build] C:/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/c++/bits/unique_ptr.h:1084:5: note: template argument deduction/substitution failed:
+[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp:123:46: error: template argument 1 is invalid
+[build]   123 |     m_networkUI = std::make_unique<NetworkUI>();
+[build]       |                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~^~
+[build] C:/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/c++/bits/unique_ptr.h:1099:5: note: candidate 2: 'template<class _Tp> std::__detail::__unique_ptr_array_t<_Tp> std::make_unique(size_t)'
+[build]  1099 |     make_unique(size_t __num)
+[build]       |     ^~~~~~~~~~~
+[build] C:/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/c++/bits/unique_ptr.h:1099:5: note: candidate expects 1 argument, 0 provided
+[build] C:/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/c++/bits/unique_ptr.h:1109:5: note: candidate 3: 'template<class _Tp, class ... _Args> std::__detail::__invalid_make_unique_t<_Tp> std::make_unique(_Args&& ...)' (deleted)
+[build]  1109 |     make_unique(_Args&&...) = delete;
+[build]       |     ^~~~~~~~~~~
+[build] C:/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/c++/bits/unique_ptr.h:1109:5: note: template argument deduction/substitution failed:
+[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp:123:46: error: template argument 1 is invalid
+[build]   123 |     m_networkUI = std::make_unique<NetworkUI>();
+[build]       |                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~^~
+[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp:129:5: error: 'SetupNetworkingHandlers' was not declared in this scope
+[build]   129 |     SetupNetworkingHandlers();
+[build]       |     ^~~~~~~~~~~~~~~~~~~~~~~
+[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp: At global scope:
+[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp:132:6: error: no declaration matches 'void Game::SetupNetworkingHandlers()'
+[build]   132 | void Game::SetupNetworkingHandlers() {
+[build]       |      ^~~~
+[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp:132:6: note: no functions named 'void Game::SetupNetworkingHandlers()'
+[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.h:261:7: note: 'class Game' defined here
+[build]   261 | class Game : public Engine {
+[build]       |       ^~~~
+[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp:324:6: error: no declaration matches 'void Game::SendPlayerJoinToServer()'
+[build]   324 | void Game::SendPlayerJoinToServer() {
+[build]       |      ^~~~
+[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp:324:6: note: no functions named 'void Game::SendPlayerJoinToServer()'
+[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.h:261:7: note: 'class Game' defined here
+[build]   261 | class Game : public Engine {
+[build]       |       ^~~~
+[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp:352:6: error: no declaration matches 'void Game::SendPlayerLeaveToServer(uint32_t)'
+[build]   352 | void Game::SendPlayerLeaveToServer(uint32_t playerID) {
+[build]       |      ^~~~
+[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp:352:6: note: no functions named 'void Game::SendPlayerLeaveToServer(uint32_t)'
+[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.h:261:7: note: 'class Game' defined here
+[build]   261 | class Game : public Engine {
+[build]       |       ^~~~
+[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp:365:6: error: no declaration matches 'void Game::SendPlayerLeaveToClients(uint32_t)'
+[build]   365 | void Game::SendPlayerLeaveToClients(uint32_t playerID) {
+[build]       |      ^~~~
+[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp:365:6: note: no functions named 'void Game::SendPlayerLeaveToClients(uint32_t)'
+[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.h:261:7: note: 'class Game' defined here
+[build]   261 | class Game : public Engine {
+[build]       |       ^~~~
+[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp:376:6: error: no declaration matches 'void Game::SendPlayerJoinToClients()'
+[build]   376 | void Game::SendPlayerJoinToClients() {
+[build]       |      ^~~~
+[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp:376:6: note: no functions named 'void Game::SendPlayerJoinToClients()'
+[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.h:261:7: note: 'class Game' defined here
+[build]   261 | class Game : public Engine {
+[build]       |       ^~~~
+[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp:402:6: error: no declaration matches 'void Game::SendPlayerMovement()'
+[build]   402 | void Game::SendPlayerMovement() {
+[build]       |      ^~~~
+[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp:402:6: note: no functions named 'void Game::SendPlayerMovement()'
+[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.h:261:7: note: 'class Game' defined here
+[build]   261 | class Game : public Engine {
+[build]       |       ^~~~
+[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp:435:6: error: no declaration matches 'void Game::ClearNetworkPlayers()'
+[build]   435 | void Game::ClearNetworkPlayers() {
+[build]       |      ^~~~
+[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp:435:6: note: no functions named 'void Game::ClearNetworkPlayers()'
+[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.h:261:7: note: 'class Game' defined here
+[build]   261 | class Game : public Engine {
+[build]       |       ^~~~
+[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp:454:6: error: no declaration matches 'void Game::DisconnectFromServer()'
+[build]   454 | void Game::DisconnectFromServer() {
+[build]       |      ^~~~
+[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp:454:6: note: no functions named 'void Game::DisconnectFromServer()'
+[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.h:261:7: note: 'class Game' defined here
+[build]   261 | class Game : public Engine {
+[build]       |       ^~~~
+[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp: In member function 'virtual void Game::OnUpdate()':
+[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp:631:13: error: 'm_networkUI' was not declared in this scope
+[build]   631 |         if (m_networkUI) {
+[build]       |             ^~~~~~~~~~~
+[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp:640:9: error: 'DisconnectFromServer' was not declared in this scope
+[build]   640 |         DisconnectFromServer();
+[build]       |         ^~~~~~~~~~~~~~~~~~~~
+[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp:672:21: error: 'Time' has not been declared
+[build]   672 |     m_scene->Update(Time::DeltaTime());
+[build]       |                     ^~~~
+[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp:676:28: error: 'Time' has not been declared
+[build]   676 |     movementUpdateTimer += Time::DeltaTime();
+[build]       |                            ^~~~
+[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp:678:9: error: 'SendPlayerMovement' was not declared in this scope
+[build]   678 |         SendPlayerMovement();
+[build]       |         ^~~~~~~~~~~~~~~~~~
+[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp: In member function 'virtual void Game::OnDraw()':
+[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp:778:5: error: 'RenderUI' was not declared in this scope; did you mean 'Renderer2D'?
+[build]   778 |     RenderUI();
+[build]       |     ^~~~~~~~
+[build]       |     Renderer2D
+[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp: At global scope:
+[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp:781:6: error: no declaration matches 'void Game::RenderUI()'
+[build]   781 | void Game::RenderUI() {
+[build]       |      ^~~~
+[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp:781:6: note: no functions named 'void Game::RenderUI()'
+[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.h:261:7: note: 'class Game' defined here
+[build]   261 | class Game : public Engine {
+[build]       |       ^~~~
+[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp: In member function 'virtual void Game::OnShutdown()':
+[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp:851:9: error: 'm_networkUI' was not declared in this scope
+[build]   851 |     if (m_networkUI) {
+[build]       |         ^~~~~~~~~~~
+[build] mingw32-make[2]: *** [CMakeFiles\prism.dir\build.make:349: CMakeFiles/prism.dir/src/game/Game.cpp.obj] Error 1
+[build] mingw32-make[1]: *** [CMakeFiles\Makefile2:346: CMakeFiles/prism.dir/all] Error 2

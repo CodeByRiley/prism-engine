@@ -2,6 +2,141 @@ name: GameScene
 id: 1
 active: true
 entities:
+  - id: 9
+    name: NetworkPlayer_5
+    active: true
+    components:
+      - type: TagComponent
+        enabled: true
+        data:
+          tag: network_player_5
+      - type: PlayerComponent
+        enabled: true
+        data:
+          speed: 700
+          direction:
+            x: 0
+            y: -1
+          size:
+            x: 32
+            y: 32
+      - type: RenderableComponent
+        enabled: true
+        data:
+          meshName: ""
+          materialName: ""
+          color:
+            r: 0.6294336
+            g: 0.9992582
+            b: 0.56977624
+            a: 1
+          visible: true
+          renderLayer: 0
+      - type: TransformComponent
+        enabled: true
+        data:
+          position:
+            x: 802.658
+            y: 141.47705
+            z: 0
+          rotation:
+            x: 0
+            y: 0
+            z: 0
+          scale:
+            x: 1
+            y: 1
+            z: 1
+  - id: 8
+    name: NetworkPlayer_2
+    active: true
+    components:
+      - type: TagComponent
+        enabled: true
+        data:
+          tag: network_player_2
+      - type: PlayerComponent
+        enabled: true
+        data:
+          speed: 700
+          direction:
+            x: 0
+            y: -1
+          size:
+            x: 32
+            y: 32
+      - type: RenderableComponent
+        enabled: true
+        data:
+          meshName: ""
+          materialName: ""
+          color:
+            r: 0.9969419
+            g: 0.6589684
+            b: 0.53800154
+            a: 1
+          visible: true
+          renderLayer: 0
+      - type: TransformComponent
+        enabled: true
+        data:
+          position:
+            x: 765.7178
+            y: 286.07715
+            z: 0
+          rotation:
+            x: 0
+            y: 0
+            z: 0
+          scale:
+            x: 1
+            y: 1
+            z: 1
+  - id: 7
+    name: NetworkPlayer_0
+    active: true
+    components:
+      - type: TagComponent
+        enabled: true
+        data:
+          tag: network_player_0
+      - type: PlayerComponent
+        enabled: true
+        data:
+          speed: 700
+          direction:
+            x: 0.66832286
+            y: 0.74387133
+          size:
+            x: 32
+            y: 32
+      - type: RenderableComponent
+        enabled: true
+        data:
+          meshName: ""
+          materialName: ""
+          color:
+            r: 1
+            g: 0
+            b: 1
+            a: 1
+          visible: true
+          renderLayer: 0
+      - type: TransformComponent
+        enabled: true
+        data:
+          position:
+            x: 802.658
+            y: 141.47705
+            z: 0
+          rotation:
+            x: 0
+            y: 0
+            z: 0.8388444
+          scale:
+            x: 1
+            y: 1
+            z: 1
   - id: 6
     name: MainLight
     active: true
@@ -222,8 +357,8 @@ entities:
         data:
           speed: 700
           direction:
-            x: 0.99986
-            y: -0.016734058
+            x: 0.68215
+            y: -0.73121226
           size:
             x: 32
             y: 32
@@ -243,13 +378,13 @@ entities:
         enabled: true
         data:
           position:
-            x: 640
-            y: 360
+            x: 905.05206
+            y: 242.74648
             z: 0
           rotation:
             x: 0
             y: 0
-            z: -3.124858
+            z: -2.3214953
           scale:
             x: 1
             y: 1

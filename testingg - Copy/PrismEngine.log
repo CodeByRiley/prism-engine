@@ -1,0 +1,1508 @@
+[2025-07-18 02:20:20.244][INFO ] Fog shader created with ID: 6
+[2025-07-18 02:20:20.245][INFO ] Vision shader created with ID: 9
+[2025-07-18 02:20:20.246][INFO ] Light shader created with ID: 12
+[2025-07-18 02:20:20.246][INFO ] ECS Scene setup complete with 6 entities
+[2025-07-18 02:20:20.246][INFO ] Game Init
+[2025-07-18 02:20:20.247][INFO ] Press TAB to cycle between Fog, Vision, and Lighting systems
+[2025-07-18 02:20:20.247][INFO ] Use WASD to move and change facing direction
+[2025-07-18 02:20:20.247][INFO ] Press F5 to save scene, F9 to load scene
+[2025-07-18 02:20:20.247][INFO ] Press F1 to toggle ECS Inspector
+[2025-07-18 02:20:20.247][INFO ] Press F6 to toggle Network UI
+[2025-07-18 02:20:20.247][INFO ] Press F7 to disconnect from server
+[2025-07-18 02:20:20.248][INFO ] Initializing ImGui Inspector UI
+[2025-07-18 02:20:20.249][INFO ] ImGui Inspector UI initialized successfully
+[2025-07-18 02:20:20.250][INFO ] NetworkManager initialized successfully
+[2025-07-18 02:20:20.250][INFO ] NetworkUI initialized successfully
+[2025-07-18 02:20:20.250][INFO ] Network thread started
+[2025-07-18 02:20:20.250][INFO ] Network packet handlers initialized
+[2025-07-18 02:20:20.252][INFO ] Found 1 player entities to render
+[2025-07-18 02:20:21.984][INFO ] Framebuffer resized to: 1278x664
+[2025-07-18 02:20:53.372][INFO ] Starting async connection to localhost:7777
+[2025-07-18 02:20:53.372][INFO ] Network thread: Attempting connection to localhost:7777
+[2025-07-18 02:20:53.384][INFO ] Connected to server localhost:7777, waiting for peer ID assignment
+[2025-07-18 02:20:53.395][WARN ][4Game] CLIENT SendPlayerMovement called with peer ID 0! NetworkManager localPeerID: 0
+[2025-07-18 02:20:53.395][INFO ] === PEER ID ASSIGNMENT ===
+[2025-07-18 02:20:53.396][INFO ] Received peer ID assignment: 1 (old ID was: 0)
+[2025-07-18 02:20:53.396][INFO ] NetworkManager.GetLocalPeerID() now returns: 1
+[2025-07-18 02:20:53.396][INFO ] Processing PLAYER_JOIN packet for player Player_0 (senderID: 0, packetID: 0)
+[2025-07-18 02:20:53.396][INFO ] RenderableComponent added and configured for network player
+[2025-07-18 02:20:53.396][INFO ] PlayerComponent added and configured for network player
+[2025-07-18 02:20:53.396][INFO ] Network player Player_0 joined and entity created (ID: 0, EntityID: 7)
+[2025-07-18 02:20:53.396][INFO ] Total network players now: 1
+[2025-07-18 02:20:53.396][INFO ] Entity components check - Transform: YES, Player: YES, Renderable: YES
+[2025-07-18 02:20:53.396][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(640.000000,360.000000), networkPlayers.size=1
+[2025-07-18 02:20:53.396][INFO ] === CONNECTED TO SERVER ===
+[2025-07-18 02:20:53.396][INFO ] Connected to server: Connected with assigned peer ID 1
+[2025-07-18 02:20:53.396][INFO ] Assigned client network ID: 1
+[2025-07-18 02:20:53.396][INFO ] Current network players at connection: 1
+[2025-07-18 02:20:53.396][INFO ] Sending player join packet to server...
+[2025-07-18 02:20:53.396][INFO ] Sent player join packet to server
+[2025-07-18 02:20:53.405][INFO ] Found 2 player entities to render
+[2025-07-18 02:20:53.410][INFO ] SendPlayerMovement: playerID=1, pos=(640.000000,360.000000), mode=CLIENT
+[2025-07-18 02:20:54.077][INFO ] Updated player 0 position to (803.547974,244.047043)
+[2025-07-18 02:20:54.087][INFO ] SendPlayerMovement: playerID=1, pos=(640.000000,360.000000), mode=CLIENT
+[2025-07-18 02:20:54.088][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(810.957458,244.047043), networkPlayers.size=1
+[2025-07-18 02:20:54.749][INFO ] Updated player 0 position to (830.501526,244.047043)
+[2025-07-18 02:20:54.754][INFO ] SendPlayerMovement: playerID=1, pos=(793.505066,270.353088), mode=CLIENT
+[2025-07-18 02:20:54.755][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(830.501526,244.047043), networkPlayers.size=1
+[2025-07-18 02:20:55.421][INFO ] Updated player 0 position to (830.501526,244.047043)
+[2025-07-18 02:20:55.432][INFO ] SendPlayerMovement: playerID=1, pos=(793.505066,270.353088), mode=CLIENT
+[2025-07-18 02:20:55.432][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(830.501526,244.047043), networkPlayers.size=1
+[2025-07-18 02:20:55.534][INFO ] Processing PLAYER_JOIN packet for player Player_2 (senderID: 0, packetID: 2)
+[2025-07-18 02:20:55.534][INFO ] RenderableComponent added and configured for network player
+[2025-07-18 02:20:55.534][INFO ] PlayerComponent added and configured for network player
+[2025-07-18 02:20:55.534][INFO ] Network player Player_2 joined and entity created (ID: 0, EntityID: 8)
+[2025-07-18 02:20:55.534][INFO ] Total network players now: 1
+[2025-07-18 02:20:55.534][INFO ] Entity components check - Transform: YES, Player: YES, Renderable: YES
+[2025-07-18 02:20:55.538][INFO ] Found 3 player entities to render
+[2025-07-18 02:20:55.810][INFO ] Updated player 0 position to (830.501526,244.047043)
+[2025-07-18 02:20:55.815][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(640.000000,332.769318), networkPlayers.size=1
+[2025-07-18 02:20:56.100][INFO ] SendPlayerMovement: playerID=1, pos=(793.505066,270.353088), mode=CLIENT
+[2025-07-18 02:20:56.145][INFO ] Updated player 0 position to (830.501526,244.047043)
+[2025-07-18 02:20:56.151][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(640.000000,239.271027), networkPlayers.size=1
+[2025-07-18 02:20:56.476][INFO ] Updated player 0 position to (830.501526,244.047043)
+[2025-07-18 02:20:56.488][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(640.000000,239.271027), networkPlayers.size=1
+[2025-07-18 02:20:56.766][INFO ] SendPlayerMovement: playerID=1, pos=(761.862976,285.690063), mode=CLIENT
+[2025-07-18 02:20:56.810][INFO ] Updated player 0 position to (830.501526,244.047043)
+[2025-07-18 02:20:56.817][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(640.000000,239.271027), networkPlayers.size=1
+[2025-07-18 02:20:57.149][INFO ] Updated player 0 position to (640.000000,239.271027)
+[2025-07-18 02:20:57.160][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(830.501526,244.047043), networkPlayers.size=1
+[2025-07-18 02:20:57.438][INFO ] SendPlayerMovement: playerID=1, pos=(730.759949,285.690063), mode=CLIENT
+[2025-07-18 02:20:57.494][INFO ] Updated player 0 position to (640.000000,239.271027)
+[2025-07-18 02:20:57.494][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(830.501526,181.614029), networkPlayers.size=1
+[2025-07-18 02:20:57.821][INFO ] Updated player 0 position to (640.000000,239.271027)
+[2025-07-18 02:20:57.833][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(888.716370,220.558563), networkPlayers.size=1
+[2025-07-18 02:20:58.104][INFO ] SendPlayerMovement: playerID=1, pos=(730.759949,285.690063), mode=CLIENT
+[2025-07-18 02:20:58.155][INFO ] Updated player 0 position to (640.000000,239.271027)
+[2025-07-18 02:20:58.166][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(807.155151,240.092072), networkPlayers.size=1
+[2025-07-18 02:20:58.488][INFO ] Updated player 0 position to (640.000000,239.271027)
+[2025-07-18 02:20:58.500][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(807.155151,158.531570), networkPlayers.size=1
+[2025-07-18 02:20:58.771][INFO ] SendPlayerMovement: playerID=1, pos=(730.759949,285.690063), mode=CLIENT
+[2025-07-18 02:20:58.839][INFO ] Updated player 0 position to (640.000000,239.271027)
+[2025-07-18 02:20:58.839][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(640.000000,239.271027), networkPlayers.size=1
+[2025-07-18 02:20:59.166][INFO ] Updated player 0 position to (640.000000,239.271027)
+[2025-07-18 02:20:59.176][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(807.155151,158.531570), networkPlayers.size=1
+[2025-07-18 02:20:59.449][INFO ] SendPlayerMovement: playerID=1, pos=(730.759949,285.690063), mode=CLIENT
+[2025-07-18 02:20:59.504][INFO ] Updated player 0 position to (640.000000,239.271027)
+[2025-07-18 02:20:59.505][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(807.155151,158.531570), networkPlayers.size=1
+[2025-07-18 02:20:59.533][INFO ] Processing PLAYER_JOIN packet for player Player_3 (senderID: 0, packetID: 3)
+[2025-07-18 02:20:59.534][INFO ] RenderableComponent added and configured for network player
+[2025-07-18 02:20:59.534][INFO ] PlayerComponent added and configured for network player
+[2025-07-18 02:20:59.534][INFO ] Network player Player_3 joined and entity created (ID: 0, EntityID: 9)
+[2025-07-18 02:20:59.534][INFO ] Total network players now: 1
+[2025-07-18 02:20:59.534][INFO ] Entity components check - Transform: YES, Player: YES, Renderable: YES
+[2025-07-18 02:20:59.538][INFO ] Found 4 player entities to render
+[2025-07-18 02:20:59.726][INFO ] Updated player 0 position to (807.155151,158.531570)
+[2025-07-18 02:20:59.733][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(640.000000,360.000000), networkPlayers.size=1
+[2025-07-18 02:20:59.949][INFO ] Updated player 0 position to (807.155151,158.531570)
+[2025-07-18 02:20:59.955][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(640.000000,239.271027), networkPlayers.size=1
+[2025-07-18 02:21:00.115][INFO ] SendPlayerMovement: playerID=1, pos=(730.759949,285.690063), mode=CLIENT
+[2025-07-18 02:21:00.177][INFO ] Updated player 0 position to (807.155151,158.531570)
+[2025-07-18 02:21:00.178][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(640.000000,239.271027), networkPlayers.size=1
+[2025-07-18 02:21:00.406][INFO ] Updated player 0 position to (843.711365,251.303268)
+[2025-07-18 02:21:00.406][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(640.000000,239.271027), networkPlayers.size=1
+[2025-07-18 02:21:00.627][INFO ] Updated player 0 position to (640.000000,239.271027)
+[2025-07-18 02:21:00.638][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(877.398682,46.574963), networkPlayers.size=1
+[2025-07-18 02:21:00.787][INFO ] SendPlayerMovement: playerID=1, pos=(730.759949,285.690063), mode=CLIENT
+[2025-07-18 02:21:00.849][INFO ] Updated player 0 position to (640.000000,239.271027)
+[2025-07-18 02:21:00.860][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(934.722412,152.145447), networkPlayers.size=1
+[2025-07-18 02:21:01.072][INFO ] Updated player 0 position to (640.000000,239.271027)
+[2025-07-18 02:21:01.076][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(779.235840,202.133835), networkPlayers.size=1
+[2025-07-18 02:21:01.294][INFO ] Updated player 0 position to (640.000000,239.271027)
+[2025-07-18 02:21:01.304][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(783.841797,77.566055), networkPlayers.size=1
+[2025-07-18 02:21:01.454][INFO ] SendPlayerMovement: playerID=1, pos=(730.759949,285.690063), mode=CLIENT
+[2025-07-18 02:21:01.516][INFO ] Updated player 0 position to (640.000000,239.271027)
+[2025-07-18 02:21:01.527][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(927.557190,147.741760), networkPlayers.size=1
+[2025-07-18 02:21:01.738][INFO ] Updated player 0 position to (843.711365,251.303268)
+[2025-07-18 02:21:01.749][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(772.283203,220.977859), networkPlayers.size=1
+[2025-07-18 02:21:01.961][INFO ] Updated player 0 position to (640.000000,239.271027)
+[2025-07-18 02:21:01.972][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(714.403137,220.977859), networkPlayers.size=1
+[2025-07-18 02:21:02.150][INFO ] SendPlayerMovement: playerID=1, pos=(730.759949,285.690063), mode=CLIENT
+[2025-07-18 02:21:02.183][INFO ] Updated player 0 position to (640.000000,239.271027)
+[2025-07-18 02:21:02.188][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(714.403137,220.977859), networkPlayers.size=1
+[2025-07-18 02:21:02.405][INFO ] Updated player 0 position to (714.403137,220.977859)
+[2025-07-18 02:21:02.412][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(843.711365,251.303268), networkPlayers.size=1
+[2025-07-18 02:21:02.633][INFO ] Updated player 0 position to (843.711365,251.303268)
+[2025-07-18 02:21:02.638][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(714.403137,220.977859), networkPlayers.size=1
+[2025-07-18 02:21:02.816][INFO ] SendPlayerMovement: playerID=1, pos=(901.975647,183.453690), mode=CLIENT
+[2025-07-18 02:21:02.849][INFO ] Updated player 0 position to (714.403137,220.977859)
+[2025-07-18 02:21:02.861][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(843.711365,251.303268), networkPlayers.size=1
+[2025-07-18 02:21:03.079][INFO ] Updated player 0 position to (640.000000,239.271027)
+[2025-07-18 02:21:03.080][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(843.711365,251.303268), networkPlayers.size=1
+[2025-07-18 02:21:03.295][INFO ] Updated player 0 position to (640.000000,239.271027)
+[2025-07-18 02:21:03.295][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(714.403137,220.977859), networkPlayers.size=1
+[2025-07-18 02:21:03.477][INFO ] SendPlayerMovement: playerID=1, pos=(846.993469,183.453690), mode=CLIENT
+[2025-07-18 02:21:03.517][INFO ] Updated player 0 position to (714.403137,220.977859)
+[2025-07-18 02:21:03.523][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(843.711365,251.303268), networkPlayers.size=1
+[2025-07-18 02:21:03.738][INFO ] Updated player 0 position to (843.711365,251.303268)
+[2025-07-18 02:21:03.738][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(740.037109,130.089981), networkPlayers.size=1
+[2025-07-18 02:21:03.960][INFO ] Updated player 0 position to (714.403137,220.977859)
+[2025-07-18 02:21:03.966][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(843.711365,251.303268), networkPlayers.size=1
+[2025-07-18 02:21:04.145][INFO ] SendPlayerMovement: playerID=1, pos=(846.993469,183.453690), mode=CLIENT
+[2025-07-18 02:21:04.184][INFO ] Updated player 0 position to (843.711365,251.303268)
+[2025-07-18 02:21:04.184][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(740.037109,130.089981), networkPlayers.size=1
+[2025-07-18 02:21:04.410][INFO ] Updated player 0 position to (843.711365,251.303268)
+[2025-07-18 02:21:04.416][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(714.403137,220.977859), networkPlayers.size=1
+[2025-07-18 02:21:04.632][INFO ] Updated player 0 position to (843.711365,251.303268)
+[2025-07-18 02:21:04.644][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(714.403137,220.977859), networkPlayers.size=1
+[2025-07-18 02:21:04.804][INFO ] SendPlayerMovement: playerID=1, pos=(846.993469,183.453690), mode=CLIENT
+[2025-07-18 02:21:04.855][INFO ] Updated player 0 position to (843.711365,251.303268)
+[2025-07-18 02:21:04.866][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(714.403137,220.977859), networkPlayers.size=1
+[2025-07-18 02:21:05.076][INFO ] Updated player 0 position to (843.711365,251.303268)
+[2025-07-18 02:21:05.082][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(714.403137,220.977859), networkPlayers.size=1
+[2025-07-18 02:21:05.304][INFO ] Updated player 0 position to (740.037109,130.089981)
+[2025-07-18 02:21:05.304][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(714.403137,220.977859), networkPlayers.size=1
+[2025-07-18 02:21:05.470][INFO ] SendPlayerMovement: playerID=1, pos=(846.993469,183.453690), mode=CLIENT
+[2025-07-18 02:21:05.521][INFO ] Updated player 0 position to (740.037109,130.089981)
+[2025-07-18 02:21:05.532][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(714.403137,220.977859), networkPlayers.size=1
+[2025-07-18 02:21:05.748][INFO ] Updated player 0 position to (740.037109,130.089981)
+[2025-07-18 02:21:05.748][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(714.403137,220.977859), networkPlayers.size=1
+[2025-07-18 02:21:05.971][INFO ] Updated player 0 position to (740.037109,130.089981)
+[2025-07-18 02:21:05.971][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(714.403137,220.977859), networkPlayers.size=1
+[2025-07-18 02:21:06.137][INFO ] SendPlayerMovement: playerID=1, pos=(846.993469,183.453690), mode=CLIENT
+[2025-07-18 02:21:06.187][INFO ] Updated player 0 position to (740.037109,130.089981)
+[2025-07-18 02:21:06.198][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(714.403137,220.977859), networkPlayers.size=1
+[2025-07-18 02:21:06.410][INFO ] Updated player 0 position to (740.037109,130.089981)
+[2025-07-18 02:21:06.416][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(714.403137,220.977859), networkPlayers.size=1
+[2025-07-18 02:21:06.632][INFO ] Updated player 0 position to (740.037109,130.089981)
+[2025-07-18 02:21:06.638][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(714.403137,220.977859), networkPlayers.size=1
+[2025-07-18 02:21:06.804][INFO ] SendPlayerMovement: playerID=1, pos=(846.993469,183.453690), mode=CLIENT
+[2025-07-18 02:21:06.854][INFO ] Updated player 0 position to (740.037109,130.089981)
+[2025-07-18 02:21:06.860][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(714.403137,220.977859), networkPlayers.size=1
+[2025-07-18 02:21:07.076][INFO ] Updated player 0 position to (740.037109,130.089981)
+[2025-07-18 02:21:07.088][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(714.403137,220.977859), networkPlayers.size=1
+[2025-07-18 02:21:07.299][INFO ] Updated player 0 position to (740.037109,130.089981)
+[2025-07-18 02:21:07.304][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(714.403137,220.977859), networkPlayers.size=1
+[2025-07-18 02:21:07.471][INFO ] SendPlayerMovement: playerID=1, pos=(846.993469,183.453690), mode=CLIENT
+[2025-07-18 02:21:07.521][INFO ] Updated player 0 position to (740.037109,130.089981)
+[2025-07-18 02:21:07.526][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(714.403137,220.977859), networkPlayers.size=1
+[2025-07-18 02:21:07.749][INFO ] Updated player 0 position to (740.037109,130.089981)
+[2025-07-18 02:21:07.749][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(714.403137,220.977859), networkPlayers.size=1
+[2025-07-18 02:21:07.965][INFO ] Updated player 0 position to (740.037109,130.089981)
+[2025-07-18 02:21:07.971][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(714.403137,220.977859), networkPlayers.size=1
+[2025-07-18 02:21:08.137][INFO ] SendPlayerMovement: playerID=1, pos=(846.993469,183.453690), mode=CLIENT
+[2025-07-18 02:21:08.188][INFO ] Updated player 0 position to (740.037109,130.089981)
+[2025-07-18 02:21:08.194][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(714.403137,220.977859), networkPlayers.size=1
+[2025-07-18 02:21:08.410][INFO ] Updated player 0 position to (740.037109,130.089981)
+[2025-07-18 02:21:08.420][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(714.403137,220.977859), networkPlayers.size=1
+[2025-07-18 02:21:08.632][INFO ] Updated player 0 position to (740.037109,130.089981)
+[2025-07-18 02:21:08.638][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(714.403137,220.977859), networkPlayers.size=1
+[2025-07-18 02:21:08.804][INFO ] SendPlayerMovement: playerID=1, pos=(846.993469,183.453690), mode=CLIENT
+[2025-07-18 02:21:08.854][INFO ] Updated player 0 position to (843.711365,251.303268)
+[2025-07-18 02:21:08.865][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(714.403137,220.977859), networkPlayers.size=1
+[2025-07-18 02:21:09.076][INFO ] Updated player 0 position to (740.037109,130.089981)
+[2025-07-18 02:21:09.088][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(714.403137,220.977859), networkPlayers.size=1
+[2025-07-18 02:21:09.298][INFO ] Updated player 0 position to (740.037109,130.089981)
+[2025-07-18 02:21:09.310][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(714.403137,220.977859), networkPlayers.size=1
+[2025-07-18 02:21:09.471][INFO ] SendPlayerMovement: playerID=1, pos=(846.993469,183.453690), mode=CLIENT
+[2025-07-18 02:21:09.521][INFO ] Updated player 0 position to (843.711365,251.303268)
+[2025-07-18 02:21:09.532][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(714.403137,220.977859), networkPlayers.size=1
+[2025-07-18 02:21:09.749][INFO ] Updated player 0 position to (740.037109,130.089981)
+[2025-07-18 02:21:09.749][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(714.403137,220.977859), networkPlayers.size=1
+[2025-07-18 02:21:09.966][INFO ] Updated player 0 position to (843.711365,251.303268)
+[2025-07-18 02:21:09.978][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(714.403137,220.977859), networkPlayers.size=1
+[2025-07-18 02:21:10.138][INFO ] SendPlayerMovement: playerID=1, pos=(846.993469,183.453690), mode=CLIENT
+[2025-07-18 02:21:10.194][INFO ] Updated player 0 position to (740.037109,130.089981)
+[2025-07-18 02:21:10.200][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(714.403137,220.977859), networkPlayers.size=1
+[2025-07-18 02:21:10.415][INFO ] Updated player 0 position to (714.403137,220.977859)
+[2025-07-18 02:21:10.415][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(740.037109,130.089981), networkPlayers.size=1
+[2025-07-18 02:21:10.638][INFO ] Updated player 0 position to (714.403137,220.977859)
+[2025-07-18 02:21:10.644][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(740.037109,130.089981), networkPlayers.size=1
+[2025-07-18 02:21:10.804][INFO ] SendPlayerMovement: playerID=1, pos=(846.993469,183.453690), mode=CLIENT
+[2025-07-18 02:21:10.866][INFO ] Updated player 0 position to (714.403137,220.977859)
+[2025-07-18 02:21:10.866][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(740.037109,130.089981), networkPlayers.size=1
+[2025-07-18 02:21:11.082][INFO ] Updated player 0 position to (697.352539,130.089981)
+[2025-07-18 02:21:11.082][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(714.403137,220.977859), networkPlayers.size=1
+[2025-07-18 02:21:11.310][INFO ] Updated player 0 position to (714.403137,220.977859)
+[2025-07-18 02:21:11.310][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(669.479248,130.089981), networkPlayers.size=1
+[2025-07-18 02:21:11.470][INFO ] SendPlayerMovement: playerID=1, pos=(846.993469,183.453690), mode=CLIENT
+[2025-07-18 02:21:11.532][INFO ] Updated player 0 position to (714.403137,220.977859)
+[2025-07-18 02:21:11.532][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(669.479248,149.486984), networkPlayers.size=1
+[2025-07-18 02:21:11.754][INFO ] Updated player 0 position to (714.403137,220.977859)
+[2025-07-18 02:21:11.755][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(669.479248,231.003372), networkPlayers.size=1
+[2025-07-18 02:21:11.971][INFO ] Updated player 0 position to (714.403137,220.977859)
+[2025-07-18 02:21:11.971][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(669.479248,106.652565), networkPlayers.size=1
+[2025-07-18 02:21:12.137][INFO ] SendPlayerMovement: playerID=1, pos=(846.993469,183.453690), mode=CLIENT
+[2025-07-18 02:21:12.200][INFO ] Updated player 0 position to (714.403137,220.977859)
+[2025-07-18 02:21:12.200][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(669.479248,99.025360), networkPlayers.size=1
+[2025-07-18 02:21:12.415][INFO ] Updated player 0 position to (714.403137,220.977859)
+[2025-07-18 02:21:12.416][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(669.479248,156.749451), networkPlayers.size=1
+[2025-07-18 02:21:12.637][INFO ] Updated player 0 position to (714.403137,220.977859)
+[2025-07-18 02:21:12.637][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(669.479248,133.445740), networkPlayers.size=1
+[2025-07-18 02:21:12.804][INFO ] SendPlayerMovement: playerID=1, pos=(846.993469,183.453690), mode=CLIENT
+[2025-07-18 02:21:12.860][INFO ] Updated player 0 position to (714.403137,220.977859)
+[2025-07-18 02:21:12.860][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(669.479248,113.695236), networkPlayers.size=1
+[2025-07-18 02:21:13.088][INFO ] Updated player 0 position to (714.403137,220.977859)
+[2025-07-18 02:21:13.088][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(669.479248,113.695236), networkPlayers.size=1
+[2025-07-18 02:21:13.306][INFO ] Updated player 0 position to (714.403137,220.977859)
+[2025-07-18 02:21:13.306][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(843.711365,251.303268), networkPlayers.size=1
+[2025-07-18 02:21:13.477][INFO ] SendPlayerMovement: playerID=1, pos=(846.993469,183.453690), mode=CLIENT
+[2025-07-18 02:21:13.538][INFO ] Updated player 0 position to (714.403137,220.977859)
+[2025-07-18 02:21:13.538][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(669.479248,113.695236), networkPlayers.size=1
+[2025-07-18 02:21:13.762][INFO ] Updated player 0 position to (714.403137,220.977859)
+[2025-07-18 02:21:13.762][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(669.479248,113.695236), networkPlayers.size=1
+[2025-07-18 02:21:13.983][INFO ] Updated player 0 position to (843.711365,251.303268)
+[2025-07-18 02:21:13.983][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(669.479248,113.695236), networkPlayers.size=1
+[2025-07-18 02:21:14.144][INFO ] SendPlayerMovement: playerID=1, pos=(846.993469,183.453690), mode=CLIENT
+[2025-07-18 02:21:14.206][INFO ] Updated player 0 position to (843.711365,251.303268)
+[2025-07-18 02:21:14.206][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(669.479248,113.695236), networkPlayers.size=1
+[2025-07-18 02:21:14.450][INFO ] Updated player 0 position to (843.711365,251.303268)
+[2025-07-18 02:21:14.456][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(714.403137,220.977859), networkPlayers.size=1
+[2025-07-18 02:21:14.678][INFO ] Updated player 0 position to (843.711365,251.303268)
+[2025-07-18 02:21:14.678][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(669.479248,113.695236), networkPlayers.size=1
+[2025-07-18 02:21:14.810][INFO ] SendPlayerMovement: playerID=1, pos=(846.993469,183.453690), mode=CLIENT
+[2025-07-18 02:21:14.911][INFO ] Updated player 0 position to (669.479248,113.695236)
+[2025-07-18 02:21:14.911][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(843.711365,251.303268), networkPlayers.size=1
+[2025-07-18 02:21:15.136][INFO ] Updated player 0 position to (714.403137,220.977859)
+[2025-07-18 02:21:15.136][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(843.711365,251.303268), networkPlayers.size=1
+[2025-07-18 02:21:15.355][INFO ] Updated player 0 position to (669.479248,113.695236)
+[2025-07-18 02:21:15.355][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(843.711365,251.303268), networkPlayers.size=1
+[2025-07-18 02:21:15.521][INFO ] SendPlayerMovement: playerID=1, pos=(927.165161,183.453690), mode=CLIENT
+[2025-07-18 02:21:15.583][INFO ] Updated player 0 position to (669.479248,113.695236)
+[2025-07-18 02:21:15.583][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(843.711365,251.303268), networkPlayers.size=1
+[2025-07-18 02:21:15.800][INFO ] Updated player 0 position to (843.711365,251.303268)
+[2025-07-18 02:21:15.800][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(669.479248,113.695236), networkPlayers.size=1
+[2025-07-18 02:21:16.026][INFO ] Updated player 0 position to (669.479248,113.695236)
+[2025-07-18 02:21:16.026][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(843.711365,251.303268), networkPlayers.size=1
+[2025-07-18 02:21:16.188][INFO ] SendPlayerMovement: playerID=1, pos=(841.878540,183.453690), mode=CLIENT
+[2025-07-18 02:21:16.244][INFO ] Updated player 0 position to (669.479248,113.695236)
+[2025-07-18 02:21:16.244][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(843.711365,251.303268), networkPlayers.size=1
+[2025-07-18 02:21:16.471][INFO ] Updated player 0 position to (669.479248,113.695236)
+[2025-07-18 02:21:16.471][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(843.711365,251.303268), networkPlayers.size=1
+[2025-07-18 02:21:16.693][INFO ] Updated player 0 position to (669.479248,113.695236)
+[2025-07-18 02:21:16.694][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(843.711365,251.303268), networkPlayers.size=1
+[2025-07-18 02:21:16.854][INFO ] SendPlayerMovement: playerID=1, pos=(841.878540,183.453690), mode=CLIENT
+[2025-07-18 02:21:16.915][INFO ] Updated player 0 position to (669.479248,113.695236)
+[2025-07-18 02:21:16.915][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(843.711365,251.303268), networkPlayers.size=1
+[2025-07-18 02:21:17.133][INFO ] Updated player 0 position to (669.479248,113.695236)
+[2025-07-18 02:21:17.133][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(843.711365,251.303268), networkPlayers.size=1
+[2025-07-18 02:21:17.360][INFO ] Updated player 0 position to (843.711365,251.303268)
+[2025-07-18 02:21:17.366][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(714.403137,220.977859), networkPlayers.size=1
+[2025-07-18 02:21:17.526][INFO ] SendPlayerMovement: playerID=1, pos=(841.878540,183.453690), mode=CLIENT
+[2025-07-18 02:21:17.582][INFO ] Updated player 0 position to (843.711365,251.303268)
+[2025-07-18 02:21:17.594][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(714.403137,220.977859), networkPlayers.size=1
+[2025-07-18 02:21:17.805][INFO ] Updated player 0 position to (669.479248,113.695236)
+[2025-07-18 02:21:17.816][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(714.403137,220.977859), networkPlayers.size=1
+[2025-07-18 02:21:18.022][INFO ] Updated player 0 position to (843.711365,251.303268)
+[2025-07-18 02:21:18.033][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(714.403137,220.977859), networkPlayers.size=1
+[2025-07-18 02:21:18.193][INFO ] SendPlayerMovement: playerID=1, pos=(841.878540,183.453690), mode=CLIENT
+[2025-07-18 02:21:18.251][INFO ] Updated player 0 position to (714.403137,220.977859)
+[2025-07-18 02:21:18.256][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(669.479248,113.695236), networkPlayers.size=1
+[2025-07-18 02:21:18.478][INFO ] Updated player 0 position to (843.711365,251.303268)
+[2025-07-18 02:21:18.483][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(843.711365,251.303268), networkPlayers.size=1
+[2025-07-18 02:21:18.699][INFO ] Updated player 0 position to (843.711365,251.303268)
+[2025-07-18 02:21:18.710][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(714.403137,220.977859), networkPlayers.size=1
+[2025-07-18 02:21:18.860][INFO ] SendPlayerMovement: playerID=1, pos=(841.878540,183.453690), mode=CLIENT
+[2025-07-18 02:21:18.921][INFO ] Updated player 0 position to (669.479248,113.695236)
+[2025-07-18 02:21:18.927][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(714.403137,220.977859), networkPlayers.size=1
+[2025-07-18 02:21:19.015][INFO ] Game Closing
+[2025-07-18 02:21:19.015][INFO ] Game Shutdown
+[2025-07-18 02:21:19.024][INFO ] Auto-saved scene to autosave_scene.yaml
+[2025-07-18 02:21:19.024][INFO ] ImGui Inspector UI shutdown complete
+[2025-07-18 02:21:19.024][INFO ] Network thread stopped
+[2025-07-18 02:21:19.027][INFO ] Disconnected from server: Shutting down
+[2025-07-18 02:21:19.027][INFO ] Immediately triggering SERVER_DISCONNECTED callback...
+[2025-07-18 02:21:19.027][INFO ] === SERVER DISCONNECTED ===
+[2025-07-18 02:21:19.027][INFO ] Disconnected from server: Shutting down
+[2025-07-18 02:21:19.027][INFO ] Network players before SERVER_DISCONNECTED cleanup: 1
+[2025-07-18 02:21:19.027][INFO ] Reset network ID to 0
+[2025-07-18 02:21:19.027][INFO ] Clearing all network players...
+[2025-07-18 02:21:19.027][INFO ] Clearing 1 network players:
+[2025-07-18 02:21:19.027][INFO ]   - Removing player ID: 0, Entity ID: 9
+[2025-07-18 02:21:19.027][INFO ] -   Made entity invisible before destruction
+[2025-07-18 02:21:19.027][INFO ] All network players cleared
+[2025-07-18 02:21:19.028][INFO ] NetworkManager shut down
+[2025-07-18 02:21:19.028][INFO ] NetworkUI shut down
+[2025-07-18 02:24:31.273][INFO ] Fog shader created with ID: 6
+[2025-07-18 02:24:31.274][INFO ] Vision shader created with ID: 9
+[2025-07-18 02:24:31.275][INFO ] Light shader created with ID: 12
+[2025-07-18 02:24:31.275][INFO ] ECS Scene setup complete with 6 entities
+[2025-07-18 02:24:31.275][INFO ] Game Init
+[2025-07-18 02:24:31.275][INFO ] Press TAB to cycle between Fog, Vision, and Lighting systems
+[2025-07-18 02:24:31.275][INFO ] Use WASD to move and change facing direction
+[2025-07-18 02:24:31.275][INFO ] Press F5 to save scene, F9 to load scene
+[2025-07-18 02:24:31.275][INFO ] Press F1 to toggle ECS Inspector
+[2025-07-18 02:24:31.276][INFO ] Press F6 to toggle Network UI
+[2025-07-18 02:24:31.276][INFO ] Press F7 to disconnect from server
+[2025-07-18 02:24:31.276][INFO ] Initializing ImGui Inspector UI
+[2025-07-18 02:24:31.276][INFO ] ImGui Inspector UI initialized successfully
+[2025-07-18 02:24:31.277][INFO ] NetworkManager initialized successfully
+[2025-07-18 02:24:31.277][INFO ] NetworkUI initialized successfully
+[2025-07-18 02:24:31.277][INFO ] Network thread started
+[2025-07-18 02:24:31.277][INFO ] Network packet handlers initialized
+[2025-07-18 02:24:31.278][INFO ] Found 1 player entities to render
+[2025-07-18 02:24:52.037][INFO ] Starting async connection to localhost:7777
+[2025-07-18 02:24:52.037][INFO ] Network thread: Attempting connection to localhost:7777
+[2025-07-18 02:24:52.047][INFO ] Connected to server localhost:7777, waiting for peer ID assignment
+[2025-07-18 02:24:52.052][WARN ][4Game] CLIENT SendPlayerMovement called with peer ID 0! NetworkManager localPeerID: 0
+[2025-07-18 02:24:52.067][INFO ] === PEER ID ASSIGNMENT ===
+[2025-07-18 02:24:52.067][INFO ] Received peer ID assignment: 1 (old ID was: 0)
+[2025-07-18 02:24:52.067][INFO ] NetworkManager.GetLocalPeerID() now returns: 1
+[2025-07-18 02:24:52.067][INFO ] Processing PLAYER_JOIN packet for player Player_0 (senderID: 0, packetID: 0)
+[2025-07-18 02:24:52.067][INFO ] RenderableComponent added and configured for network player
+[2025-07-18 02:24:52.067][INFO ] PlayerComponent added and configured for network player
+[2025-07-18 02:24:52.068][INFO ] Network player Player_0 joined and entity created (ID: 0, EntityID: 7)
+[2025-07-18 02:24:52.068][INFO ] Total network players now: 1
+[2025-07-18 02:24:52.068][INFO ] Entity components check - Transform: YES, Player: YES, Renderable: YES
+[2025-07-18 02:24:52.068][INFO ] === CONNECTED TO SERVER ===
+[2025-07-18 02:24:52.068][INFO ] Connected to server: Connected with assigned peer ID 1
+[2025-07-18 02:24:52.068][INFO ] Assigned client network ID: 1
+[2025-07-18 02:24:52.068][INFO ] Current network players at connection: 1
+[2025-07-18 02:24:52.068][INFO ] Sending player join packet to server...
+[2025-07-18 02:24:52.068][INFO ] Sent player join packet to server
+[2025-07-18 02:24:52.074][INFO ] Found 2 player entities to render
+[2025-07-18 02:24:52.075][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(640.000000,360.000000), networkPlayers.size=1
+[2025-07-18 02:24:52.079][INFO ] SendPlayerMovement: playerID=1, pos=(640.000000,360.000000), mode=CLIENT
+[2025-07-18 02:24:52.708][INFO ] Updated player 0 position to (640.000000,360.000000)
+[2025-07-18 02:24:52.726][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(640.000000,360.000000), networkPlayers.size=1
+[2025-07-18 02:24:52.813][INFO ] SendPlayerMovement: playerID=1, pos=(640.000000,360.000000), mode=CLIENT
+[2025-07-18 02:24:53.087][INFO ] Processing PLAYER_JOIN packet for player Player_2 (senderID: 0, packetID: 2)
+[2025-07-18 02:24:53.087][INFO ] RenderableComponent added and configured for network player
+[2025-07-18 02:24:53.087][INFO ] PlayerComponent added and configured for network player
+[2025-07-18 02:24:53.087][INFO ] Network player Player_2 joined and entity created (ID: 0, EntityID: 8)
+[2025-07-18 02:24:53.087][INFO ] Total network players now: 1
+[2025-07-18 02:24:53.088][INFO ] Entity components check - Transform: YES, Player: YES, Renderable: YES
+[2025-07-18 02:24:53.096][INFO ] Found 3 player entities to render
+[2025-07-18 02:24:53.247][INFO ] Updated player 0 position to (640.000000,360.000000)
+[2025-07-18 02:24:53.254][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(640.000000,360.000000), networkPlayers.size=1
+[2025-07-18 02:24:53.492][INFO ] SendPlayerMovement: playerID=1, pos=(640.000000,360.000000), mode=CLIENT
+[2025-07-18 02:24:53.575][INFO ] Updated player 0 position to (640.000000,360.000000)
+[2025-07-18 02:24:53.579][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(640.000000,316.219879), networkPlayers.size=1
+[2025-07-18 02:24:53.916][INFO ] Updated player 0 position to (640.000000,360.000000)
+[2025-07-18 02:24:53.926][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(706.024719,197.362686), networkPlayers.size=1
+[2025-07-18 02:24:54.196][INFO ] SendPlayerMovement: playerID=1, pos=(643.893372,306.449341), mode=CLIENT
+[2025-07-18 02:24:54.269][INFO ] Updated player 0 position to (706.024719,197.362686)
+[2025-07-18 02:24:54.269][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(640.000000,360.000000), networkPlayers.size=1
+[2025-07-18 02:24:54.597][INFO ] Updated player 0 position to (706.024719,197.362686)
+[2025-07-18 02:24:54.604][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(640.000000,360.000000), networkPlayers.size=1
+[2025-07-18 02:24:54.863][INFO ] SendPlayerMovement: playerID=1, pos=(787.042053,228.445526), mode=CLIENT
+[2025-07-18 02:24:54.943][INFO ] Updated player 0 position to (640.000000,360.000000)
+[2025-07-18 02:24:54.943][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(706.024719,197.362686), networkPlayers.size=1
+[2025-07-18 02:24:55.276][INFO ] Updated player 0 position to (706.024719,197.362686)
+[2025-07-18 02:24:55.276][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(640.000000,360.000000), networkPlayers.size=1
+[2025-07-18 02:24:55.534][INFO ] SendPlayerMovement: playerID=1, pos=(787.042053,228.445526), mode=CLIENT
+[2025-07-18 02:24:55.614][INFO ] Updated player 0 position to (706.024719,197.362686)
+[2025-07-18 02:24:55.614][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(640.000000,360.000000), networkPlayers.size=1
+[2025-07-18 02:24:55.947][INFO ] Updated player 0 position to (706.024719,197.362686)
+[2025-07-18 02:24:55.947][INFO ] Processing PLAYER_JOIN packet for player Player_3 (senderID: 0, packetID: 3)
+[2025-07-18 02:24:55.947][INFO ] RenderableComponent added and configured for network player
+[2025-07-18 02:24:55.947][INFO ] PlayerComponent added and configured for network player
+[2025-07-18 02:24:55.947][INFO ] Network player Player_3 joined and entity created (ID: 0, EntityID: 9)
+[2025-07-18 02:24:55.948][INFO ] Total network players now: 1
+[2025-07-18 02:24:55.948][INFO ] Entity components check - Transform: YES, Player: YES, Renderable: YES
+[2025-07-18 02:24:55.948][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(640.000000,360.000000), networkPlayers.size=1
+[2025-07-18 02:24:55.953][INFO ] Found 4 player entities to render
+[2025-07-18 02:24:56.157][INFO ] Updated player 0 position to (640.000000,360.000000)
+[2025-07-18 02:24:56.164][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(706.024719,197.362686), networkPlayers.size=1
+[2025-07-18 02:24:56.202][INFO ] SendPlayerMovement: playerID=1, pos=(787.042053,228.445526), mode=CLIENT
+[2025-07-18 02:24:56.380][INFO ] Updated player 0 position to (640.000000,360.000000)
+[2025-07-18 02:24:56.385][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(706.024719,197.362686), networkPlayers.size=1
+[2025-07-18 02:24:56.603][INFO ] Updated player 0 position to (640.000000,360.000000)
+[2025-07-18 02:24:56.607][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(706.024719,197.362686), networkPlayers.size=1
+[2025-07-18 02:24:56.825][INFO ] Updated player 0 position to (803.218262,244.121231)
+[2025-07-18 02:24:56.825][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(640.000000,360.000000), networkPlayers.size=1
+[2025-07-18 02:24:56.874][INFO ] SendPlayerMovement: playerID=1, pos=(787.042053,228.445526), mode=CLIENT
+[2025-07-18 02:24:57.057][INFO ] Updated player 0 position to (706.024719,197.362686)
+[2025-07-18 02:24:57.057][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(803.218262,244.121231), networkPlayers.size=1
+[2025-07-18 02:24:57.280][INFO ] Updated player 0 position to (706.024719,197.362686)
+[2025-07-18 02:24:57.280][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(803.218262,244.121231), networkPlayers.size=1
+[2025-07-18 02:24:57.496][INFO ] Updated player 0 position to (803.218262,244.121231)
+[2025-07-18 02:24:57.496][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(706.024719,197.362686), networkPlayers.size=1
+[2025-07-18 02:24:57.545][INFO ] SendPlayerMovement: playerID=1, pos=(787.042053,228.445526), mode=CLIENT
+[2025-07-18 02:24:57.719][INFO ] Updated player 0 position to (706.024719,197.362686)
+[2025-07-18 02:24:57.719][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(803.218262,244.121231), networkPlayers.size=1
+[2025-07-18 02:24:57.935][INFO ] Updated player 0 position to (706.024719,197.362686)
+[2025-07-18 02:24:57.943][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(803.218262,244.121231), networkPlayers.size=1
+[2025-07-18 02:24:58.170][INFO ] Updated player 0 position to (706.024719,197.362686)
+[2025-07-18 02:24:58.179][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(696.714905,294.233643), networkPlayers.size=1
+[2025-07-18 02:24:58.215][INFO ] SendPlayerMovement: playerID=1, pos=(787.042053,186.680725), mode=CLIENT
+[2025-07-18 02:24:58.378][INFO ] Updated player 0 position to (706.024719,197.362686)
+[2025-07-18 02:24:58.378][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(803.218262,244.121231), networkPlayers.size=1
+[2025-07-18 02:24:58.602][INFO ] Updated player 0 position to (803.218262,244.121231)
+[2025-07-18 02:24:58.620][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(696.714905,294.233643), networkPlayers.size=1
+[2025-07-18 02:24:58.825][INFO ] Updated player 0 position to (706.024719,197.362686)
+[2025-07-18 02:24:58.835][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(696.714905,294.233643), networkPlayers.size=1
+[2025-07-18 02:24:58.977][INFO ] SendPlayerMovement: playerID=1, pos=(766.773315,214.530899), mode=CLIENT
+[2025-07-18 02:24:59.048][INFO ] Updated player 0 position to (803.218262,244.121231)
+[2025-07-18 02:24:59.059][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(696.714905,294.233643), networkPlayers.size=1
+[2025-07-18 02:24:59.276][INFO ] Updated player 0 position to (706.024719,197.362686)
+[2025-07-18 02:24:59.286][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(696.714905,294.233643), networkPlayers.size=1
+[2025-07-18 02:24:59.502][INFO ] Updated player 0 position to (803.218262,244.121231)
+[2025-07-18 02:24:59.507][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(696.714905,294.233643), networkPlayers.size=1
+[2025-07-18 02:24:59.680][INFO ] SendPlayerMovement: playerID=1, pos=(833.620483,130.789215), mode=CLIENT
+[2025-07-18 02:24:59.725][INFO ] Updated player 0 position to (706.024719,197.362686)
+[2025-07-18 02:24:59.730][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(696.714905,294.233643), networkPlayers.size=1
+[2025-07-18 02:24:59.940][INFO ] Updated player 0 position to (803.218262,244.121231)
+[2025-07-18 02:24:59.953][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(696.714905,294.233643), networkPlayers.size=1
+[2025-07-18 02:25:00.180][INFO ] Updated player 0 position to (696.714905,294.233643)
+[2025-07-18 02:25:00.180][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(706.024719,197.362686), networkPlayers.size=1
+[2025-07-18 02:25:00.338][INFO ] SendPlayerMovement: playerID=1, pos=(833.620483,130.789215), mode=CLIENT
+[2025-07-18 02:25:00.407][INFO ] Updated player 0 position to (706.024719,154.255295)
+[2025-07-18 02:25:00.407][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(803.218262,244.121231), networkPlayers.size=1
+[2025-07-18 02:25:00.625][INFO ] Updated player 0 position to (696.714905,294.233643)
+[2025-07-18 02:25:00.625][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(706.024719,146.969696), networkPlayers.size=1
+[2025-07-18 02:25:00.847][INFO ] Updated player 0 position to (696.714905,294.233643)
+[2025-07-18 02:25:00.847][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(706.024719,146.969696), networkPlayers.size=1
+[2025-07-18 02:25:00.997][INFO ] SendPlayerMovement: playerID=1, pos=(833.620483,130.789215), mode=CLIENT
+[2025-07-18 02:25:01.069][INFO ] Updated player 0 position to (696.714905,294.233643)
+[2025-07-18 02:25:01.069][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(706.024719,146.969696), networkPlayers.size=1
+[2025-07-18 02:25:01.269][INFO ] Updated player 0 position to (706.024719,146.969696)
+[2025-07-18 02:25:01.281][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(696.714905,294.233643), networkPlayers.size=1
+[2025-07-18 02:25:01.496][INFO ] Updated player 0 position to (706.024719,146.969696)
+[2025-07-18 02:25:01.508][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(696.714905,294.233643), networkPlayers.size=1
+[2025-07-18 02:25:01.653][INFO ] SendPlayerMovement: playerID=1, pos=(833.620483,130.789215), mode=CLIENT
+[2025-07-18 02:25:01.719][INFO ] Updated player 0 position to (706.024719,146.969696)
+[2025-07-18 02:25:01.724][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(696.714905,294.233643), networkPlayers.size=1
+[2025-07-18 02:25:01.947][INFO ] Updated player 0 position to (696.714905,294.233643)
+[2025-07-18 02:25:01.947][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(706.024719,175.171295), networkPlayers.size=1
+[2025-07-18 02:25:02.169][INFO ] Updated player 0 position to (696.714905,294.233643)
+[2025-07-18 02:25:02.169][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(706.024719,175.171295), networkPlayers.size=1
+[2025-07-18 02:25:02.331][INFO ] SendPlayerMovement: playerID=1, pos=(833.620483,67.924324), mode=CLIENT
+[2025-07-18 02:25:02.402][INFO ] Updated player 0 position to (803.218262,244.121231)
+[2025-07-18 02:25:02.412][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(696.714905,294.233643), networkPlayers.size=1
+[2025-07-18 02:25:02.635][INFO ] Updated player 0 position to (693.382202,294.233643)
+[2025-07-18 02:25:02.635][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(803.218262,244.121231), networkPlayers.size=1
+[2025-07-18 02:25:02.851][INFO ] Updated player 0 position to (803.218262,244.121231)
+[2025-07-18 02:25:02.852][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(706.024719,175.171295), networkPlayers.size=1
+[2025-07-18 02:25:03.023][INFO ] SendPlayerMovement: playerID=1, pos=(833.620483,67.924324), mode=CLIENT
+[2025-07-18 02:25:03.074][INFO ] Updated player 0 position to (706.024719,175.171295)
+[2025-07-18 02:25:03.074][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(803.218262,244.121231), networkPlayers.size=1
+[2025-07-18 02:25:03.291][INFO ] Updated player 0 position to (706.024719,175.171295)
+[2025-07-18 02:25:03.298][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(689.532104,328.756165), networkPlayers.size=1
+[2025-07-18 02:25:03.523][INFO ] Updated player 0 position to (689.532104,328.756165)
+[2025-07-18 02:25:03.524][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(853.571411,158.731720), networkPlayers.size=1
+[2025-07-18 02:25:03.680][INFO ] SendPlayerMovement: playerID=1, pos=(833.620483,67.924324), mode=CLIENT
+[2025-07-18 02:25:03.747][INFO ] Updated player 0 position to (689.532104,328.756165)
+[2025-07-18 02:25:03.747][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(706.024719,175.171295), networkPlayers.size=1
+[2025-07-18 02:25:03.963][INFO ] Updated player 0 position to (689.532104,328.756165)
+[2025-07-18 02:25:03.963][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(706.024719,175.171295), networkPlayers.size=1
+[2025-07-18 02:25:04.181][INFO ] Updated player 0 position to (765.881836,158.731720)
+[2025-07-18 02:25:04.186][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(689.532104,328.756165), networkPlayers.size=1
+[2025-07-18 02:25:04.330][INFO ] SendPlayerMovement: playerID=1, pos=(833.620483,67.924324), mode=CLIENT
+[2025-07-18 02:25:04.413][INFO ] Updated player 0 position to (746.005371,158.731720)
+[2025-07-18 02:25:04.413][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(706.024719,175.171295), networkPlayers.size=1
+[2025-07-18 02:25:04.652][INFO ] Updated player 0 position to (689.532104,328.756165)
+[2025-07-18 02:25:04.652][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(706.024719,175.171295), networkPlayers.size=1
+[2025-07-18 02:25:04.852][INFO ] Updated player 0 position to (746.005371,158.731720)
+[2025-07-18 02:25:04.852][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(706.024719,175.171295), networkPlayers.size=1
+[2025-07-18 02:25:04.990][INFO ] SendPlayerMovement: playerID=1, pos=(833.620483,67.924324), mode=CLIENT
+[2025-07-18 02:25:05.074][INFO ] Updated player 0 position to (706.024719,175.171295)
+[2025-07-18 02:25:05.074][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(746.005371,158.731720), networkPlayers.size=1
+[2025-07-18 02:25:05.297][INFO ] Updated player 0 position to (706.024719,175.171295)
+[2025-07-18 02:25:05.297][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(746.005371,158.731720), networkPlayers.size=1
+[2025-07-18 02:25:05.535][INFO ] Updated player 0 position to (746.005371,158.731720)
+[2025-07-18 02:25:05.535][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(706.024719,175.171295), networkPlayers.size=1
+[2025-07-18 02:25:05.669][INFO ] SendPlayerMovement: playerID=1, pos=(833.620483,67.924324), mode=CLIENT
+[2025-07-18 02:25:05.751][INFO ] Updated player 0 position to (706.024719,175.171295)
+[2025-07-18 02:25:05.751][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(746.005371,158.731720), networkPlayers.size=1
+[2025-07-18 02:25:05.973][INFO ] Updated player 0 position to (751.953857,236.157349)
+[2025-07-18 02:25:05.974][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(746.005371,158.731720), networkPlayers.size=1
+[2025-07-18 02:25:06.196][INFO ] Updated player 0 position to (706.024719,175.171295)
+[2025-07-18 02:25:06.196][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(746.005371,158.731720), networkPlayers.size=1
+[2025-07-18 02:25:06.331][INFO ] SendPlayerMovement: playerID=1, pos=(833.620483,67.924324), mode=CLIENT
+[2025-07-18 02:25:06.420][INFO ] Updated player 0 position to (709.089233,236.157349)
+[2025-07-18 02:25:06.420][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(706.024719,175.171295), networkPlayers.size=1
+[2025-07-18 02:25:06.646][INFO ] Updated player 0 position to (728.511597,236.157349)
+[2025-07-18 02:25:06.647][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(746.005371,158.731720), networkPlayers.size=1
+[2025-07-18 02:25:06.869][INFO ] Updated player 0 position to (728.511597,236.157349)
+[2025-07-18 02:25:06.870][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(746.005371,158.731720), networkPlayers.size=1
+[2025-07-18 02:25:06.997][INFO ] SendPlayerMovement: playerID=1, pos=(833.620483,67.924324), mode=CLIENT
+[2025-07-18 02:25:07.090][INFO ] Updated player 0 position to (728.511597,236.157349)
+[2025-07-18 02:25:07.090][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(746.005371,158.731720), networkPlayers.size=1
+[2025-07-18 02:25:07.308][INFO ] Updated player 0 position to (706.024719,175.171295)
+[2025-07-18 02:25:07.308][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(746.005371,158.731720), networkPlayers.size=1
+[2025-07-18 02:25:07.525][INFO ] Updated player 0 position to (728.511597,236.157349)
+[2025-07-18 02:25:07.525][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(746.005371,158.731720), networkPlayers.size=1
+[2025-07-18 02:25:07.651][INFO ] SendPlayerMovement: playerID=1, pos=(833.620483,67.924324), mode=CLIENT
+[2025-07-18 02:25:07.740][INFO ] Updated player 0 position to (728.511597,236.157349)
+[2025-07-18 02:25:07.741][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(746.005371,158.731720), networkPlayers.size=1
+[2025-07-18 02:25:07.969][INFO ] Updated player 0 position to (728.511597,236.157349)
+[2025-07-18 02:25:07.969][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(846.360168,127.284271), networkPlayers.size=1
+[2025-07-18 02:25:08.186][INFO ] Updated player 0 position to (728.511597,236.157349)
+[2025-07-18 02:25:08.186][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(746.005371,158.731720), networkPlayers.size=1
+[2025-07-18 02:25:08.319][INFO ] SendPlayerMovement: playerID=1, pos=(833.620483,67.924324), mode=CLIENT
+[2025-07-18 02:25:08.408][INFO ] Updated player 0 position to (728.511597,236.157349)
+[2025-07-18 02:25:08.414][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(746.005371,158.731720), networkPlayers.size=1
+[2025-07-18 02:25:08.636][INFO ] Updated player 0 position to (728.511597,236.157349)
+[2025-07-18 02:25:08.637][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(746.005371,158.731720), networkPlayers.size=1
+[2025-07-18 02:25:08.865][INFO ] Updated player 0 position to (728.511597,236.157349)
+[2025-07-18 02:25:08.865][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(746.005371,158.731720), networkPlayers.size=1
+[2025-07-18 02:25:08.998][INFO ] SendPlayerMovement: playerID=1, pos=(833.620483,67.924324), mode=CLIENT
+[2025-07-18 02:25:09.079][INFO ] Updated player 0 position to (833.211914,224.539459)
+[2025-07-18 02:25:09.086][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(728.511597,236.157349), networkPlayers.size=1
+[2025-07-18 02:25:09.297][INFO ] Updated player 0 position to (681.011169,240.755661)
+[2025-07-18 02:25:09.301][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(728.511597,236.157349), networkPlayers.size=1
+[2025-07-18 02:25:09.518][INFO ] Updated player 0 position to (705.364807,97.270401)
+[2025-07-18 02:25:09.524][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(728.511597,236.157349), networkPlayers.size=1
+[2025-07-18 02:25:09.658][INFO ] SendPlayerMovement: playerID=1, pos=(833.620483,67.924324), mode=CLIENT
+[2025-07-18 02:25:09.740][INFO ] Updated player 0 position to (746.005371,158.731720)
+[2025-07-18 02:25:09.748][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(728.511597,236.157349), networkPlayers.size=1
+[2025-07-18 02:25:09.968][INFO ] Updated player 0 position to (728.511597,236.157349)
+[2025-07-18 02:25:09.968][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(825.772461,221.703812), networkPlayers.size=1
+[2025-07-18 02:25:10.186][INFO ] Updated player 0 position to (728.511597,236.157349)
+[2025-07-18 02:25:10.186][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(746.005371,158.731720), networkPlayers.size=1
+[2025-07-18 02:25:10.318][INFO ] SendPlayerMovement: playerID=1, pos=(833.620483,67.924324), mode=CLIENT
+[2025-07-18 02:25:10.409][INFO ] Updated player 0 position to (728.511597,236.157349)
+[2025-07-18 02:25:10.418][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(746.005371,158.731720), networkPlayers.size=1
+[2025-07-18 02:25:10.630][INFO ] Updated player 0 position to (728.511597,236.157349)
+[2025-07-18 02:25:10.636][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(746.005371,158.731720), networkPlayers.size=1
+[2025-07-18 02:25:10.851][INFO ] Updated player 0 position to (737.027161,115.809952)
+[2025-07-18 02:25:10.851][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(746.005371,158.731720), networkPlayers.size=1
+[2025-07-18 02:25:10.985][INFO ] SendPlayerMovement: playerID=1, pos=(833.620483,67.924324), mode=CLIENT
+[2025-07-18 02:25:11.075][INFO ] Updated player 0 position to (737.027161,115.809952)
+[2025-07-18 02:25:11.075][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(746.005371,158.731720), networkPlayers.size=1
+[2025-07-18 02:25:11.297][INFO ] Updated player 0 position to (737.027161,115.809952)
+[2025-07-18 02:25:11.297][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(746.005371,158.731720), networkPlayers.size=1
+[2025-07-18 02:25:11.513][INFO ] Updated player 0 position to (737.027161,115.809952)
+[2025-07-18 02:25:11.518][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(746.005371,158.731720), networkPlayers.size=1
+[2025-07-18 02:25:11.657][INFO ] SendPlayerMovement: playerID=1, pos=(833.620483,67.924324), mode=CLIENT
+[2025-07-18 02:25:11.736][INFO ] Updated player 0 position to (737.027161,115.809952)
+[2025-07-18 02:25:11.736][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(746.005371,158.731720), networkPlayers.size=1
+[2025-07-18 02:25:11.964][INFO ] Updated player 0 position to (746.005371,158.731720)
+[2025-07-18 02:25:11.964][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(737.027161,115.809952), networkPlayers.size=1
+[2025-07-18 02:25:12.179][INFO ] Updated player 0 position to (737.027161,115.809952)
+[2025-07-18 02:25:12.186][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(746.005371,158.731720), networkPlayers.size=1
+[2025-07-18 02:25:12.324][INFO ] SendPlayerMovement: playerID=1, pos=(833.620483,67.924324), mode=CLIENT
+[2025-07-18 02:25:12.397][INFO ] Updated player 0 position to (737.027161,115.809952)
+[2025-07-18 02:25:12.402][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(746.005371,158.731720), networkPlayers.size=1
+[2025-07-18 02:25:12.678][INFO ] Updated player 0 position to (746.005371,158.731720)
+[2025-07-18 02:25:12.688][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(728.511597,236.157349), networkPlayers.size=1
+[2025-07-18 02:25:12.990][INFO ] SendPlayerMovement: playerID=1, pos=(833.620483,67.924324), mode=CLIENT
+[2025-07-18 02:25:13.007][INFO ] Updated player 0 position to (746.005371,158.731720)
+[2025-07-18 02:25:13.014][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(728.511597,236.157349), networkPlayers.size=1
+[2025-07-18 02:25:13.339][INFO ] Updated player 0 position to (746.005371,158.731720)
+[2025-07-18 02:25:13.348][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(728.511597,236.157349), networkPlayers.size=1
+[2025-07-18 02:25:13.646][INFO ] SendPlayerMovement: playerID=1, pos=(833.620483,67.924324), mode=CLIENT
+[2025-07-18 02:25:13.669][INFO ] Updated player 0 position to (728.511597,236.157349)
+[2025-07-18 02:25:13.679][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(746.005371,158.731720), networkPlayers.size=1
+[2025-07-18 02:25:14.006][INFO ] Updated player 0 position to (728.511597,236.157349)
+[2025-07-18 02:25:14.006][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(746.005371,158.731720), networkPlayers.size=1
+[2025-07-18 02:25:14.308][INFO ] SendPlayerMovement: playerID=1, pos=(833.620483,67.924324), mode=CLIENT
+[2025-07-18 02:25:14.353][INFO ] Updated player 0 position to (728.511597,236.157349)
+[2025-07-18 02:25:14.353][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(746.005371,158.731720), networkPlayers.size=1
+[2025-07-18 02:25:14.657][INFO ] Updated player 0 position to (728.511597,236.157349)
+[2025-07-18 02:25:14.657][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(746.005371,158.731720), networkPlayers.size=1
+[2025-07-18 02:25:14.954][INFO ] SendPlayerMovement: playerID=1, pos=(833.620483,67.924324), mode=CLIENT
+[2025-07-18 02:25:14.969][INFO ] Updated player 0 position to (728.511597,236.157349)
+[2025-07-18 02:25:14.969][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(746.005371,158.731720), networkPlayers.size=1
+[2025-07-18 02:25:15.296][INFO ] Updated player 0 position to (746.005371,158.731720)
+[2025-07-18 02:25:15.301][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(728.511597,236.157349), networkPlayers.size=1
+[2025-07-18 02:25:15.619][INFO ] SendPlayerMovement: playerID=1, pos=(833.620483,67.924324), mode=CLIENT
+[2025-07-18 02:25:15.725][INFO ] Updated player 0 position to (728.511597,236.157349)
+[2025-07-18 02:25:15.730][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(728.511597,236.157349), networkPlayers.size=1
+[2025-07-18 02:25:16.294][INFO ] SendPlayerMovement: playerID=1, pos=(833.620483,67.924324), mode=CLIENT
+[2025-07-18 02:25:16.391][INFO ] Server disconnected
+[2025-07-18 02:25:16.391][INFO ] === SERVER DISCONNECTED ===
+[2025-07-18 02:25:16.391][INFO ] Disconnected from server: Server disconnected
+[2025-07-18 02:25:16.391][INFO ] Network players before SERVER_DISCONNECTED cleanup: 1
+[2025-07-18 02:25:16.391][INFO ] Reset network ID to 0
+[2025-07-18 02:25:16.391][INFO ] Clearing all network players...
+[2025-07-18 02:25:16.391][INFO ] Clearing 1 network players:
+[2025-07-18 02:25:16.391][INFO ]   - Removing player ID: 0, Entity ID: 9
+[2025-07-18 02:25:16.391][INFO ] -   Made entity invisible before destruction
+[2025-07-18 02:25:16.391][INFO ] All network players cleared
+[2025-07-18 02:25:16.396][ERROR][14NetworkManager] Failed to send packet
+[2025-07-18 02:25:16.396][INFO ] Found 3 player entities to render
+[2025-07-18 02:25:16.407][ERROR][14NetworkManager] Failed to send packet
+[2025-07-18 02:25:16.418][ERROR][14NetworkManager] Failed to send packet
+[2025-07-18 02:25:16.429][ERROR][14NetworkManager] Failed to send packet
+[2025-07-18 02:25:16.443][ERROR][14NetworkManager] Failed to send packet
+[2025-07-18 02:25:16.452][ERROR][14NetworkManager] Failed to send packet
+[2025-07-18 02:25:16.457][ERROR][14NetworkManager] Failed to send packet
+[2025-07-18 02:25:16.468][ERROR][14NetworkManager] Failed to send packet
+[2025-07-18 02:25:16.480][ERROR][14NetworkManager] Failed to send packet
+[2025-07-18 02:25:16.491][ERROR][14NetworkManager] Failed to send packet
+[2025-07-18 02:25:16.526][ERROR][14NetworkManager] Failed to send packet
+[2025-07-18 02:25:16.543][ERROR][14NetworkManager] Failed to send packet
+[2025-07-18 02:25:16.559][ERROR][14NetworkManager] Failed to send packet
+[2025-07-18 02:25:16.569][ERROR][14NetworkManager] Failed to send packet
+[2025-07-18 02:25:16.580][ERROR][14NetworkManager] Failed to send packet
+[2025-07-18 02:25:16.585][ERROR][14NetworkManager] Failed to send packet
+[2025-07-18 02:25:16.598][ERROR][14NetworkManager] Failed to send packet
+[2025-07-18 02:25:16.616][ERROR][14NetworkManager] Failed to send packet
+[2025-07-18 02:25:16.625][ERROR][14NetworkManager] Failed to send packet
+[2025-07-18 02:25:16.633][ERROR][14NetworkManager] Failed to send packet
+[2025-07-18 02:25:16.646][ERROR][14NetworkManager] Failed to send packet
+[2025-07-18 02:25:16.652][INFO ] Game Closing
+[2025-07-18 02:25:16.652][INFO ] Game Shutdown
+[2025-07-18 02:25:16.660][INFO ] Auto-saved scene to autosave_scene.yaml
+[2025-07-18 02:25:16.660][INFO ] ImGui Inspector UI shutdown complete
+[2025-07-18 02:25:16.660][INFO ] Network thread stopped
+[2025-07-18 02:25:16.661][ERROR][14NetworkManager] Failed to send packet
+[2025-07-18 02:25:19.661][INFO ] Disconnected from server: Shutting down
+[2025-07-18 02:25:19.661][INFO ] Immediately triggering SERVER_DISCONNECTED callback...
+[2025-07-18 02:25:19.661][INFO ] === SERVER DISCONNECTED ===
+[2025-07-18 02:25:19.661][INFO ] Disconnected from server: Shutting down
+[2025-07-18 02:25:19.661][INFO ] Network players before SERVER_DISCONNECTED cleanup: 0
+[2025-07-18 02:25:19.661][INFO ] Reset network ID to 0
+[2025-07-18 02:25:19.661][INFO ] Clearing all network players...
+[2025-07-18 02:25:19.661][INFO ] Clearing 0 network players:
+[2025-07-18 02:25:19.661][INFO ] All network players cleared
+[2025-07-18 02:25:19.662][INFO ] NetworkManager shut down
+[2025-07-18 02:25:19.662][INFO ] NetworkUI shut down
+[2025-07-18 02:31:04.642][INFO ] Fog shader created with ID: 6
+[2025-07-18 02:31:04.643][INFO ] Vision shader created with ID: 9
+[2025-07-18 02:31:04.645][INFO ] Light shader created with ID: 12
+[2025-07-18 02:31:04.645][INFO ] ECS Scene setup complete with 6 entities
+[2025-07-18 02:31:04.645][INFO ] Game Init
+[2025-07-18 02:31:04.645][INFO ] Press TAB to cycle between Fog, Vision, and Lighting systems
+[2025-07-18 02:31:04.645][INFO ] Use WASD to move and change facing direction
+[2025-07-18 02:31:04.646][INFO ] Press F5 to save scene, F9 to load scene
+[2025-07-18 02:31:04.646][INFO ] Press F1 to toggle ECS Inspector
+[2025-07-18 02:31:04.646][INFO ] Press F6 to toggle Network UI
+[2025-07-18 02:31:04.646][INFO ] Press F7 to disconnect from server
+[2025-07-18 02:31:04.646][INFO ] Initializing ImGui Inspector UI
+[2025-07-18 02:31:04.647][INFO ] ImGui Inspector UI initialized successfully
+[2025-07-18 02:31:04.648][INFO ] NetworkManager initialized successfully
+[2025-07-18 02:31:04.648][INFO ] NetworkUI initialized successfully
+[2025-07-18 02:31:04.648][INFO ] Network thread started
+[2025-07-18 02:31:04.648][INFO ] Network packet handlers initialized
+[2025-07-18 02:31:04.650][INFO ] Found 1 player entities to render
+[2025-07-18 02:31:08.353][INFO ] Network thread: Attempting connection to localhost:7777
+[2025-07-18 02:31:08.353][INFO ] Starting async connection to localhost:7777
+[2025-07-18 02:31:08.363][INFO ] Connected to server localhost:7777, waiting for peer ID assignment
+[2025-07-18 02:31:08.374][WARN ][4Game] CLIENT SendPlayerMovement called with peer ID 0! NetworkManager localPeerID: 0
+[2025-07-18 02:31:08.379][INFO ] === PEER ID ASSIGNMENT ===
+[2025-07-18 02:31:08.380][INFO ] Received peer ID assignment: 1 (old ID was: 0)
+[2025-07-18 02:31:08.380][INFO ] NetworkManager.GetLocalPeerID() now returns: 1
+[2025-07-18 02:31:08.380][INFO ] Processing PLAYER_JOIN packet for player Player_0 (senderID: 0, packetID: 0)
+[2025-07-18 02:31:08.380][INFO ] RenderableComponent added and configured for network player
+[2025-07-18 02:31:08.380][INFO ] PlayerComponent added and configured for network player
+[2025-07-18 02:31:08.380][INFO ] Network player Player_0 joined and entity created (ID: 0, EntityID: 7)
+[2025-07-18 02:31:08.380][INFO ] Total network players now: 1
+[2025-07-18 02:31:08.380][INFO ] Entity components check - Transform: YES, Player: YES, Renderable: YES
+[2025-07-18 02:31:08.380][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(640.000000,360.000000), networkPlayers.size=1
+[2025-07-18 02:31:08.380][INFO ] === CONNECTED TO SERVER ===
+[2025-07-18 02:31:08.380][INFO ] Connected to server: Connected with assigned peer ID 1
+[2025-07-18 02:31:08.380][INFO ] Assigned client network ID: 1
+[2025-07-18 02:31:08.380][INFO ] Current network players at connection: 1
+[2025-07-18 02:31:08.380][INFO ] Sending player join packet to server...
+[2025-07-18 02:31:08.380][INFO ] Sent player join packet to server
+[2025-07-18 02:31:08.385][INFO ] SendPlayerMovement: playerID=1, pos=(640.000000,360.000000), mode=CLIENT
+[2025-07-18 02:31:08.386][INFO ] Found 2 player entities to render
+[2025-07-18 02:31:09.036][INFO ] Updated player 0 position to (640.000000,360.000000)
+[2025-07-18 02:31:09.046][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(640.000000,360.000000), networkPlayers.size=1
+[2025-07-18 02:31:09.053][INFO ] SendPlayerMovement: playerID=1, pos=(678.969666,277.895630), mode=CLIENT
+[2025-07-18 02:31:09.708][INFO ] Updated player 0 position to (701.237427,261.990173)
+[2025-07-18 02:31:09.718][INFO ] SendPlayerMovement: playerID=1, pos=(711.445435,269.422852), mode=CLIENT
+[2025-07-18 02:31:09.719][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(709.175415,261.990173), networkPlayers.size=1
+[2025-07-18 02:31:10.369][INFO ] Updated player 0 position to (627.052673,261.990173)
+[2025-07-18 02:31:10.379][INFO ] SendPlayerMovement: playerID=1, pos=(711.445435,269.422852), mode=CLIENT
+[2025-07-18 02:31:10.380][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(627.052673,261.990173), networkPlayers.size=1
+[2025-07-18 02:31:11.019][INFO ] Updated player 0 position to (627.052673,261.990173)
+[2025-07-18 02:31:11.030][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(627.052673,261.990173), networkPlayers.size=1
+[2025-07-18 02:31:11.041][INFO ] SendPlayerMovement: playerID=1, pos=(711.445435,269.422852), mode=CLIENT
+[2025-07-18 02:31:11.686][INFO ] Updated player 0 position to (627.052673,261.990173)
+[2025-07-18 02:31:11.697][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(627.052673,261.990173), networkPlayers.size=1
+[2025-07-18 02:31:11.707][INFO ] SendPlayerMovement: playerID=1, pos=(711.445435,269.422852), mode=CLIENT
+[2025-07-18 02:31:12.355][INFO ] Updated player 0 position to (627.052673,261.990173)
+[2025-07-18 02:31:12.359][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(627.052673,261.990173), networkPlayers.size=1
+[2025-07-18 02:31:12.431][INFO ] SendPlayerMovement: playerID=1, pos=(711.445435,269.422852), mode=CLIENT
+[2025-07-18 02:31:13.028][INFO ] Updated player 0 position to (627.052673,261.990173)
+[2025-07-18 02:31:13.039][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(627.052673,261.990173), networkPlayers.size=1
+[2025-07-18 02:31:13.120][INFO ] SendPlayerMovement: playerID=1, pos=(711.445435,269.422852), mode=CLIENT
+[2025-07-18 02:31:13.687][INFO ] Updated player 0 position to (627.052673,261.990173)
+[2025-07-18 02:31:13.698][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(627.052673,261.990173), networkPlayers.size=1
+[2025-07-18 02:31:13.780][INFO ] SendPlayerMovement: playerID=1, pos=(711.445435,269.422852), mode=CLIENT
+[2025-07-18 02:31:14.350][INFO ] Updated player 0 position to (627.052673,261.990173)
+[2025-07-18 02:31:14.372][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(627.052673,261.990173), networkPlayers.size=1
+[2025-07-18 02:31:14.453][INFO ] SendPlayerMovement: playerID=1, pos=(711.445435,269.422852), mode=CLIENT
+[2025-07-18 02:31:15.019][INFO ] Updated player 0 position to (627.052673,261.990173)
+[2025-07-18 02:31:15.030][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(627.052673,261.990173), networkPlayers.size=1
+[2025-07-18 02:31:15.137][INFO ] SendPlayerMovement: playerID=1, pos=(711.445435,269.422852), mode=CLIENT
+[2025-07-18 02:31:15.704][INFO ] Updated player 0 position to (627.052673,261.990173)
+[2025-07-18 02:31:15.716][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(627.052673,261.990173), networkPlayers.size=1
+[2025-07-18 02:31:15.858][INFO ] SendPlayerMovement: playerID=1, pos=(711.445435,269.422852), mode=CLIENT
+[2025-07-18 02:31:16.388][INFO ] Updated player 0 position to (627.052673,261.990173)
+[2025-07-18 02:31:16.398][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(627.052673,261.990173), networkPlayers.size=1
+[2025-07-18 02:31:16.541][INFO ] SendPlayerMovement: playerID=1, pos=(711.445435,269.422852), mode=CLIENT
+[2025-07-18 02:31:17.078][INFO ] Updated player 0 position to (627.052673,261.990173)
+[2025-07-18 02:31:17.092][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(627.052673,261.990173), networkPlayers.size=1
+[2025-07-18 02:31:17.265][INFO ] SendPlayerMovement: playerID=1, pos=(711.445435,269.422852), mode=CLIENT
+[2025-07-18 02:31:17.753][INFO ] Updated player 0 position to (627.052673,261.990173)
+[2025-07-18 02:31:17.765][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(627.052673,261.990173), networkPlayers.size=1
+[2025-07-18 02:31:17.970][INFO ] SendPlayerMovement: playerID=1, pos=(711.445435,269.422852), mode=CLIENT
+[2025-07-18 02:31:18.184][INFO ] Processing PLAYER_JOIN packet for player Player_2 (senderID: 0, packetID: 2)
+[2025-07-18 02:31:18.184][INFO ] RenderableComponent added and configured for network player
+[2025-07-18 02:31:18.184][INFO ] PlayerComponent added and configured for network player
+[2025-07-18 02:31:18.184][INFO ] Network player Player_2 joined and entity created (ID: 0, EntityID: 8)
+[2025-07-18 02:31:18.184][INFO ] Total network players now: 1
+[2025-07-18 02:31:18.184][INFO ] Entity components check - Transform: YES, Player: YES, Renderable: YES
+[2025-07-18 02:31:18.193][INFO ] Found 3 player entities to render
+[2025-07-18 02:31:18.299][INFO ] Updated player 0 position to (627.052673,261.990173)
+[2025-07-18 02:31:18.299][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(640.000000,360.000000), networkPlayers.size=1
+[2025-07-18 02:31:18.625][INFO ] Updated player 0 position to (640.000000,321.973236)
+[2025-07-18 02:31:18.636][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(627.052673,261.990173), networkPlayers.size=1
+[2025-07-18 02:31:18.648][INFO ] SendPlayerMovement: playerID=1, pos=(711.445435,269.422852), mode=CLIENT
+[2025-07-18 02:31:18.965][INFO ] Updated player 0 position to (722.481567,231.762848)
+[2025-07-18 02:31:18.965][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(627.052673,261.990173), networkPlayers.size=1
+[2025-07-18 02:31:19.284][INFO ] Updated player 0 position to (722.481567,231.762848)
+[2025-07-18 02:31:19.284][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(722.481567,231.762848), networkPlayers.size=1
+[2025-07-18 02:31:19.291][INFO ] SendPlayerMovement: playerID=1, pos=(711.445435,269.422852), mode=CLIENT
+[2025-07-18 02:31:19.622][INFO ] Updated player 0 position to (627.052673,261.990173)
+[2025-07-18 02:31:19.633][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(722.481567,231.762848), networkPlayers.size=1
+[2025-07-18 02:31:19.960][INFO ] Updated player 0 position to (627.052673,261.990173)
+[2025-07-18 02:31:19.964][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(722.481567,231.762848), networkPlayers.size=1
+[2025-07-18 02:31:19.970][INFO ] SendPlayerMovement: playerID=1, pos=(748.596680,256.167633), mode=CLIENT
+[2025-07-18 02:31:20.288][INFO ] Updated player 0 position to (722.481567,231.762848)
+[2025-07-18 02:31:20.300][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(627.052673,261.990173), networkPlayers.size=1
+[2025-07-18 02:31:20.626][INFO ] Updated player 0 position to (627.052673,261.990173)
+[2025-07-18 02:31:20.632][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(722.481567,231.762848), networkPlayers.size=1
+[2025-07-18 02:31:20.653][INFO ] SendPlayerMovement: playerID=1, pos=(748.596680,256.167633), mode=CLIENT
+[2025-07-18 02:31:20.654][INFO ] Processing PLAYER_JOIN packet for player Player_3 (senderID: 0, packetID: 3)
+[2025-07-18 02:31:20.654][INFO ] RenderableComponent added and configured for network player
+[2025-07-18 02:31:20.654][INFO ] PlayerComponent added and configured for network player
+[2025-07-18 02:31:20.654][INFO ] Network player Player_3 joined and entity created (ID: 0, EntityID: 9)
+[2025-07-18 02:31:20.654][INFO ] Total network players now: 1
+[2025-07-18 02:31:20.654][INFO ] Entity components check - Transform: YES, Player: YES, Renderable: YES
+[2025-07-18 02:31:20.659][INFO ] Found 4 player entities to render
+[2025-07-18 02:31:20.853][INFO ] Updated player 0 position to (640.000000,360.000000)
+[2025-07-18 02:31:20.853][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(722.481567,231.762848), networkPlayers.size=1
+[2025-07-18 02:31:21.082][INFO ] Updated player 0 position to (709.589844,286.261292)
+[2025-07-18 02:31:21.082][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(627.052673,261.990173), networkPlayers.size=1
+[2025-07-18 02:31:21.299][INFO ] Updated player 0 position to (722.481567,231.762848)
+[2025-07-18 02:31:21.304][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(627.052673,261.990173), networkPlayers.size=1
+[2025-07-18 02:31:21.325][INFO ] SendPlayerMovement: playerID=1, pos=(748.596680,256.167633), mode=CLIENT
+[2025-07-18 02:31:21.529][INFO ] Updated player 0 position to (722.481567,231.762848)
+[2025-07-18 02:31:21.530][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(651.241394,352.386780), networkPlayers.size=1
+[2025-07-18 02:31:21.754][INFO ] Updated player 0 position to (651.241394,352.386780)
+[2025-07-18 02:31:21.760][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(627.052673,261.990173), networkPlayers.size=1
+[2025-07-18 02:31:21.988][INFO ] Updated player 0 position to (627.052673,261.990173)
+[2025-07-18 02:31:21.999][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(651.241394,352.386780), networkPlayers.size=1
+[2025-07-18 02:31:22.020][INFO ] SendPlayerMovement: playerID=1, pos=(748.596680,256.167633), mode=CLIENT
+[2025-07-18 02:31:22.203][INFO ] Updated player 0 position to (816.886292,157.021011)
+[2025-07-18 02:31:22.221][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(627.052673,261.990173), networkPlayers.size=1
+[2025-07-18 02:31:22.450][INFO ] Updated player 0 position to (627.052673,261.990173)
+[2025-07-18 02:31:22.450][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(816.886292,157.021011), networkPlayers.size=1
+[2025-07-18 02:31:22.677][INFO ] Updated player 0 position to (816.886292,157.021011)
+[2025-07-18 02:31:22.681][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(627.052673,261.990173), networkPlayers.size=1
+[2025-07-18 02:31:22.726][INFO ] SendPlayerMovement: playerID=1, pos=(768.808533,251.794739), mode=CLIENT
+[2025-07-18 02:31:22.899][INFO ] Updated player 0 position to (816.886292,157.021011)
+[2025-07-18 02:31:22.904][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(627.052673,261.990173), networkPlayers.size=1
+[2025-07-18 02:31:23.127][INFO ] Updated player 0 position to (627.052673,261.990173)
+[2025-07-18 02:31:23.132][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(651.241394,352.386780), networkPlayers.size=1
+[2025-07-18 02:31:23.360][INFO ] Updated player 0 position to (816.886292,157.021011)
+[2025-07-18 02:31:23.360][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(651.241394,352.386780), networkPlayers.size=1
+[2025-07-18 02:31:23.376][INFO ] SendPlayerMovement: playerID=1, pos=(786.127319,256.799744), mode=CLIENT
+[2025-07-18 02:31:23.584][INFO ] Updated player 0 position to (816.886292,157.021011)
+[2025-07-18 02:31:23.584][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(627.052673,261.990173), networkPlayers.size=1
+[2025-07-18 02:31:23.831][INFO ] Updated player 0 position to (651.241394,352.386780)
+[2025-07-18 02:31:23.831][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(816.886292,157.021011), networkPlayers.size=1
+[2025-07-18 02:31:24.051][INFO ] Updated player 0 position to (627.052673,261.990173)
+[2025-07-18 02:31:24.051][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(651.241394,352.386780), networkPlayers.size=1
+[2025-07-18 02:31:24.073][INFO ] SendPlayerMovement: playerID=1, pos=(786.127319,256.799744), mode=CLIENT
+[2025-07-18 02:31:24.264][INFO ] Updated player 0 position to (816.886292,157.021011)
+[2025-07-18 02:31:24.274][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(627.052673,261.990173), networkPlayers.size=1
+[2025-07-18 02:31:24.475][INFO ] Updated player 0 position to (651.241394,352.386780)
+[2025-07-18 02:31:24.495][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(627.052673,261.990173), networkPlayers.size=1
+[2025-07-18 02:31:24.703][INFO ] Updated player 0 position to (651.241394,352.386780)
+[2025-07-18 02:31:24.720][INFO ] SendPlayerMovement: playerID=1, pos=(786.127319,256.799744), mode=CLIENT
+[2025-07-18 02:31:24.720][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(627.052673,246.768661), networkPlayers.size=1
+[2025-07-18 02:31:24.938][INFO ] Updated player 0 position to (651.241394,352.386780)
+[2025-07-18 02:31:24.938][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(816.886292,157.021011), networkPlayers.size=1
+[2025-07-18 02:31:25.160][INFO ] Updated player 0 position to (816.886292,157.021011)
+[2025-07-18 02:31:25.170][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(696.804199,165.581940), networkPlayers.size=1
+[2025-07-18 02:31:25.387][INFO ] Updated player 0 position to (643.730957,165.581940)
+[2025-07-18 02:31:25.387][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(816.886292,157.021011), networkPlayers.size=1
+[2025-07-18 02:31:25.398][INFO ] SendPlayerMovement: playerID=1, pos=(786.127319,256.799744), mode=CLIENT
+[2025-07-18 02:31:25.603][INFO ] Updated player 0 position to (693.846130,165.581940)
+[2025-07-18 02:31:25.615][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(816.886292,157.021011), networkPlayers.size=1
+[2025-07-18 02:31:25.831][INFO ] Updated player 0 position to (693.846130,165.581940)
+[2025-07-18 02:31:25.831][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(816.886292,157.021011), networkPlayers.size=1
+[2025-07-18 02:31:26.059][INFO ] Updated player 0 position to (693.846130,165.581940)
+[2025-07-18 02:31:26.059][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(816.886292,157.021011), networkPlayers.size=1
+[2025-07-18 02:31:26.065][INFO ] SendPlayerMovement: playerID=1, pos=(786.127319,256.799744), mode=CLIENT
+[2025-07-18 02:31:26.265][INFO ] Updated player 0 position to (693.846130,165.581940)
+[2025-07-18 02:31:26.265][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(816.886292,157.021011), networkPlayers.size=1
+[2025-07-18 02:31:26.492][INFO ] Updated player 0 position to (816.886292,157.021011)
+[2025-07-18 02:31:26.492][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(693.846130,165.581940), networkPlayers.size=1
+[2025-07-18 02:31:26.727][INFO ] Updated player 0 position to (816.886292,157.021011)
+[2025-07-18 02:31:26.727][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(651.241394,352.386780), networkPlayers.size=1
+[2025-07-18 02:31:26.751][INFO ] SendPlayerMovement: playerID=1, pos=(786.127319,256.799744), mode=CLIENT
+[2025-07-18 02:31:26.949][INFO ] Updated player 0 position to (816.886292,157.021011)
+[2025-07-18 02:31:26.949][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(651.241394,352.386780), networkPlayers.size=1
+[2025-07-18 02:31:27.166][INFO ] Updated player 0 position to (651.241394,352.386780)
+[2025-07-18 02:31:27.166][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(816.886292,157.021011), networkPlayers.size=1
+[2025-07-18 02:31:27.378][INFO ] Updated player 0 position to (693.846130,165.581940)
+[2025-07-18 02:31:27.389][INFO ] SendPlayerMovement: playerID=1, pos=(786.127319,256.799744), mode=CLIENT
+[2025-07-18 02:31:27.389][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(816.886292,157.021011), networkPlayers.size=1
+[2025-07-18 02:31:27.599][INFO ] Updated player 0 position to (816.886292,157.021011)
+[2025-07-18 02:31:27.615][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(693.846130,165.581940), networkPlayers.size=1
+[2025-07-18 02:31:27.838][INFO ] Updated player 0 position to (693.846130,165.581940)
+[2025-07-18 02:31:27.838][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(651.241394,352.386780), networkPlayers.size=1
+[2025-07-18 02:31:28.054][INFO ] Updated player 0 position to (651.241394,352.386780)
+[2025-07-18 02:31:28.058][INFO ] SendPlayerMovement: playerID=1, pos=(786.127319,256.799744), mode=CLIENT
+[2025-07-18 02:31:28.059][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(766.750427,63.427464), networkPlayers.size=1
+[2025-07-18 02:31:28.277][INFO ] Updated player 0 position to (651.241394,352.386780)
+[2025-07-18 02:31:28.277][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(814.351746,152.767059), networkPlayers.size=1
+[2025-07-18 02:31:28.492][INFO ] Updated player 0 position to (816.886292,157.021011)
+[2025-07-18 02:31:28.493][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(651.241394,352.386780), networkPlayers.size=1
+[2025-07-18 02:31:28.719][INFO ] Updated player 0 position to (651.241394,352.386780)
+[2025-07-18 02:31:28.727][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(702.705444,91.906960), networkPlayers.size=1
+[2025-07-18 02:31:28.737][INFO ] SendPlayerMovement: playerID=1, pos=(786.127319,256.799744), mode=CLIENT
+[2025-07-18 02:31:28.943][INFO ] Updated player 0 position to (651.241394,352.386780)
+[2025-07-18 02:31:28.947][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(855.225159,83.901062), networkPlayers.size=1
+[2025-07-18 02:31:29.165][INFO ] Updated player 0 position to (816.886292,157.021011)
+[2025-07-18 02:31:29.169][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(766.248779,204.543243), networkPlayers.size=1
+[2025-07-18 02:31:29.394][INFO ] Updated player 0 position to (661.652710,146.084824)
+[2025-07-18 02:31:29.394][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(651.241394,352.386780), networkPlayers.size=1
+[2025-07-18 02:31:29.398][INFO ] SendPlayerMovement: playerID=1, pos=(786.127319,256.799744), mode=CLIENT
+[2025-07-18 02:31:29.616][INFO ] Updated player 0 position to (696.063293,146.084824)
+[2025-07-18 02:31:29.616][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(651.241394,352.386780), networkPlayers.size=1
+[2025-07-18 02:31:29.837][INFO ] Updated player 0 position to (696.063293,146.084824)
+[2025-07-18 02:31:29.837][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(651.241394,352.386780), networkPlayers.size=1
+[2025-07-18 02:31:30.043][INFO ] Updated player 0 position to (696.063293,146.084824)
+[2025-07-18 02:31:30.048][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(651.241394,352.386780), networkPlayers.size=1
+[2025-07-18 02:31:30.086][INFO ] SendPlayerMovement: playerID=1, pos=(790.963623,213.262390), mode=CLIENT
+[2025-07-18 02:31:30.269][INFO ] Updated player 0 position to (696.063293,146.084824)
+[2025-07-18 02:31:30.280][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(816.886292,157.021011), networkPlayers.size=1
+[2025-07-18 02:31:30.493][INFO ] Updated player 0 position to (696.063293,146.084824)
+[2025-07-18 02:31:30.493][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(651.241394,352.386780), networkPlayers.size=1
+[2025-07-18 02:31:30.719][INFO ] Updated player 0 position to (696.063293,146.084824)
+[2025-07-18 02:31:30.719][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(651.241394,352.386780), networkPlayers.size=1
+[2025-07-18 02:31:30.758][INFO ] SendPlayerMovement: playerID=1, pos=(895.221680,285.106873), mode=CLIENT
+[2025-07-18 02:31:30.943][INFO ] Updated player 0 position to (696.063293,146.084824)
+[2025-07-18 02:31:30.943][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(816.886292,157.021011), networkPlayers.size=1
+[2025-07-18 02:31:31.166][INFO ] Updated player 0 position to (696.063293,146.084824)
+[2025-07-18 02:31:31.170][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(651.241394,352.386780), networkPlayers.size=1
+[2025-07-18 02:31:31.382][INFO ] Updated player 0 position to (696.063293,146.084824)
+[2025-07-18 02:31:31.382][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(816.886292,157.021011), networkPlayers.size=1
+[2025-07-18 02:31:31.425][INFO ] SendPlayerMovement: playerID=1, pos=(868.259033,257.994415), mode=CLIENT
+[2025-07-18 02:31:31.521][INFO ] === NetworkUI::Disconnect() CALLED ===
+[2025-07-18 02:31:31.521][INFO ] Client disconnect requested via NetworkUI
+[2025-07-18 02:31:31.521][INFO ] Calling manager.DisconnectFromServer() - this bypasses Game cleanup!
+[2025-07-18 02:31:31.525][INFO ] Disconnected from server: User requested disconnect
+[2025-07-18 02:31:31.525][INFO ] Immediately triggering SERVER_DISCONNECTED callback...
+[2025-07-18 02:31:31.525][INFO ] === SERVER DISCONNECTED ===
+[2025-07-18 02:31:31.525][INFO ] Disconnected from server: User requested disconnect
+[2025-07-18 02:31:31.525][INFO ] Network players before SERVER_DISCONNECTED cleanup: 1
+[2025-07-18 02:31:31.525][INFO ] Reset network ID to 0
+[2025-07-18 02:31:31.525][INFO ] Clearing all network players...
+[2025-07-18 02:31:31.525][INFO ] Clearing 1 network players:
+[2025-07-18 02:31:31.526][INFO ]   - Removing player ID: 0, Entity ID: 9
+[2025-07-18 02:31:31.526][INFO ] -   Made entity invisible before destruction
+[2025-07-18 02:31:31.526][INFO ] All network players cleared
+[2025-07-18 02:31:31.526][INFO ] Forcing network event processing to trigger cleanup...
+[2025-07-18 02:31:31.530][INFO ] Found 3 player entities to render
+[2025-07-18 02:31:34.572][ERROR][14NetworkManager] Failed to create server host on port 7777
+[2025-07-18 02:31:36.765][INFO ] Server started on port 12238 with max 10 clients
+[2025-07-18 02:31:36.765][INFO ] Server assigned local peer ID: 0
+[2025-07-18 02:31:36.771][INFO ] === SERVER DISCONNECTED ===
+[2025-07-18 02:31:36.771][INFO ] Disconnected from server: User requested disconnect
+[2025-07-18 02:31:36.771][INFO ] Network players before SERVER_DISCONNECTED cleanup: 0
+[2025-07-18 02:31:36.771][INFO ] Reset network ID to 0
+[2025-07-18 02:31:36.771][INFO ] Clearing all network players...
+[2025-07-18 02:31:36.771][INFO ] Clearing 0 network players:
+[2025-07-18 02:31:36.771][INFO ] All network players cleared
+[2025-07-18 02:31:36.771][INFO ] Server started on Server started on port 12238
+[2025-07-18 02:31:37.331][INFO ] SendPlayerMovement: playerID=0, pos=(786.693604,144.513245), mode=SERVER
+[2025-07-18 02:31:37.610][INFO ] === NetworkUI::Disconnect() CALLED ===
+[2025-07-18 02:31:37.610][INFO ] Stopping server...
+[2025-07-18 02:31:37.710][INFO ] Server stopped
+[2025-07-18 02:31:39.232][INFO ] Starting async connection to localhost:7777
+[2025-07-18 02:31:39.232][INFO ] Network thread: Attempting connection to localhost:7777
+[2025-07-18 02:31:39.237][INFO ] Connected to server localhost:7777, waiting for peer ID assignment
+[2025-07-18 02:31:39.252][INFO ] === PEER ID ASSIGNMENT ===
+[2025-07-18 02:31:39.252][INFO ] Received peer ID assignment: 4 (old ID was: 0)
+[2025-07-18 02:31:39.252][INFO ] NetworkManager.GetLocalPeerID() now returns: 4
+[2025-07-18 02:31:39.252][WARN ][4Game] Received movement for unknown player ID: 0 (available players: 
+[2025-07-18 02:31:39.252][WARN ][4Game] Received movement for unknown player ID: 0 (available players: 
+[2025-07-18 02:31:39.252][INFO ] === CONNECTED TO SERVER ===
+[2025-07-18 02:31:39.252][INFO ] Connected to server: Connected with assigned peer ID 4
+[2025-07-18 02:31:39.252][INFO ] Assigned client network ID: 4
+[2025-07-18 02:31:39.252][INFO ] Current network players at connection: 0
+[2025-07-18 02:31:39.252][INFO ] Sending player join packet to server...
+[2025-07-18 02:31:39.253][INFO ] Sent player join packet to server
+[2025-07-18 02:31:39.259][INFO ] Processing PLAYER_JOIN packet for player Player_0 (senderID: 0, packetID: 0)
+[2025-07-18 02:31:39.259][INFO ] RenderableComponent added and configured for network player
+[2025-07-18 02:31:39.259][INFO ] PlayerComponent added and configured for network player
+[2025-07-18 02:31:39.259][INFO ] Network player Player_0 joined and entity created (ID: 0, EntityID: 9)
+[2025-07-18 02:31:39.259][INFO ] Total network players now: 1
+[2025-07-18 02:31:39.259][INFO ] Entity components check - Transform: YES, Player: YES, Renderable: YES
+[2025-07-18 02:31:39.259][INFO ] Processing PLAYER_JOIN packet for player Player_2 (senderID: 0, packetID: 2)
+[2025-07-18 02:31:39.259][INFO ] RenderableComponent added and configured for network player
+[2025-07-18 02:31:39.260][INFO ] PlayerComponent added and configured for network player
+[2025-07-18 02:31:39.260][INFO ] Network player Player_2 joined and entity created (ID: 0, EntityID: 10)
+[2025-07-18 02:31:39.260][INFO ] Total network players now: 1
+[2025-07-18 02:31:39.260][INFO ] Entity components check - Transform: YES, Player: YES, Renderable: YES
+[2025-07-18 02:31:39.260][INFO ] Processing PLAYER_JOIN packet for player Player_3 (senderID: 0, packetID: 3)
+[2025-07-18 02:31:39.260][INFO ] RenderableComponent added and configured for network player
+[2025-07-18 02:31:39.260][INFO ] PlayerComponent added and configured for network player
+[2025-07-18 02:31:39.260][INFO ] Network player Player_3 joined and entity created (ID: 0, EntityID: 11)
+[2025-07-18 02:31:39.260][INFO ] Total network players now: 1
+[2025-07-18 02:31:39.260][INFO ] Entity components check - Transform: YES, Player: YES, Renderable: YES
+[2025-07-18 02:31:39.264][INFO ] Found 6 player entities to render
+[2025-07-18 02:31:39.325][INFO ] Updated player 0 position to (696.063293,146.084824)
+[2025-07-18 02:31:39.325][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(816.886292,157.021011), networkPlayers.size=1
+[2025-07-18 02:31:39.549][INFO ] Updated player 0 position to (816.886292,157.021011)
+[2025-07-18 02:31:39.549][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(651.241394,352.386780), networkPlayers.size=1
+[2025-07-18 02:31:39.626][INFO ] SendPlayerMovement: playerID=4, pos=(786.693604,145.752289), mode=CLIENT
+[2025-07-18 02:31:39.764][INFO ] Updated player 0 position to (651.241394,352.386780)
+[2025-07-18 02:31:39.764][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(816.886292,157.021011), networkPlayers.size=1
+[2025-07-18 02:31:39.987][INFO ] Updated player 0 position to (651.241394,352.386780)
+[2025-07-18 02:31:39.988][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(816.886292,157.021011), networkPlayers.size=1
+[2025-07-18 02:31:40.203][INFO ] Updated player 0 position to (651.241394,352.386780)
+[2025-07-18 02:31:40.203][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(816.886292,157.021011), networkPlayers.size=1
+[2025-07-18 02:31:40.298][INFO ] SendPlayerMovement: playerID=4, pos=(839.375366,264.220306), mode=CLIENT
+[2025-07-18 02:31:40.432][INFO ] Updated player 0 position to (696.063293,146.084824)
+[2025-07-18 02:31:40.432][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(816.886292,157.021011), networkPlayers.size=1
+[2025-07-18 02:31:40.652][INFO ] Updated player 0 position to (696.063293,146.084824)
+[2025-07-18 02:31:40.653][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(739.495544,40.622917), networkPlayers.size=1
+[2025-07-18 02:31:40.887][INFO ] Updated player 0 position to (696.063293,146.084824)
+[2025-07-18 02:31:40.887][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(651.241394,352.386780), networkPlayers.size=1
+[2025-07-18 02:31:40.963][INFO ] SendPlayerMovement: playerID=4, pos=(839.375366,264.220306), mode=CLIENT
+[2025-07-18 02:31:41.102][INFO ] Updated player 0 position to (651.241394,352.386780)
+[2025-07-18 02:31:41.102][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(621.385071,227.324814), networkPlayers.size=1
+[2025-07-18 02:31:41.325][INFO ] Updated player 0 position to (651.241394,352.386780)
+[2025-07-18 02:31:41.325][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(776.889465,320.401703), networkPlayers.size=1
+[2025-07-18 02:31:41.548][INFO ] Updated player 0 position to (651.241394,352.386780)
+[2025-07-18 02:31:41.548][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(913.405640,258.407593), networkPlayers.size=1
+[2025-07-18 02:31:41.625][INFO ] SendPlayerMovement: playerID=4, pos=(839.375366,264.220306), mode=CLIENT
+[2025-07-18 02:31:41.764][INFO ] Updated player 0 position to (808.444885,188.472015)
+[2025-07-18 02:31:41.774][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(696.063293,146.084824), networkPlayers.size=1
+[2025-07-18 02:31:42.002][INFO ] Updated player 0 position to (696.063293,146.084824)
+[2025-07-18 02:31:42.002][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(808.444885,188.472015), networkPlayers.size=1
+[2025-07-18 02:31:42.226][INFO ] Updated player 0 position to (696.063293,146.084824)
+[2025-07-18 02:31:42.226][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(809.738892,456.000000), networkPlayers.size=1
+[2025-07-18 02:31:42.291][INFO ] SendPlayerMovement: playerID=4, pos=(839.375366,264.220306), mode=CLIENT
+[2025-07-18 02:31:42.447][INFO ] Updated player 0 position to (696.063293,146.084824)
+[2025-07-18 02:31:42.448][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(764.628723,456.000000), networkPlayers.size=1
+[2025-07-18 02:31:42.670][INFO ] Updated player 0 position to (696.063293,146.084824)
+[2025-07-18 02:31:42.670][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(632.841248,456.000000), networkPlayers.size=1
+[2025-07-18 02:31:42.892][INFO ] Updated player 0 position to (696.063293,146.084824)
+[2025-07-18 02:31:42.892][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(808.444885,188.472015), networkPlayers.size=1
+[2025-07-18 02:31:42.959][INFO ] SendPlayerMovement: playerID=4, pos=(839.375366,264.220306), mode=CLIENT
+[2025-07-18 02:31:43.114][INFO ] Updated player 0 position to (696.063293,146.084824)
+[2025-07-18 02:31:43.114][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(709.000000,313.725006), networkPlayers.size=1
+[2025-07-18 02:31:43.339][INFO ] Updated player 0 position to (696.063293,146.084824)
+[2025-07-18 02:31:43.339][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(670.042236,157.531204), networkPlayers.size=1
+[2025-07-18 02:31:43.552][INFO ] Updated player 0 position to (696.063293,146.084824)
+[2025-07-18 02:31:43.563][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(712.692566,157.531204), networkPlayers.size=1
+[2025-07-18 02:31:43.620][INFO ] SendPlayerMovement: playerID=4, pos=(839.375366,264.220306), mode=CLIENT
+[2025-07-18 02:31:43.776][INFO ] Updated player 0 position to (696.063293,146.084824)
+[2025-07-18 02:31:43.776][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(808.444885,188.472015), networkPlayers.size=1
+[2025-07-18 02:31:43.997][INFO ] Updated player 0 position to (696.063293,146.084824)
+[2025-07-18 02:31:43.998][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(712.692566,157.531204), networkPlayers.size=1
+[2025-07-18 02:31:44.213][INFO ] Updated player 0 position to (696.063293,146.084824)
+[2025-07-18 02:31:44.220][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(712.692566,157.531204), networkPlayers.size=1
+[2025-07-18 02:31:44.280][INFO ] SendPlayerMovement: playerID=4, pos=(839.375366,264.220306), mode=CLIENT
+[2025-07-18 02:31:44.442][INFO ] Updated player 0 position to (808.444885,188.472015)
+[2025-07-18 02:31:44.453][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(696.063293,146.084824), networkPlayers.size=1
+[2025-07-18 02:31:44.665][INFO ] Updated player 0 position to (696.063293,146.084824)
+[2025-07-18 02:31:44.676][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=3, pos=(712.692566,157.531204), networkPlayers.size=1
+[2025-07-18 02:31:44.899][INFO ] Updated player 0 position to (712.692566,157.531204)
+[2025-07-18 02:31:44.899][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(808.444885,188.472015), networkPlayers.size=1
+[2025-07-18 02:31:44.938][INFO ] SendPlayerMovement: playerID=4, pos=(839.375366,264.220306), mode=CLIENT
+[2025-07-18 02:31:45.120][INFO ] Updated player 0 position to (712.692566,157.531204)
+[2025-07-18 02:31:45.120][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(808.444885,188.472015), networkPlayers.size=1
+[2025-07-18 02:31:45.338][INFO ] Updated player 0 position to (712.692566,157.531204)
+[2025-07-18 02:31:45.338][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(808.444885,188.472015), networkPlayers.size=1
+[2025-07-18 02:31:45.560][INFO ] Updated player 0 position to (712.692566,157.531204)
+[2025-07-18 02:31:45.560][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(808.444885,188.472015), networkPlayers.size=1
+[2025-07-18 02:31:45.599][INFO ] SendPlayerMovement: playerID=4, pos=(839.375366,264.220306), mode=CLIENT
+[2025-07-18 02:31:45.776][INFO ] Updated player 0 position to (712.692566,157.531204)
+[2025-07-18 02:31:45.776][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(808.444885,188.472015), networkPlayers.size=1
+[2025-07-18 02:31:45.992][INFO ] Updated player 0 position to (808.444885,188.472015)
+[2025-07-18 02:31:45.997][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(696.063293,146.084824), networkPlayers.size=1
+[2025-07-18 02:31:46.247][INFO ] Updated player 0 position to (712.692566,157.531204)
+[2025-07-18 02:31:46.247][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(696.063293,146.084824), networkPlayers.size=1
+[2025-07-18 02:31:46.282][INFO ] SendPlayerMovement: playerID=4, pos=(839.375366,264.220306), mode=CLIENT
+[2025-07-18 02:31:46.467][INFO ] Updated player 0 position to (712.692566,157.531204)
+[2025-07-18 02:31:46.475][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(696.063293,146.084824), networkPlayers.size=1
+[2025-07-18 02:31:46.732][INFO ] Updated player 0 position to (696.063293,146.084824)
+[2025-07-18 02:31:46.732][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(808.444885,188.472015), networkPlayers.size=1
+[2025-07-18 02:31:46.985][INFO ] SendPlayerMovement: playerID=4, pos=(839.375366,264.220306), mode=CLIENT
+[2025-07-18 02:31:47.095][INFO ] Updated player 0 position to (696.063293,146.084824)
+[2025-07-18 02:31:47.120][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(696.063293,146.084824), networkPlayers.size=1
+[2025-07-18 02:31:47.557][INFO ] Game Closing
+[2025-07-18 02:31:47.557][INFO ] Game Shutdown
+[2025-07-18 02:31:47.567][INFO ] Auto-saved scene to autosave_scene.yaml
+[2025-07-18 02:31:47.567][INFO ] ImGui Inspector UI shutdown complete
+[2025-07-18 02:31:47.568][INFO ] Network thread stopped
+[2025-07-18 02:31:47.568][INFO ] Disconnected from server: Shutting down
+[2025-07-18 02:31:47.568][INFO ] Immediately triggering SERVER_DISCONNECTED callback...
+[2025-07-18 02:31:47.568][INFO ] === SERVER DISCONNECTED ===
+[2025-07-18 02:31:47.568][INFO ] Disconnected from server: Shutting down
+[2025-07-18 02:31:47.568][INFO ] Network players before SERVER_DISCONNECTED cleanup: 1
+[2025-07-18 02:31:47.568][INFO ] Reset network ID to 0
+[2025-07-18 02:31:47.568][INFO ] Clearing all network players...
+[2025-07-18 02:31:47.569][INFO ] Clearing 1 network players:
+[2025-07-18 02:31:47.569][INFO ]   - Removing player ID: 0, Entity ID: 11
+[2025-07-18 02:31:47.569][INFO ] -   Made entity invisible before destruction
+[2025-07-18 02:31:47.569][INFO ] All network players cleared
+[2025-07-18 02:31:47.569][INFO ] NetworkManager shut down
+[2025-07-18 02:31:47.569][INFO ] NetworkUI shut down
+[2025-07-18 02:34:13.332][INFO ] Fog shader created with ID: 6
+[2025-07-18 02:34:13.334][INFO ] Vision shader created with ID: 9
+[2025-07-18 02:34:13.335][INFO ] Light shader created with ID: 12
+[2025-07-18 02:34:13.335][INFO ] ECS Scene setup complete with 6 entities
+[2025-07-18 02:34:13.335][INFO ] Game Init
+[2025-07-18 02:34:13.335][INFO ] Press TAB to cycle between Fog, Vision, and Lighting systems
+[2025-07-18 02:34:13.335][INFO ] Use WASD to move and change facing direction
+[2025-07-18 02:34:13.335][INFO ] Press F5 to save scene, F9 to load scene
+[2025-07-18 02:34:13.335][INFO ] Press F1 to toggle ECS Inspector
+[2025-07-18 02:34:13.336][INFO ] Press F6 to toggle Network UI
+[2025-07-18 02:34:13.336][INFO ] Press F7 to disconnect from server
+[2025-07-18 02:34:13.336][INFO ] Initializing ImGui Inspector UI
+[2025-07-18 02:34:13.337][INFO ] ImGui Inspector UI initialized successfully
+[2025-07-18 02:34:13.338][INFO ] NetworkManager initialized successfully
+[2025-07-18 02:34:13.338][INFO ] NetworkUI initialized successfully
+[2025-07-18 02:34:13.338][INFO ] Network thread started
+[2025-07-18 02:34:13.338][INFO ] Network packet handlers initialized
+[2025-07-18 02:34:13.340][INFO ] Found 1 player entities to render
+[2025-07-18 02:34:15.144][INFO ] Framebuffer resized to: 1278x664
+[2025-07-18 02:34:30.552][INFO ] Starting async connection to localhost:7777
+[2025-07-18 02:34:30.552][INFO ] Network thread: Attempting connection to localhost:7777
+[2025-07-18 02:34:30.564][INFO ] Connected to server localhost:7777, waiting for peer ID assignment
+[2025-07-18 02:34:30.578][WARN ][4Game] CLIENT SendPlayerMovement called with peer ID 0! NetworkManager localPeerID: 0
+[2025-07-18 02:34:30.580][INFO ] === PEER ID ASSIGNMENT ===
+[2025-07-18 02:34:30.581][INFO ] Received peer ID assignment: 1 (old ID was: 0)
+[2025-07-18 02:34:30.581][INFO ] NetworkManager.GetLocalPeerID() now returns: 1
+[2025-07-18 02:34:30.581][INFO ] Processing PLAYER_JOIN packet for player Player_0 (senderID: 0, packetID: 0, actualID: 0)
+[2025-07-18 02:34:30.581][INFO ] RenderableComponent added and configured for network player
+[2025-07-18 02:34:30.581][INFO ] PlayerComponent added and configured for network player
+[2025-07-18 02:34:30.581][INFO ] Network player Player_0 joined and entity created (ID: 0, EntityID: 7)
+[2025-07-18 02:34:30.581][INFO ] Total network players now: 1
+[2025-07-18 02:34:30.581][INFO ] Entity components check - Transform: YES, Player: YES, Renderable: YES
+[2025-07-18 02:34:30.581][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(640.000000,360.000000), networkPlayers.size=1
+[2025-07-18 02:34:30.581][INFO ] === CONNECTED TO SERVER ===
+[2025-07-18 02:34:30.581][INFO ] Connected to server: Connected with assigned peer ID 1
+[2025-07-18 02:34:30.581][INFO ] Assigned client network ID: 1
+[2025-07-18 02:34:30.582][INFO ] Current network players at connection: 1
+[2025-07-18 02:34:30.582][INFO ] Sending player join packet to server...
+[2025-07-18 02:34:30.582][INFO ] Sent player join packet to server
+[2025-07-18 02:34:30.590][INFO ] SendPlayerMovement: playerID=1, pos=(640.000000,360.000000), mode=CLIENT
+[2025-07-18 02:34:30.590][INFO ] Found 2 player entities to render
+[2025-07-18 02:34:31.258][INFO ] Updated player 0 position to (640.000000,360.000000)
+[2025-07-18 02:34:31.258][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(640.000000,360.000000), networkPlayers.size=1
+[2025-07-18 02:34:31.262][INFO ] SendPlayerMovement: playerID=1, pos=(725.173767,255.451492), mode=CLIENT
+[2025-07-18 02:34:31.928][INFO ] SendPlayerMovement: playerID=1, pos=(725.173767,255.451492), mode=CLIENT
+[2025-07-18 02:34:31.945][INFO ] Updated player 0 position to (682.788818,262.844940)
+[2025-07-18 02:34:31.961][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(674.658325,262.844940), networkPlayers.size=1
+[2025-07-18 02:34:32.594][INFO ] SendPlayerMovement: playerID=1, pos=(725.173767,255.451492), mode=CLIENT
+[2025-07-18 02:34:32.617][INFO ] Updated player 0 position to (651.717957,262.844940)
+[2025-07-18 02:34:32.628][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(651.717957,262.844940), networkPlayers.size=1
+[2025-07-18 02:34:32.762][INFO ] Processing PLAYER_JOIN packet for player Player_2 (senderID: 0, packetID: 2, actualID: 2)
+[2025-07-18 02:34:32.762][INFO ] RenderableComponent added and configured for network player
+[2025-07-18 02:34:32.762][INFO ] PlayerComponent added and configured for network player
+[2025-07-18 02:34:32.762][INFO ] Network player Player_2 joined and entity created (ID: 2, EntityID: 8)
+[2025-07-18 02:34:32.762][INFO ] Total network players now: 2
+[2025-07-18 02:34:32.762][INFO ] Entity components check - Transform: YES, Player: YES, Renderable: YES
+[2025-07-18 02:34:32.767][INFO ] Found 3 player entities to render
+[2025-07-18 02:34:33.028][INFO ] Updated player 0 position to (640.000000,360.000000)
+[2025-07-18 02:34:33.034][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(651.717957,262.844940), networkPlayers.size=2
+[2025-07-18 02:34:33.261][INFO ] SendPlayerMovement: playerID=1, pos=(725.173767,255.451492), mode=CLIENT
+[2025-07-18 02:34:33.356][INFO ] Updated player 0 position to (652.016174,262.608276)
+[2025-07-18 02:34:33.362][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(651.717957,262.844940), networkPlayers.size=2
+[2025-07-18 02:34:33.689][INFO ] Updated player 0 position to (830.805237,238.941986)
+[2025-07-18 02:34:33.695][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(651.717957,262.844940), networkPlayers.size=2
+[2025-07-18 02:34:33.928][INFO ] SendPlayerMovement: playerID=1, pos=(725.173767,255.451492), mode=CLIENT
+[2025-07-18 02:34:34.022][INFO ] Updated player 0 position to (776.325562,238.941986)
+[2025-07-18 02:34:34.033][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(651.717957,262.844940), networkPlayers.size=2
+[2025-07-18 02:34:34.361][INFO ] Updated player 0 position to (846.747742,238.941986)
+[2025-07-18 02:34:34.361][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(651.717957,262.844940), networkPlayers.size=2
+[2025-07-18 02:34:34.594][INFO ] SendPlayerMovement: playerID=1, pos=(725.173767,255.451492), mode=CLIENT
+[2025-07-18 02:34:34.695][INFO ] Updated player 0 position to (784.861389,238.941986)
+[2025-07-18 02:34:34.695][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(651.717957,262.844940), networkPlayers.size=2
+[2025-07-18 02:34:35.023][INFO ] Updated player 0 position to (827.896606,238.941986)
+[2025-07-18 02:34:35.029][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(651.717957,262.844940), networkPlayers.size=2
+[2025-07-18 02:34:35.290][INFO ] SendPlayerMovement: playerID=1, pos=(725.173767,250.610291), mode=CLIENT
+[2025-07-18 02:34:35.367][INFO ] Updated player 0 position to (827.896606,238.941986)
+[2025-07-18 02:34:35.374][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(651.717957,262.844940), networkPlayers.size=2
+[2025-07-18 02:34:35.700][INFO ] Updated player 0 position to (827.896606,238.941986)
+[2025-07-18 02:34:35.706][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(651.717957,262.844940), networkPlayers.size=2
+[2025-07-18 02:34:35.961][INFO ] SendPlayerMovement: playerID=1, pos=(700.770813,204.094620), mode=CLIENT
+[2025-07-18 02:34:36.039][INFO ] Updated player 0 position to (827.896606,238.941986)
+[2025-07-18 02:34:36.039][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(651.717957,262.844940), networkPlayers.size=2
+[2025-07-18 02:34:36.372][INFO ] Updated player 0 position to (827.896606,238.941986)
+[2025-07-18 02:34:36.372][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(651.717957,262.844940), networkPlayers.size=2
+[2025-07-18 02:34:36.635][INFO ] SendPlayerMovement: playerID=1, pos=(786.318420,107.105438), mode=CLIENT
+[2025-07-18 02:34:36.717][INFO ] Updated player 0 position to (827.896606,238.941986)
+[2025-07-18 02:34:36.718][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(651.717957,262.844940), networkPlayers.size=2
+[2025-07-18 02:34:37.050][INFO ] Updated player 0 position to (827.896606,238.941986)
+[2025-07-18 02:34:37.050][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(651.717957,157.318588), networkPlayers.size=2
+[2025-07-18 02:34:37.305][INFO ] SendPlayerMovement: playerID=1, pos=(786.318420,107.105438), mode=CLIENT
+[2025-07-18 02:34:37.378][INFO ] Updated player 0 position to (827.896606,238.941986)
+[2025-07-18 02:34:37.383][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(651.717957,242.818726), networkPlayers.size=2
+[2025-07-18 02:34:37.712][INFO ] Updated player 0 position to (827.896606,238.941986)
+[2025-07-18 02:34:37.717][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(651.717957,199.920609), networkPlayers.size=2
+[2025-07-18 02:34:37.985][INFO ] SendPlayerMovement: playerID=1, pos=(806.049316,37.524040), mode=CLIENT
+[2025-07-18 02:34:38.052][INFO ] Updated player 0 position to (827.896606,238.941986)
+[2025-07-18 02:34:38.056][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(651.717957,199.920609), networkPlayers.size=2
+[2025-07-18 02:34:38.379][INFO ] Updated player 0 position to (827.896606,238.941986)
+[2025-07-18 02:34:38.389][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(651.717957,199.920609), networkPlayers.size=2
+[2025-07-18 02:34:38.651][INFO ] SendPlayerMovement: playerID=1, pos=(711.909790,138.545227), mode=CLIENT
+[2025-07-18 02:34:38.712][INFO ] Updated player 0 position to (827.896606,238.941986)
+[2025-07-18 02:34:38.723][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(651.717957,199.920609), networkPlayers.size=2
+[2025-07-18 02:34:39.051][INFO ] Updated player 0 position to (827.896606,238.941986)
+[2025-07-18 02:34:39.056][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(651.717957,199.920609), networkPlayers.size=2
+[2025-07-18 02:34:39.317][INFO ] SendPlayerMovement: playerID=1, pos=(711.909790,138.545227), mode=CLIENT
+[2025-07-18 02:34:39.383][INFO ] Updated player 0 position to (827.896606,238.941986)
+[2025-07-18 02:34:39.384][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(827.896606,238.941986), networkPlayers.size=2
+[2025-07-18 02:34:39.428][INFO ] === NetworkUI::Disconnect() CALLED ===
+[2025-07-18 02:34:39.428][INFO ] Client disconnect requested via NetworkUI
+[2025-07-18 02:34:39.428][INFO ] Calling manager.DisconnectFromServer() - this bypasses Game cleanup!
+[2025-07-18 02:34:39.433][INFO ] Disconnected from server: User requested disconnect
+[2025-07-18 02:34:39.434][INFO ] Immediately triggering SERVER_DISCONNECTED callback...
+[2025-07-18 02:34:39.434][INFO ] === SERVER DISCONNECTED ===
+[2025-07-18 02:34:39.434][INFO ] Disconnected from server: User requested disconnect
+[2025-07-18 02:34:39.434][INFO ] Network players before SERVER_DISCONNECTED cleanup: 2
+[2025-07-18 02:34:39.434][INFO ] Reset network ID to 0
+[2025-07-18 02:34:39.434][INFO ] Clearing all network players...
+[2025-07-18 02:34:39.434][INFO ] Clearing 2 network players:
+[2025-07-18 02:34:39.434][INFO ]   - Removing player ID: 2, Entity ID: 8
+[2025-07-18 02:34:39.434][INFO ] -   Made entity invisible before destruction
+[2025-07-18 02:34:39.434][INFO ]   - Removing player ID: 0, Entity ID: 7
+[2025-07-18 02:34:39.434][INFO ] -   Made entity invisible before destruction
+[2025-07-18 02:34:39.434][INFO ] All network players cleared
+[2025-07-18 02:34:39.434][INFO ] Forcing network event processing to trigger cleanup...
+[2025-07-18 02:34:39.439][INFO ] Found 1 player entities to render
+[2025-07-18 02:34:43.167][INFO ] Starting async connection to localhost:7777
+[2025-07-18 02:34:43.167][INFO ] Network thread: Attempting connection to localhost:7777
+[2025-07-18 02:34:43.172][INFO ] === SERVER DISCONNECTED ===
+[2025-07-18 02:34:43.172][INFO ] Connected to server localhost:7777, waiting for peer ID assignment
+[2025-07-18 02:34:43.172][INFO ] Disconnected from server: User requested disconnect
+[2025-07-18 02:34:43.172][INFO ] Network players before SERVER_DISCONNECTED cleanup: 0
+[2025-07-18 02:34:43.173][INFO ] Reset network ID to 0
+[2025-07-18 02:34:43.173][INFO ] Clearing all network players...
+[2025-07-18 02:34:43.173][INFO ] Clearing 0 network players:
+[2025-07-18 02:34:43.173][INFO ] All network players cleared
+[2025-07-18 02:34:43.189][INFO ] === PEER ID ASSIGNMENT ===
+[2025-07-18 02:34:43.189][INFO ] Received peer ID assignment: 3 (old ID was: 0)
+[2025-07-18 02:34:43.189][INFO ] NetworkManager.GetLocalPeerID() now returns: 3
+[2025-07-18 02:34:43.189][WARN ][4Game] Received movement for unknown player ID: 0 (available players: 
+[2025-07-18 02:34:43.189][INFO ] Processing PLAYER_JOIN packet for player Player_0 (senderID: 0, packetID: 0, actualID: 0)
+[2025-07-18 02:34:43.189][INFO ] RenderableComponent added and configured for network player
+[2025-07-18 02:34:43.189][INFO ] PlayerComponent added and configured for network player
+[2025-07-18 02:34:43.189][INFO ] Network player Player_0 joined and entity created (ID: 0, EntityID: 8)
+[2025-07-18 02:34:43.189][INFO ] Total network players now: 1
+[2025-07-18 02:34:43.189][INFO ] Entity components check - Transform: YES, Player: YES, Renderable: YES
+[2025-07-18 02:34:43.189][INFO ] Processing PLAYER_JOIN packet for player Player_2 (senderID: 0, packetID: 2, actualID: 2)
+[2025-07-18 02:34:43.190][INFO ] RenderableComponent added and configured for network player
+[2025-07-18 02:34:43.190][INFO ] PlayerComponent added and configured for network player
+[2025-07-18 02:34:43.190][INFO ] Network player Player_2 joined and entity created (ID: 2, EntityID: 7)
+[2025-07-18 02:34:43.190][INFO ] Total network players now: 2
+[2025-07-18 02:34:43.190][INFO ] Entity components check - Transform: YES, Player: YES, Renderable: YES
+[2025-07-18 02:34:43.190][INFO ] === CONNECTED TO SERVER ===
+[2025-07-18 02:34:43.190][INFO ] Connected to server: Connected with assigned peer ID 3
+[2025-07-18 02:34:43.190][INFO ] Assigned client network ID: 3
+[2025-07-18 02:34:43.190][INFO ] Current network players at connection: 2
+[2025-07-18 02:34:43.190][INFO ] Sending player join packet to server...
+[2025-07-18 02:34:43.190][INFO ] Sent player join packet to server
+[2025-07-18 02:34:43.196][INFO ] Found 3 player entities to render
+[2025-07-18 02:34:43.468][INFO ] Updated player 0 position to (693.962158,199.920609)
+[2025-07-18 02:34:43.468][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(765.717773,286.077148), networkPlayers.size=2
+[2025-07-18 02:34:43.744][INFO ] SendPlayerMovement: playerID=3, pos=(738.859192,136.960495), mode=CLIENT
+[2025-07-18 02:34:43.806][INFO ] Updated player 0 position to (693.962158,199.920609)
+[2025-07-18 02:34:43.806][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(765.717773,286.077148), networkPlayers.size=2
+[2025-07-18 02:34:44.144][INFO ] Updated player 0 position to (693.962158,199.920609)
+[2025-07-18 02:34:44.145][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(765.717773,286.077148), networkPlayers.size=2
+[2025-07-18 02:34:44.412][INFO ] SendPlayerMovement: playerID=3, pos=(808.831299,211.037323), mode=CLIENT
+[2025-07-18 02:34:44.474][INFO ] Updated player 0 position to (765.717773,286.077148)
+[2025-07-18 02:34:44.485][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(765.717773,286.077148), networkPlayers.size=2
+[2025-07-18 02:34:44.812][INFO ] Updated player 0 position to (693.962158,199.920609)
+[2025-07-18 02:34:44.824][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(765.717773,286.077148), networkPlayers.size=2
+[2025-07-18 02:34:45.145][INFO ] SendPlayerMovement: playerID=3, pos=(808.831299,237.334229), mode=CLIENT
+[2025-07-18 02:34:45.145][INFO ] Updated player 0 position to (693.962158,199.920609)
+[2025-07-18 02:34:45.145][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(765.717773,286.077148), networkPlayers.size=2
+[2025-07-18 02:34:45.478][INFO ] Updated player 0 position to (693.962158,199.920609)
+[2025-07-18 02:34:45.478][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(765.717773,286.077148), networkPlayers.size=2
+[2025-07-18 02:34:45.811][INFO ] SendPlayerMovement: playerID=3, pos=(808.831299,210.291168), mode=CLIENT
+[2025-07-18 02:34:45.811][INFO ] Updated player 0 position to (693.962158,199.920609)
+[2025-07-18 02:34:45.811][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(765.717773,286.077148), networkPlayers.size=2
+[2025-07-18 02:34:46.023][INFO ] === NetworkUI::Disconnect() CALLED ===
+[2025-07-18 02:34:46.023][INFO ] Client disconnect requested via NetworkUI
+[2025-07-18 02:34:46.023][INFO ] Calling manager.DisconnectFromServer() - this bypasses Game cleanup!
+[2025-07-18 02:34:46.028][INFO ] Disconnected from server: User requested disconnect
+[2025-07-18 02:34:46.029][INFO ] Immediately triggering SERVER_DISCONNECTED callback...
+[2025-07-18 02:34:46.029][INFO ] === SERVER DISCONNECTED ===
+[2025-07-18 02:34:46.029][INFO ] Disconnected from server: User requested disconnect
+[2025-07-18 02:34:46.029][INFO ] Network players before SERVER_DISCONNECTED cleanup: 2
+[2025-07-18 02:34:46.029][INFO ] Reset network ID to 0
+[2025-07-18 02:34:46.029][INFO ] Clearing all network players...
+[2025-07-18 02:34:46.029][INFO ] Clearing 2 network players:
+[2025-07-18 02:34:46.029][INFO ]   - Removing player ID: 2, Entity ID: 7
+[2025-07-18 02:34:46.029][INFO ] -   Made entity invisible before destruction
+[2025-07-18 02:34:46.029][INFO ]   - Removing player ID: 0, Entity ID: 8
+[2025-07-18 02:34:46.029][INFO ] -   Made entity invisible before destruction
+[2025-07-18 02:34:46.029][INFO ] All network players cleared
+[2025-07-18 02:34:46.029][INFO ] Forcing network event processing to trigger cleanup...
+[2025-07-18 02:34:46.034][INFO ] Found 1 player entities to render
+[2025-07-18 02:34:48.589][INFO ] Fog system enabled
+[2025-07-18 02:34:49.628][ERROR][14NetworkManager] Failed to create server host on port 7777
+[2025-07-18 02:34:51.406][INFO ] Starting async connection to localhost:7777
+[2025-07-18 02:34:51.406][INFO ] Network thread: Attempting connection to localhost:7777
+[2025-07-18 02:34:51.411][INFO ] Connected to server localhost:7777, waiting for peer ID assignment
+[2025-07-18 02:34:51.411][INFO ] === SERVER DISCONNECTED ===
+[2025-07-18 02:34:51.412][INFO ] Disconnected from server: User requested disconnect
+[2025-07-18 02:34:51.412][INFO ] Network players before SERVER_DISCONNECTED cleanup: 0
+[2025-07-18 02:34:51.412][INFO ] Reset network ID to 0
+[2025-07-18 02:34:51.412][INFO ] Clearing all network players...
+[2025-07-18 02:34:51.412][INFO ] Clearing 0 network players:
+[2025-07-18 02:34:51.412][INFO ] All network players cleared
+[2025-07-18 02:34:51.422][INFO ] === PEER ID ASSIGNMENT ===
+[2025-07-18 02:34:51.422][INFO ] Received peer ID assignment: 4 (old ID was: 0)
+[2025-07-18 02:34:51.422][INFO ] NetworkManager.GetLocalPeerID() now returns: 4
+[2025-07-18 02:34:51.422][WARN ][4Game] Received movement for unknown player ID: 0 (available players: 
+[2025-07-18 02:34:51.422][INFO ] Processing PLAYER_JOIN packet for player Player_0 (senderID: 0, packetID: 0, actualID: 0)
+[2025-07-18 02:34:51.422][INFO ] RenderableComponent added and configured for network player
+[2025-07-18 02:34:51.422][INFO ] PlayerComponent added and configured for network player
+[2025-07-18 02:34:51.423][INFO ] Network player Player_0 joined and entity created (ID: 0, EntityID: 7)
+[2025-07-18 02:34:51.423][INFO ] Total network players now: 1
+[2025-07-18 02:34:51.423][INFO ] Entity components check - Transform: YES, Player: YES, Renderable: YES
+[2025-07-18 02:34:51.423][INFO ] Processing PLAYER_JOIN packet for player Player_2 (senderID: 0, packetID: 2, actualID: 2)
+[2025-07-18 02:34:51.423][INFO ] RenderableComponent added and configured for network player
+[2025-07-18 02:34:51.423][INFO ] PlayerComponent added and configured for network player
+[2025-07-18 02:34:51.423][INFO ] Network player Player_2 joined and entity created (ID: 2, EntityID: 8)
+[2025-07-18 02:34:51.423][INFO ] Total network players now: 2
+[2025-07-18 02:34:51.423][INFO ] Entity components check - Transform: YES, Player: YES, Renderable: YES
+[2025-07-18 02:34:51.423][INFO ] === CONNECTED TO SERVER ===
+[2025-07-18 02:34:51.423][INFO ] Connected to server: Connected with assigned peer ID 4
+[2025-07-18 02:34:51.423][INFO ] Assigned client network ID: 4
+[2025-07-18 02:34:51.423][INFO ] Current network players at connection: 2
+[2025-07-18 02:34:51.423][INFO ] Sending player join packet to server...
+[2025-07-18 02:34:51.423][INFO ] Sent player join packet to server
+[2025-07-18 02:34:51.427][INFO ] Found 3 player entities to render
+[2025-07-18 02:34:51.533][INFO ] Updated player 0 position to (765.717773,286.077148)
+[2025-07-18 02:34:51.533][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(765.717773,286.077148), networkPlayers.size=2
+[2025-07-18 02:34:51.862][INFO ] Updated player 0 position to (765.717773,286.077148)
+[2025-07-18 02:34:51.867][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(765.717773,286.077148), networkPlayers.size=2
+[2025-07-18 02:34:51.872][INFO ] SendPlayerMovement: playerID=4, pos=(789.926392,60.787704), mode=CLIENT
+[2025-07-18 02:34:52.195][INFO ] Updated player 0 position to (765.717773,286.077148)
+[2025-07-18 02:34:52.201][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(765.717773,286.077148), networkPlayers.size=2
+[2025-07-18 02:34:52.528][INFO ] Updated player 0 position to (765.717773,286.077148)
+[2025-07-18 02:34:52.528][INFO ] === NetworkUI::Disconnect() CALLED ===
+[2025-07-18 02:34:52.528][INFO ] Client disconnect requested via NetworkUI
+[2025-07-18 02:34:52.529][INFO ] Calling manager.DisconnectFromServer() - this bypasses Game cleanup!
+[2025-07-18 02:34:52.533][INFO ] Disconnected from server: User requested disconnect
+[2025-07-18 02:34:52.533][INFO ] Immediately triggering SERVER_DISCONNECTED callback...
+[2025-07-18 02:34:52.533][INFO ] === SERVER DISCONNECTED ===
+[2025-07-18 02:34:52.534][INFO ] Disconnected from server: User requested disconnect
+[2025-07-18 02:34:52.534][INFO ] Network players before SERVER_DISCONNECTED cleanup: 2
+[2025-07-18 02:34:52.534][INFO ] Reset network ID to 0
+[2025-07-18 02:34:52.534][INFO ] Clearing all network players...
+[2025-07-18 02:34:52.534][INFO ] Clearing 2 network players:
+[2025-07-18 02:34:52.534][INFO ]   - Removing player ID: 2, Entity ID: 8
+[2025-07-18 02:34:52.534][INFO ] -   Made entity invisible before destruction
+[2025-07-18 02:34:52.534][INFO ]   - Removing player ID: 0, Entity ID: 7
+[2025-07-18 02:34:52.534][INFO ] -   Made entity invisible before destruction
+[2025-07-18 02:34:52.534][INFO ] All network players cleared
+[2025-07-18 02:34:52.534][INFO ] Forcing network event processing to trigger cleanup...
+[2025-07-18 02:34:52.538][INFO ] Found 1 player entities to render
+[2025-07-18 02:34:53.439][INFO ] Vision system enabled
+[2025-07-18 02:34:59.206][INFO ] Network thread: Attempting connection to localhost:7777
+[2025-07-18 02:34:59.206][INFO ] Starting async connection to localhost:7777
+[2025-07-18 02:34:59.211][INFO ] Connected to server localhost:7777, waiting for peer ID assignment
+[2025-07-18 02:34:59.211][INFO ] === SERVER DISCONNECTED ===
+[2025-07-18 02:34:59.211][INFO ] Disconnected from server: User requested disconnect
+[2025-07-18 02:34:59.211][INFO ] Network players before SERVER_DISCONNECTED cleanup: 0
+[2025-07-18 02:34:59.211][INFO ] Reset network ID to 0
+[2025-07-18 02:34:59.211][INFO ] Clearing all network players...
+[2025-07-18 02:34:59.211][INFO ] Clearing 0 network players:
+[2025-07-18 02:34:59.211][INFO ] All network players cleared
+[2025-07-18 02:34:59.222][INFO ] === PEER ID ASSIGNMENT ===
+[2025-07-18 02:34:59.222][INFO ] Received peer ID assignment: 5 (old ID was: 0)
+[2025-07-18 02:34:59.222][INFO ] NetworkManager.GetLocalPeerID() now returns: 5
+[2025-07-18 02:34:59.223][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(765.717773,286.077148), networkPlayers.size=0
+[2025-07-18 02:34:59.223][WARN ][4Game] Received movement for unknown player ID: 0 (available players: 
+[2025-07-18 02:34:59.223][INFO ] === CONNECTED TO SERVER ===
+[2025-07-18 02:34:59.223][INFO ] Connected to server: Connected with assigned peer ID 5
+[2025-07-18 02:34:59.223][INFO ] Assigned client network ID: 5
+[2025-07-18 02:34:59.223][INFO ] Current network players at connection: 0
+[2025-07-18 02:34:59.223][INFO ] Sending player join packet to server...
+[2025-07-18 02:34:59.223][INFO ] Sent player join packet to server
+[2025-07-18 02:34:59.228][INFO ] Processing PLAYER_JOIN packet for player Player_0 (senderID: 0, packetID: 0, actualID: 0)
+[2025-07-18 02:34:59.228][INFO ] RenderableComponent added and configured for network player
+[2025-07-18 02:34:59.228][INFO ] PlayerComponent added and configured for network player
+[2025-07-18 02:34:59.228][INFO ] Network player Player_0 joined and entity created (ID: 0, EntityID: 8)
+[2025-07-18 02:34:59.228][INFO ] Total network players now: 1
+[2025-07-18 02:34:59.228][INFO ] Entity components check - Transform: YES, Player: YES, Renderable: YES
+[2025-07-18 02:34:59.228][INFO ] Processing PLAYER_JOIN packet for player Player_2 (senderID: 0, packetID: 2, actualID: 2)
+[2025-07-18 02:34:59.228][INFO ] RenderableComponent added and configured for network player
+[2025-07-18 02:34:59.228][INFO ] PlayerComponent added and configured for network player
+[2025-07-18 02:34:59.228][INFO ] Network player Player_2 joined and entity created (ID: 2, EntityID: 7)
+[2025-07-18 02:34:59.228][INFO ] Total network players now: 2
+[2025-07-18 02:34:59.228][INFO ] Entity components check - Transform: YES, Player: YES, Renderable: YES
+[2025-07-18 02:34:59.234][INFO ] SendPlayerMovement: playerID=5, pos=(675.270874,222.079269), mode=CLIENT
+[2025-07-18 02:34:59.234][INFO ] Found 3 player entities to render
+[2025-07-18 02:34:59.556][INFO ] Updated player 0 position to (765.717773,286.077148)
+[2025-07-18 02:34:59.556][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(693.962158,199.920609), networkPlayers.size=2
+[2025-07-18 02:34:59.883][INFO ] Updated player 0 position to (765.717773,286.077148)
+[2025-07-18 02:34:59.890][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(693.962158,199.920609), networkPlayers.size=2
+[2025-07-18 02:34:59.895][INFO ] SendPlayerMovement: playerID=5, pos=(784.656311,59.251560), mode=CLIENT
+[2025-07-18 02:35:00.223][INFO ] Updated player 0 position to (765.717773,286.077148)
+[2025-07-18 02:35:00.223][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(693.962158,199.920609), networkPlayers.size=2
+[2025-07-18 02:35:00.551][INFO ] Updated player 0 position to (765.717773,286.077148)
+[2025-07-18 02:35:00.556][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(693.962158,199.920609), networkPlayers.size=2
+[2025-07-18 02:35:00.562][INFO ] SendPlayerMovement: playerID=5, pos=(916.723450,59.251560), mode=CLIENT
+[2025-07-18 02:35:00.617][INFO ] Lighting system enabled
+[2025-07-18 02:35:00.879][INFO ] Updated player 0 position to (765.717773,286.077148)
+[2025-07-18 02:35:00.889][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(693.962158,199.920609), networkPlayers.size=2
+[2025-07-18 02:35:01.111][INFO ] Fog system enabled
+[2025-07-18 02:35:01.216][INFO ] Updated player 0 position to (765.717773,286.077148)
+[2025-07-18 02:35:01.223][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(693.962158,199.920609), networkPlayers.size=2
+[2025-07-18 02:35:01.228][INFO ] SendPlayerMovement: playerID=5, pos=(916.723450,59.251560), mode=CLIENT
+[2025-07-18 02:35:01.550][INFO ] Updated player 0 position to (765.717773,286.077148)
+[2025-07-18 02:35:01.556][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(693.962158,199.920609), networkPlayers.size=2
+[2025-07-18 02:35:01.888][INFO ] Updated player 0 position to (765.717773,286.077148)
+[2025-07-18 02:35:01.888][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(693.962158,199.920609), networkPlayers.size=2
+[2025-07-18 02:35:01.894][INFO ] SendPlayerMovement: playerID=5, pos=(764.561829,231.025955), mode=CLIENT
+[2025-07-18 02:35:02.217][INFO ] Updated player 0 position to (765.717773,286.077148)
+[2025-07-18 02:35:02.228][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(693.962158,199.920609), networkPlayers.size=2
+[2025-07-18 02:35:02.501][INFO ] Vision system enabled
+[2025-07-18 02:35:02.550][INFO ] Updated player 0 position to (765.717773,286.077148)
+[2025-07-18 02:35:02.560][INFO ] SendPlayerMovement: playerID=5, pos=(679.138672,141.477051), mode=CLIENT
+[2025-07-18 02:35:02.561][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(693.962158,199.920609), networkPlayers.size=2
+[2025-07-18 02:35:02.878][INFO ] Updated player 0 position to (765.717773,286.077148)
+[2025-07-18 02:35:02.889][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(693.962158,199.920609), networkPlayers.size=2
+[2025-07-18 02:35:03.212][INFO ] Updated player 0 position to (765.717773,286.077148)
+[2025-07-18 02:35:03.222][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(693.962158,199.920609), networkPlayers.size=2
+[2025-07-18 02:35:03.228][INFO ] SendPlayerMovement: playerID=5, pos=(802.658020,141.477051), mode=CLIENT
+[2025-07-18 02:35:03.551][INFO ] Updated player 0 position to (765.717773,286.077148)
+[2025-07-18 02:35:03.556][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(693.962158,199.920609), networkPlayers.size=2
+[2025-07-18 02:35:03.888][INFO ] Updated player 0 position to (765.717773,286.077148)
+[2025-07-18 02:35:03.889][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(693.962158,199.920609), networkPlayers.size=2
+[2025-07-18 02:35:03.894][INFO ] SendPlayerMovement: playerID=5, pos=(802.658020,141.477051), mode=CLIENT
+[2025-07-18 02:35:04.222][INFO ] Updated player 0 position to (765.717773,286.077148)
+[2025-07-18 02:35:04.222][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(693.962158,199.920609), networkPlayers.size=2
+[2025-07-18 02:35:04.283][INFO ] Lighting system enabled
+[2025-07-18 02:35:04.556][INFO ] Updated player 0 position to (765.717773,286.077148)
+[2025-07-18 02:35:04.556][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(693.962158,199.920609), networkPlayers.size=2
+[2025-07-18 02:35:04.561][INFO ] SendPlayerMovement: playerID=5, pos=(802.658020,141.477051), mode=CLIENT
+[2025-07-18 02:35:04.839][INFO ] Fog system enabled
+[2025-07-18 02:35:04.879][INFO ] Updated player 0 position to (765.717773,286.077148)
+[2025-07-18 02:35:04.890][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(693.962158,199.920609), networkPlayers.size=2
+[2025-07-18 02:35:05.216][INFO ] Updated player 0 position to (765.717773,286.077148)
+[2025-07-18 02:35:05.227][INFO ] SendPlayerMovement: playerID=5, pos=(802.658020,141.477051), mode=CLIENT
+[2025-07-18 02:35:05.228][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(693.962158,199.920609), networkPlayers.size=2
+[2025-07-18 02:35:05.305][INFO ] Vision system enabled
+[2025-07-18 02:35:05.550][INFO ] Updated player 0 position to (765.717773,286.077148)
+[2025-07-18 02:35:05.561][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(693.962158,199.920609), networkPlayers.size=2
+[2025-07-18 02:35:05.884][INFO ] Updated player 0 position to (765.717773,286.077148)
+[2025-07-18 02:35:05.894][INFO ] SendPlayerMovement: playerID=5, pos=(802.658020,141.477051), mode=CLIENT
+[2025-07-18 02:35:05.895][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(693.962158,199.920609), networkPlayers.size=2
+[2025-07-18 02:35:06.107][INFO ] Processing PLAYER_JOIN packet for player Player_6 (senderID: 0, packetID: 6, actualID: 6)
+[2025-07-18 02:35:06.107][INFO ] RenderableComponent added and configured for network player
+[2025-07-18 02:35:06.107][INFO ] PlayerComponent added and configured for network player
+[2025-07-18 02:35:06.107][INFO ] Network player Player_6 joined and entity created (ID: 6, EntityID: 9)
+[2025-07-18 02:35:06.107][INFO ] Total network players now: 3
+[2025-07-18 02:35:06.107][INFO ] Entity components check - Transform: YES, Player: YES, Renderable: YES
+[2025-07-18 02:35:06.111][INFO ] Found 4 player entities to render
+[2025-07-18 02:35:06.185][INFO ] Updated player 0 position to (693.962158,199.920609)
+[2025-07-18 02:35:06.185][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=6, pos=(640.000000,360.000000), networkPlayers.size=3
+[2025-07-18 02:35:06.395][INFO ] Updated player 0 position to (765.717773,286.077148)
+[2025-07-18 02:35:06.401][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=6, pos=(640.000000,360.000000), networkPlayers.size=3
+[2025-07-18 02:35:06.569][INFO ] SendPlayerMovement: playerID=5, pos=(802.658020,141.477051), mode=CLIENT
+[2025-07-18 02:35:06.619][INFO ] Updated player 0 position to (765.717773,286.077148)
+[2025-07-18 02:35:06.634][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(693.962158,199.920609), networkPlayers.size=3
+[2025-07-18 02:35:06.845][INFO ] Updated player 0 position to (640.000000,360.000000)
+[2025-07-18 02:35:06.851][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(693.962158,199.920609), networkPlayers.size=3
+[2025-07-18 02:35:07.066][INFO ] Updated player 0 position to (765.717773,286.077148)
+[2025-07-18 02:35:07.078][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(693.962158,199.920609), networkPlayers.size=3
+[2025-07-18 02:35:07.238][INFO ] SendPlayerMovement: playerID=5, pos=(802.658020,141.477051), mode=CLIENT
+[2025-07-18 02:35:07.294][INFO ] Updated player 0 position to (640.000000,360.000000)
+[2025-07-18 02:35:07.295][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(693.962158,199.920609), networkPlayers.size=3
+[2025-07-18 02:35:07.522][INFO ] Updated player 0 position to (693.962158,199.920609)
+[2025-07-18 02:35:07.522][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(765.717773,286.077148), networkPlayers.size=3
+[2025-07-18 02:35:07.744][INFO ] Updated player 0 position to (693.962158,199.920609)
+[2025-07-18 02:35:07.744][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=6, pos=(771.207886,242.746475), networkPlayers.size=3
+[2025-07-18 02:35:07.906][INFO ] SendPlayerMovement: playerID=5, pos=(802.658020,141.477051), mode=CLIENT
+[2025-07-18 02:35:07.961][INFO ] Updated player 0 position to (693.962158,199.920609)
+[2025-07-18 02:35:07.967][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(765.717773,286.077148), networkPlayers.size=3
+[2025-07-18 02:35:08.189][INFO ] Updated player 0 position to (693.962158,199.920609)
+[2025-07-18 02:35:08.189][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(765.717773,286.077148), networkPlayers.size=3
+[2025-07-18 02:35:08.418][INFO ] Updated player 0 position to (693.962158,199.920609)
+[2025-07-18 02:35:08.418][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=6, pos=(880.534729,242.746475), networkPlayers.size=3
+[2025-07-18 02:35:08.572][INFO ] SendPlayerMovement: playerID=5, pos=(802.658020,141.477051), mode=CLIENT
+[2025-07-18 02:35:08.633][INFO ] Updated player 0 position to (765.717773,286.077148)
+[2025-07-18 02:35:08.645][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(693.962158,199.920609), networkPlayers.size=3
+[2025-07-18 02:35:08.874][INFO ] Updated player 0 position to (765.717773,286.077148)
+[2025-07-18 02:35:08.874][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=6, pos=(880.534729,242.746475), networkPlayers.size=3
+[2025-07-18 02:35:09.096][INFO ] Updated player 0 position to (880.534729,242.746475)
+[2025-07-18 02:35:09.096][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(765.717773,286.077148), networkPlayers.size=3
+[2025-07-18 02:35:09.239][INFO ] SendPlayerMovement: playerID=5, pos=(802.658020,141.477051), mode=CLIENT
+[2025-07-18 02:35:09.316][INFO ] Updated player 0 position to (749.850159,242.746475)
+[2025-07-18 02:35:09.316][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(765.717773,286.077148), networkPlayers.size=3
+[2025-07-18 02:35:09.545][INFO ] Updated player 0 position to (765.717773,286.077148)
+[2025-07-18 02:35:09.545][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=6, pos=(734.206604,242.746475), networkPlayers.size=3
+[2025-07-18 02:35:09.762][INFO ] Updated player 0 position to (765.717773,286.077148)
+[2025-07-18 02:35:09.762][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=6, pos=(811.796082,242.746475), networkPlayers.size=3
+[2025-07-18 02:35:09.905][INFO ] SendPlayerMovement: playerID=5, pos=(802.658020,141.477051), mode=CLIENT
+[2025-07-18 02:35:09.984][INFO ] Updated player 0 position to (765.717773,286.077148)
+[2025-07-18 02:35:09.989][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=6, pos=(905.052063,242.746475), networkPlayers.size=3
+[2025-07-18 02:35:10.206][INFO ] Updated player 0 position to (905.052063,242.746475)
+[2025-07-18 02:35:10.206][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(765.717773,286.077148), networkPlayers.size=3
+[2025-07-18 02:35:10.429][INFO ] Updated player 0 position to (905.052063,242.746475)
+[2025-07-18 02:35:10.429][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(765.717773,286.077148), networkPlayers.size=3
+[2025-07-18 02:35:10.578][INFO ] SendPlayerMovement: playerID=5, pos=(802.658020,141.477051), mode=CLIENT
+[2025-07-18 02:35:10.650][INFO ] Updated player 0 position to (693.962158,199.920609)
+[2025-07-18 02:35:10.650][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=6, pos=(905.052063,242.746475), networkPlayers.size=3
+[2025-07-18 02:35:10.867][INFO ] Updated player 0 position to (693.962158,199.920609)
+[2025-07-18 02:35:10.872][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=6, pos=(905.052063,242.746475), networkPlayers.size=3
+[2025-07-18 02:35:11.089][INFO ] Updated player 0 position to (693.962158,199.920609)
+[2025-07-18 02:35:11.089][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=2, pos=(765.717773,286.077148), networkPlayers.size=3
+[2025-07-18 02:35:11.244][INFO ] SendPlayerMovement: playerID=5, pos=(802.658020,141.477051), mode=CLIENT
+[2025-07-18 02:35:11.311][INFO ] Updated player 0 position to (693.962158,199.920609)
+[2025-07-18 02:35:11.311][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=6, pos=(905.052063,242.746475), networkPlayers.size=3
+[2025-07-18 02:35:11.533][INFO ] Updated player 0 position to (693.962158,199.920609)
+[2025-07-18 02:35:11.533][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=6, pos=(905.052063,242.746475), networkPlayers.size=3
+[2025-07-18 02:35:11.761][INFO ] Updated player 0 position to (693.962158,199.920609)
+[2025-07-18 02:35:11.761][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=6, pos=(905.052063,242.746475), networkPlayers.size=3
+[2025-07-18 02:35:11.910][INFO ] SendPlayerMovement: playerID=5, pos=(802.658020,141.477051), mode=CLIENT
+[2025-07-18 02:35:11.978][INFO ] Updated player 0 position to (693.962158,199.920609)
+[2025-07-18 02:35:11.984][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=6, pos=(905.052063,242.746475), networkPlayers.size=3
+[2025-07-18 02:35:12.200][INFO ] Updated player 0 position to (693.962158,199.920609)
+[2025-07-18 02:35:12.200][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=6, pos=(905.052063,242.746475), networkPlayers.size=3
+[2025-07-18 02:35:12.422][INFO ] Updated player 0 position to (693.962158,199.920609)
+[2025-07-18 02:35:12.422][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=6, pos=(905.052063,242.746475), networkPlayers.size=3
+[2025-07-18 02:35:12.578][INFO ] SendPlayerMovement: playerID=5, pos=(802.658020,141.477051), mode=CLIENT
+[2025-07-18 02:35:12.650][INFO ] Updated player 0 position to (693.962158,199.920609)
+[2025-07-18 02:35:12.650][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=6, pos=(905.052063,242.746475), networkPlayers.size=3
+[2025-07-18 02:35:12.867][INFO ] Updated player 0 position to (693.962158,199.920609)
+[2025-07-18 02:35:12.867][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=6, pos=(905.052063,242.746475), networkPlayers.size=3
+[2025-07-18 02:35:13.094][INFO ] Updated player 0 position to (693.962158,199.920609)
+[2025-07-18 02:35:13.094][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=6, pos=(905.052063,242.746475), networkPlayers.size=3
+[2025-07-18 02:35:13.244][INFO ] SendPlayerMovement: playerID=5, pos=(802.658020,141.477051), mode=CLIENT
+[2025-07-18 02:35:13.317][INFO ] Updated player 0 position to (693.962158,199.920609)
+[2025-07-18 02:35:13.317][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=6, pos=(905.052063,242.746475), networkPlayers.size=3
+[2025-07-18 02:35:13.539][INFO ] Updated player 0 position to (693.962158,199.920609)
+[2025-07-18 02:35:13.539][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=6, pos=(905.052063,242.746475), networkPlayers.size=3
+[2025-07-18 02:35:13.761][INFO ] Updated player 0 position to (693.962158,199.920609)
+[2025-07-18 02:35:13.761][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=6, pos=(905.052063,242.746475), networkPlayers.size=3
+[2025-07-18 02:35:13.910][INFO ] SendPlayerMovement: playerID=5, pos=(802.658020,141.477051), mode=CLIENT
+[2025-07-18 02:35:13.978][INFO ] Updated player 0 position to (693.962158,199.920609)
+[2025-07-18 02:35:13.978][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=6, pos=(905.052063,242.746475), networkPlayers.size=3
+[2025-07-18 02:35:14.200][INFO ] Updated player 0 position to (693.962158,199.920609)
+[2025-07-18 02:35:14.200][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=6, pos=(905.052063,242.746475), networkPlayers.size=3
+[2025-07-18 02:35:14.422][INFO ] Updated player 0 position to (693.962158,199.920609)
+[2025-07-18 02:35:14.422][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=6, pos=(905.052063,242.746475), networkPlayers.size=3
+[2025-07-18 02:35:14.583][INFO ] SendPlayerMovement: playerID=5, pos=(802.658020,141.477051), mode=CLIENT
+[2025-07-18 02:35:14.645][INFO ] Updated player 0 position to (905.052063,242.746475)
+[2025-07-18 02:35:14.650][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(693.962158,199.920609), networkPlayers.size=3
+[2025-07-18 02:35:14.756][INFO ] Network player disconnected (ID: 6)
+[2025-07-18 02:35:14.766][INFO ] Found 3 player entities to render
+[2025-07-18 02:35:14.986][INFO ] Updated player 0 position to (765.717773,286.077148)
+[2025-07-18 02:35:14.986][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(693.962158,199.920609), networkPlayers.size=2
+[2025-07-18 02:35:15.248][INFO ] Network player disconnected (ID: 2)
+[2025-07-18 02:35:15.258][INFO ] Found 2 player entities to render
+[2025-07-18 02:35:15.267][INFO ] SendPlayerMovement: playerID=5, pos=(802.658020,141.477051), mode=CLIENT
+[2025-07-18 02:35:15.486][INFO ] Updated player 0 position to (693.962158,199.920609)
+[2025-07-18 02:35:15.490][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(693.962158,199.920609), networkPlayers.size=1
+[2025-07-18 02:35:15.622][INFO ] Game Closing
+[2025-07-18 02:35:15.622][INFO ] Game Shutdown
+[2025-07-18 02:35:15.629][INFO ] Auto-saved scene to autosave_scene.yaml
+[2025-07-18 02:35:15.629][INFO ] ImGui Inspector UI shutdown complete
+[2025-07-18 02:35:15.629][INFO ] Network thread stopped
+[2025-07-18 02:35:15.634][INFO ] Disconnected from server: Shutting down
+[2025-07-18 02:35:15.634][INFO ] Immediately triggering SERVER_DISCONNECTED callback...
+[2025-07-18 02:35:15.634][INFO ] === SERVER DISCONNECTED ===
+[2025-07-18 02:35:15.634][INFO ] Disconnected from server: Shutting down
+[2025-07-18 02:35:15.634][INFO ] Network players before SERVER_DISCONNECTED cleanup: 1
+[2025-07-18 02:35:15.634][INFO ] Reset network ID to 0
+[2025-07-18 02:35:15.634][INFO ] Clearing all network players...
+[2025-07-18 02:35:15.634][INFO ] Clearing 1 network players:
+[2025-07-18 02:35:15.634][INFO ]   - Removing player ID: 0, Entity ID: 8
+[2025-07-18 02:35:15.634][INFO ] -   Made entity invisible before destruction
+[2025-07-18 02:35:15.634][INFO ] All network players cleared
+[2025-07-18 02:35:15.635][INFO ] NetworkManager shut down
+[2025-07-18 02:35:15.635][INFO ] NetworkUI shut down

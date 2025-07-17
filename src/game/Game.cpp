@@ -11,6 +11,7 @@
 #include <engine/renderer/Shader.h>
 #include <glm/glm.hpp>
 #include <algorithm>
+#include <cmath>
 
 // ImGui includes for centralized UI rendering
 #include "imgui.h"
@@ -139,11 +140,27 @@ void Game::SetupNetworkingHandlers() {
             Packet mutablePacket = packet;
             joinData.ReadFrom(mutablePacket);
             
-            // Use senderID as the actual player ID for consistency
-            uint32_t actualPlayerID = senderID;
+            // Determine the actual player ID:
+            // - If sender is server (0), use the packet data's playerID (server forwarding existing player info)
+            // - If sender is client, use senderID (direct join from that client)
+            uint32_t actualPlayerID;
+            if (senderID == 0) {
+                // Server is forwarding existing player info, use packet data
+                actualPlayerID = joinData.playerID;
+            } else {
+                // Direct join from client, use sender ID
+                actualPlayerID = senderID;
+            }
             
             Logger::Info("Processing PLAYER_JOIN packet for player " + joinData.playerName + 
-                        " (senderID: " + std::to_string(actualPlayerID) + ", packetID: " + std::to_string(joinData.playerID) + ")");
+                        " (senderID: " + std::to_string(senderID) + ", packetID: " + std::to_string(joinData.playerID) + ", actualID: " + std::to_string(actualPlayerID) + ")");
+            
+            // Don't create a network entity for ourselves - we already have a local player entity
+            auto& networkManager = Network::GetManager();
+            if (actualPlayerID == networkManager.GetLocalPeerID()) {
+                Logger::Info("Skipping network entity creation for self (player ID: " + std::to_string(actualPlayerID) + ")");
+                return;
+            }
             
             // Create new player entity for the joining player
             Entity newPlayer = m_scene->CreateEntity("NetworkPlayer_" + std::to_string(actualPlayerID));
@@ -156,7 +173,18 @@ void Game::SetupNetworkingHandlers() {
             // Add Renderable component FIRST and configure it immediately
             auto* renderable = newPlayer.AddComponent<RenderableComponent>();
             if (renderable) {
-                renderable->color = glm::vec4(0.0f, 1.0f, 0.0f, 1.0f); // Green for network players
+                // Use different colors for different clients to distinguish them
+                if (actualPlayerID == 0) {
+                    renderable->color = glm::vec4(1.0f, 0.0f, 1.0f, 1.0f); // Purple for server
+                } else {
+                    // Generate a color based on player ID
+                    float hue = (actualPlayerID * 137.508f); // Golden angle for good color distribution
+                    while (hue > 360.0f) hue -= 360.0f;
+                    float r = std::abs(std::sin(hue * 0.017453f)) * 0.8f + 0.2f;
+                    float g = std::abs(std::sin((hue + 120.0f) * 0.017453f)) * 0.8f + 0.2f;
+                    float b = std::abs(std::sin((hue + 240.0f) * 0.017453f)) * 0.8f + 0.2f;
+                    renderable->color = glm::vec4(r, g, b, 1.0f);
+                }
                 renderable->visible = true; // Ensure it's visible
                 Logger::Info("RenderableComponent added and configured for network player");
             } else {
@@ -181,6 +209,28 @@ void Game::SetupNetworkingHandlers() {
             
             Logger::Info("Network player " + joinData.playerName + " joined and entity created (ID: " + std::to_string(actualPlayerID) + ", EntityID: " + std::to_string(newPlayer.GetID()) + ")");
             Logger::Info("Total network players now: " + std::to_string(m_networkPlayers.size()));
+            
+            // If we're the server, broadcast this new player's join to all OTHER clients
+            if (Network::GetManager().IsServer() && actualPlayerID != 0) {
+                Logger::Info("Server broadcasting new client " + std::to_string(actualPlayerID) + " to all other clients");
+                
+                // Create a new packet with the actual player data
+                PacketData::PlayerJoin broadcastData;
+                broadcastData.playerID = actualPlayerID;
+                broadcastData.playerName = "Player_" + std::to_string(actualPlayerID);
+                broadcastData.spawnPosition = joinData.spawnPosition;
+                
+                Packet broadcastPacket = PacketFactory::CreatePlayerJoinPacket(broadcastData);
+                
+                // Send to all clients EXCEPT the one who just joined
+                auto& manager = Network::GetManager();
+                for (const auto& peerInfo : manager.GetConnectedPeers()) {
+                    if (peerInfo.id != actualPlayerID) {
+                        Network::GetManager().SendPacket(broadcastPacket, peerInfo.id);
+                        Logger::Info("Sent new player " + std::to_string(actualPlayerID) + " info to client " + std::to_string(peerInfo.id));
+                    }
+                }
+            }
             
             // Verify the entity has all required components
             bool hasTransform = newPlayer.GetComponent<TransformComponent>() != nullptr;
@@ -222,6 +272,39 @@ void Game::SetupNetworkingHandlers() {
             // Use senderID instead of packet playerID for consistency
             uint32_t actualPlayerID = senderID;
             
+            // Debug logging
+            static int moveLogCounter = 0;
+            if (moveLogCounter++ % 60 == 0) { // Log every 60 frames
+                Logger::Info("PLAYER_MOVE received: senderID=" + std::to_string(senderID) + 
+                            ", packetPlayerID=" + std::to_string(moveData.playerID) + 
+                            ", pos=(" + std::to_string(moveData.position.x) + "," + std::to_string(moveData.position.y) + ")" +
+                            ", networkPlayers.size=" + std::to_string(m_networkPlayers.size()));
+            }
+            
+            // If we're the server and this is from a client, broadcast to all clients using proper broadcast
+            if (Network::GetManager().IsServer() && senderID != 0) {
+                // Create a new movement packet with correct player ID and send to other clients
+                PacketData::PlayerMove relayMoveData;
+                relayMoveData.playerID = actualPlayerID; // Use the actual sender's peer ID
+                relayMoveData.position = moveData.position;
+                relayMoveData.velocity = moveData.velocity;
+                relayMoveData.rotation = moveData.rotation;
+                
+                Packet relayPacket = PacketFactory::CreatePlayerMovePacket(relayMoveData);
+                
+                // Send to all clients EXCEPT the original sender
+                auto& relayManager = Network::GetManager();
+                for (const auto& peerInfo : relayManager.GetConnectedPeers()) {
+                    if (peerInfo.id != senderID) { // Don't send back to sender
+                        relayManager.SendPacket(relayPacket, peerInfo.id);
+                    }
+                }
+                
+                if (moveLogCounter % 60 == 0) {
+                    Logger::Info("Server broadcasting movement from client " + std::to_string(senderID) + " to other clients");
+                }
+            }
+            
             auto it = m_networkPlayers.find(actualPlayerID);
             if (it != m_networkPlayers.end()) {
                 auto* transform = it->second.GetComponent<TransformComponent>();
@@ -236,9 +319,18 @@ void Game::SetupNetworkingHandlers() {
                     float dirX = cos(moveData.rotation);
                     float dirY = sin(moveData.rotation);
                     playerComp->direction = glm::vec2(dirX, dirY);
+                    
+                    if (moveLogCounter % 60 == 0) {
+                        Logger::Info("Updated player " + std::to_string(actualPlayerID) + " position to (" + 
+                                    std::to_string(transform->position.x) + "," + std::to_string(transform->position.y) + ")");
+                    }
                 }
             } else {
-                Logger::Warn<Game>("Received movement for unknown player ID: " + std::to_string(actualPlayerID), this);
+                Logger::Warn<Game>("Received movement for unknown player ID: " + std::to_string(actualPlayerID) + 
+                                   " (available players: ", this);
+                for (const auto& pair : m_networkPlayers) {
+                    Logger::Info("  - Player ID: " + std::to_string(pair.first));
+                }
             }
         });
     
@@ -250,10 +342,15 @@ void Game::SetupNetworkingHandlers() {
                 Logger::Info("Client connected from " + event.message + ", Peer ID: " + std::to_string(event.peerID));
                 Logger::Info("Total clients now: " + std::to_string(Network::GetManager().GetPeerCount()));
                 
-                // If we're the server, send our player info to the new client
+                // If we're the server, handle new client connection
                 if (Network::GetManager().IsServer()) {
-                    Logger::Info("Server sending player join info to new client...");
-                    SendPlayerJoinToClients();
+                    Logger::Info("Server handling new client connection...");
+                    
+                    // Send ALL existing players to the new client
+                    SendAllPlayersToClient(event.peerID);
+                    
+                    // Now wait for the new client to send their PLAYER_JOIN packet
+                    // which will be handled by the PLAYER_JOIN handler and broadcasted to all clients
                 }
                 break;
                 
@@ -296,7 +393,8 @@ void Game::SetupNetworkingHandlers() {
                 Logger::Info("Assigned client network ID: " + std::to_string(m_localPlayerNetworkID));
                 Logger::Info("Current network players at connection: " + std::to_string(m_networkPlayers.size()));
                 
-                // Send our player join packet to server
+                // The server will first send us info about all existing players via SendAllPlayersToClient
+                // Then we send our player join packet to server
                 Logger::Info("Sending player join packet to server...");
                 SendPlayerJoinToServer();
                 break;
@@ -338,9 +436,9 @@ void Game::SendPlayerJoinToServer() {
     
     // Create player join packet
     PacketData::PlayerJoin joinData;
-    // Use our assigned network ID
-    joinData.playerID = m_localPlayerNetworkID;
-    joinData.playerName = "Player_" + std::to_string(m_localPlayerNetworkID);
+    // Use NetworkManager's assigned peer ID
+    joinData.playerID = Network::GetManager().GetLocalPeerID();
+    joinData.playerName = "Player_" + std::to_string(joinData.playerID);
     joinData.spawnPosition = spawnPos;
     
     Packet joinPacket = PacketFactory::CreatePlayerJoinPacket(joinData);
@@ -399,6 +497,57 @@ void Game::SendPlayerJoinToClients() {
     Logger::Info("Broadcasted server player join packet to clients");
 }
 
+void Game::SendAllPlayersToClient(uint32_t clientID) {
+    if (!Network::GetManager().IsServer()) {
+        return;
+    }
+    
+    Logger::Info("=== SENDING ALL PLAYERS TO NEW CLIENT " + std::to_string(clientID) + " ===");
+    
+    // Send server player info to the new client
+    glm::vec2 serverPos(windowWidth * 0.5f, windowHeight * 0.5f);
+    if (m_playerEntity.IsValid()) {
+        auto* transform = m_playerEntity.GetComponent<TransformComponent>();
+        if (transform) {
+            serverPos = glm::vec2(transform->position);
+        }
+    }
+    
+    // Send server player join packet
+    PacketData::PlayerJoin serverJoinData;
+    serverJoinData.playerID = 0; // Server is always ID 0
+    serverJoinData.playerName = "Player_0";
+    serverJoinData.spawnPosition = serverPos;
+    
+    Packet serverJoinPacket = PacketFactory::CreatePlayerJoinPacket(serverJoinData);
+    Network::GetManager().SendPacket(serverJoinPacket, clientID);
+    Logger::Info("Sent server player info to client " + std::to_string(clientID));
+    
+    // Send info about all other connected clients to the new client
+    auto& manager = Network::GetManager();
+    for (const auto& peerInfo : manager.GetConnectedPeers()) {
+        if (peerInfo.id != clientID && peerInfo.id != 0) { // Don't send to self or server
+            // Find the existing player entity for this peer
+            auto it = m_networkPlayers.find(peerInfo.id);
+            if (it != m_networkPlayers.end() && it->second.IsValid()) {
+                auto* transform = it->second.GetComponent<TransformComponent>();
+                if (transform) {
+                    PacketData::PlayerJoin existingPlayerData;
+                    existingPlayerData.playerID = peerInfo.id;
+                    existingPlayerData.playerName = "Player_" + std::to_string(peerInfo.id);
+                    existingPlayerData.spawnPosition = glm::vec2(transform->position);
+                    
+                    Packet existingPlayerPacket = PacketFactory::CreatePlayerJoinPacket(existingPlayerData);
+                    Network::GetManager().SendPacket(existingPlayerPacket, clientID);
+                    Logger::Info("Sent existing player " + std::to_string(peerInfo.id) + " info to new client " + std::to_string(clientID));
+                }
+            }
+        }
+    }
+    
+    Logger::Info("=== FINISHED SENDING ALL PLAYERS TO CLIENT " + std::to_string(clientID) + " ===");
+}
+
 void Game::SendPlayerMovement() {
     auto& manager = Network::GetManager();
     if (!manager.IsServer() && !manager.IsClient()) {
@@ -418,12 +567,30 @@ void Game::SendPlayerMovement() {
     
     // Create movement packet
     PacketData::PlayerMove moveData;
-    moveData.playerID = m_localPlayerNetworkID; // Use our stored network ID
+    moveData.playerID = manager.GetLocalPeerID(); // Use NetworkManager's assigned peer ID
     moveData.position = glm::vec2(transform->position);
     moveData.velocity = glm::vec2(0.0f); // Could calculate velocity
     moveData.rotation = transform->rotation.z;
     
+    // Debug: Check if we have a valid peer ID before sending (server can have ID 0)
+    if (moveData.playerID == 0 && !manager.IsServer()) {
+        static int warningCounter = 0;
+        if (warningCounter++ % 120 == 0) { // Log every 2 seconds
+            Logger::Warn<Game>("CLIENT SendPlayerMovement called with peer ID 0! " +
+                              std::string("NetworkManager localPeerID: ") + std::to_string(manager.GetLocalPeerID()), this);
+        }
+        return; // Don't send movement with invalid peer ID for clients
+    }
+    
     Packet movePacket = PacketFactory::CreatePlayerMovePacket(moveData);
+    
+    // Debug logging
+    static int logCounter = 0;
+    if (logCounter++ % 60 == 0) { // Log every 60 frames (about 1 second)
+        Logger::Info("SendPlayerMovement: playerID=" + std::to_string(moveData.playerID) + 
+                    ", pos=(" + std::to_string(moveData.position.x) + "," + std::to_string(moveData.position.y) + ")" +
+                    ", mode=" + std::string(manager.IsServer() ? "SERVER" : "CLIENT"));
+    }
     
     if (manager.IsServer()) {
         manager.BroadcastPacket(movePacket);
@@ -441,7 +608,7 @@ void Game::ClearNetworkPlayers() {
             auto* renderable = pair.second.GetComponent<RenderableComponent>();
             if (renderable) {
                 renderable->visible = false;
-                Logger::Info("    Made entity invisible before destruction");
+                Logger::Info("-   Made entity invisible before destruction");
             }
             
             m_scene->DestroyEntity(pair.second.GetID());
@@ -674,7 +841,7 @@ void Game::OnUpdate() {
     // Send movement updates if connected to network
     static float movementUpdateTimer = 0.0f;
     movementUpdateTimer += Time::DeltaTime();
-    if (movementUpdateTimer >= 0.1f) { // Send movement updates 10 times per second
+    if (movementUpdateTimer >= 0.0078125f) { // Send movement updates 128 times per second
         SendPlayerMovement();
         movementUpdateTimer = 0.0f;
     }

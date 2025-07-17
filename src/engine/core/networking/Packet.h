@@ -16,6 +16,7 @@ enum class PacketType : uint8_t {
     DISCONNECT, // Disconnect packet
     PING, // Server to client message
     PONG, // Client to server response
+    PEER_ID_ASSIGNMENT, // Server assigns peer ID to client
     
     
     // Player actions
@@ -154,6 +155,14 @@ namespace PacketData {
         void WriteTo(Packet& packet) const;
         void ReadFrom(Packet& packet);
     };
+    
+    // Peer ID assignment packet
+    struct PeerIDAssignment {
+        uint32_t assignedPeerID;
+        
+        void WriteTo(Packet& packet) const;
+        void ReadFrom(Packet& packet);
+    };
 }
 
 // Packet factory for creating specific packet types
@@ -167,4 +176,5 @@ public:
     static Packet CreatePlayerJoinPacket(const PacketData::PlayerJoin& joinData);
     static Packet CreateDisconnectPacket(const std::string& reason = "");
     static Packet CreatePlayerLeavePacket(uint32_t playerID);
+    static Packet CreatePeerIDAssignmentPacket(uint32_t assignedPeerID);
 };

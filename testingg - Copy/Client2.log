@@ -1,0 +1,68 @@
+[2025-07-18 02:00:44.193][INFO ] ImGui Inspector UI initialized successfully
+[2025-07-18 02:00:44.193][INFO ] NetworkManager initialized successfully
+[2025-07-18 02:00:44.194][INFO ] NetworkUI initialized successfully
+[2025-07-18 02:00:44.194][INFO ] Network thread started
+[2025-07-18 02:00:44.194][INFO ] Network packet handlers initialized
+[2025-07-18 02:00:44.195][INFO ] Found 1 player entities to render
+[2025-07-18 02:00:51.985][INFO ] Framebuffer resized to: 1278x664
+[2025-07-18 02:00:56.693][INFO ] Starting async connection to localhost:7777
+[2025-07-18 02:00:56.693][INFO ] Network thread: Attempting connection to localhost:7777
+[2025-07-18 02:00:56.703][INFO ] Connected to server localhost:7777, waiting for peer ID assignment
+[2025-07-18 02:00:56.713][INFO ] === PEER ID ASSIGNMENT ===
+[2025-07-18 02:00:56.713][INFO ] Received peer ID assignment: 2 (old ID was: 0)
+[2025-07-18 02:00:56.713][INFO ] NetworkManager.GetLocalPeerID() now returns: 2
+[2025-07-18 02:00:56.713][INFO ] === CONNECTED TO SERVER ===
+[2025-07-18 02:00:56.713][INFO ] Connected to server: Connected with assigned peer ID 2
+[2025-07-18 02:00:56.713][INFO ] Assigned client network ID: 2
+[2025-07-18 02:00:56.714][INFO ] Current network players at connection: 0
+[2025-07-18 02:00:56.714][INFO ] Sending player join packet to server...
+[2025-07-18 02:00:56.714][INFO ] Sent player join packet to server
+[2025-07-18 02:00:56.726][INFO ] Processing PLAYER_JOIN packet for player Player_0 (senderID: 0, packetID: 0)
+[2025-07-18 02:00:56.726][INFO ] RenderableComponent added and configured for network player
+[2025-07-18 02:00:56.726][INFO ] PlayerComponent added and configured for network player
+[2025-07-18 02:00:56.727][INFO ] Network player Player_0 joined and entity created (ID: 0, EntityID: 7)
+[2025-07-18 02:00:56.727][INFO ] Total network players now: 1
+[2025-07-18 02:00:56.727][INFO ] Entity components check - Transform: YES, Player: YES, Renderable: YES
+[2025-07-18 02:00:56.727][INFO ] Processing PLAYER_JOIN packet for player Player_1 (senderID: 0, packetID: 1)
+[2025-07-18 02:00:56.727][INFO ] RenderableComponent added and configured for network player
+[2025-07-18 02:00:56.727][INFO ] PlayerComponent added and configured for network player
+[2025-07-18 02:00:56.727][INFO ] Network player Player_1 joined and entity created (ID: 0, EntityID: 8)
+[2025-07-18 02:00:56.727][INFO ] Total network players now: 1
+[2025-07-18 02:00:56.727][INFO ] Entity components check - Transform: YES, Player: YES, Renderable: YES
+[2025-07-18 02:00:56.735][INFO ] Found 3 player entities to render
+[2025-07-18 02:00:56.764][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(701.911072,265.782898), networkPlayers.size=1
+[2025-07-18 02:00:56.803][INFO ] SendPlayerMovement: playerID=2, pos=(640.000000,360.000000), mode=CLIENT
+[2025-07-18 02:01:01.047][INFO ] Processing PLAYER_JOIN packet for player Player_3 (senderID: 0, packetID: 3)
+[2025-07-18 02:01:01.047][INFO ] RenderableComponent added and configured for network player
+[2025-07-18 02:01:01.047][INFO ] PlayerComponent added and configured for network player
+[2025-07-18 02:01:01.047][INFO ] Network player Player_3 joined and entity created (ID: 0, EntityID: 9)
+[2025-07-18 02:01:01.047][INFO ] Total network players now: 1
+[2025-07-18 02:01:01.047][INFO ] Entity components check - Transform: YES, Player: YES, Renderable: YES
+[2025-07-18 02:01:01.052][INFO ] Found 4 player entities to render
+[2025-07-18 02:01:02.863][INFO ] Updated player 0 position to (646.879883,359.127747)
+[2025-07-18 02:01:02.962][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(646.879883,359.127747), networkPlayers.size=1
+[2025-07-18 02:01:02.996][INFO ] SendPlayerMovement: playerID=2, pos=(826.983337,227.914886), mode=CLIENT
+[2025-07-18 02:01:09.046][INFO ] Updated player 0 position to (646.879883,359.127747)
+[2025-07-18 02:01:09.152][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(646.879883,359.127747), networkPlayers.size=1
+[2025-07-18 02:01:09.182][INFO ] SendPlayerMovement: playerID=2, pos=(826.983337,227.914886), mode=CLIENT
+[2025-07-18 02:01:15.207][INFO ] Updated player 0 position to (624.954651,408.163452)
+[2025-07-18 02:01:15.312][INFO ] PLAYER_MOVE received: senderID=0, packetPlayerID=0, pos=(624.954651,408.163452), networkPlayers.size=1
+[2025-07-18 02:01:15.368][INFO ] SendPlayerMovement: playerID=2, pos=(823.223572,194.123825), mode=CLIENT
+[2025-07-18 02:01:17.946][INFO ] Game Closing
+[2025-07-18 02:01:17.946][INFO ] Game Shutdown
+[2025-07-18 02:01:17.955][INFO ] Auto-saved scene to autosave_scene.yaml
+[2025-07-18 02:01:17.956][INFO ] ImGui Inspector UI shutdown complete
+[2025-07-18 02:01:17.956][INFO ] Network thread stopped
+[2025-07-18 02:01:17.958][INFO ] Disconnected from server: Shutting down
+[2025-07-18 02:01:17.958][INFO ] Immediately triggering SERVER_DISCONNECTED callback...
+[2025-07-18 02:01:17.958][INFO ] === SERVER DISCONNECTED ===
+[2025-07-18 02:01:17.958][INFO ] Disconnected from server: Shutting down
+[2025-07-18 02:01:17.959][INFO ] Network players before SERVER_DISCONNECTED cleanup: 1
+[2025-07-18 02:01:17.959][INFO ] Reset network ID to 0
+[2025-07-18 02:01:17.959][INFO ] Clearing all network players...
+[2025-07-18 02:01:17.959][INFO ] Clearing 1 network players:
+[2025-07-18 02:01:17.959][INFO ]   - Removing player ID: 0, Entity ID: 9
+[2025-07-18 02:01:17.959][INFO ] -   Made entity invisible before destruction
+[2025-07-18 02:01:17.959][INFO ] All network players cleared
+[2025-07-18 02:01:17.959][INFO ] NetworkManager shut down
+[2025-07-18 02:01:17.959][INFO ] NetworkUI shut down

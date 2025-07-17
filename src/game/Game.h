@@ -6,6 +6,7 @@
 // Standard library includes
 #include <vector>
 #include <memory>
+#include <unordered_map>
 
 // Engine Includes
 #include "../engine/core/Engine.h"
@@ -14,6 +15,9 @@
 #include "../engine/renderer/fog/FogRenderer2D.h"
 #include "../engine/renderer/vision/VisionRenderer2D.h"
 #include "../engine/renderer/lighting/LightRenderer2D.h"
+#include "../engine/utils/Time.h"
+#include "../engine/core/networking/NetworkManager.h"
+#include "../engine/core/networking/Packet.h"
 
 #include "Player.h"
 
@@ -28,6 +32,7 @@
 
 // Inspector UI
 #include "../engine/renderer/ui/GameInspectorUI.h"
+#include "../engine/renderer/ui/NetworkUI.h"
 
 enum class RenderMode {
     FOG,
@@ -274,6 +279,19 @@ public:
     void OnDraw() override;
     void OnShutdown() override;
     void OnResize(int width, int height);
+    
+    // Networking methods
+    void SetupNetworkingHandlers();
+    void SendPlayerJoinToServer();
+    void SendPlayerLeaveToServer(uint32_t playerID);
+    void SendPlayerLeaveToClients(uint32_t playerID);
+    void SendPlayerJoinToClients();
+    void SendAllPlayersToClient(uint32_t clientID);
+    void SendPlayerMovement();
+    void ClearNetworkPlayers();
+    void DisconnectFromServer();
+    void RenderUI();
+    
     int viewportX = 0, viewportY = 0, viewportWidth = 1280, viewportHeight = 720;
 
     std::vector<Obstacle> m_Obstacles;
@@ -294,12 +312,20 @@ protected:
     LightConfig m_LightConfig;      // Lighting system configuration
     std::vector<Light> m_Lights;    // Scene lights
     RenderMode m_RenderMode = RenderMode::LIGHTING;
+    
+    // Network UI
+    std::unique_ptr<NetworkUI> m_networkUI;
+    
 
 private:
     // ECS components
     std::unique_ptr<Scene> m_scene;
     Entity m_playerEntity;
     PlayerMovementSystem* m_playerMovementSystem;
+    
+    // Networking
+    uint32_t m_localPlayerNetworkID;
+    std::unordered_map<uint32_t, Entity> m_networkPlayers;
     
     // ECS setup methods
     void SetupECSScene();

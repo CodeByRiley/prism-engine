@@ -19,7 +19,7 @@ NetworkManager::NetworkManager()
     , m_PacketsSent(0)
     , m_PacketsReceived(0)
     , m_MaxClients(32)
-    , m_ChannelLimit(16)
+    , m_ChannelLimit(4)
     , m_IncomingBandwidth(0)
     , m_OutgoingBandwidth(0)
     , m_CompressionEnabled(false)
@@ -124,10 +124,12 @@ bool NetworkManager::StartServer(uint16_t port, size_t maxClients) {
     }
     
     m_IsServer = true;
+    m_LocalPeerID = 0; // Server always has peer ID 0
     m_ConnectedPeers.clear();
     
     Logger::Info("Server started on port " + std::to_string(port) + 
                 " with max " + std::to_string(maxClients) + " clients");
+    Logger::Info("Server assigned local peer ID: 0");
     
     // Queue server started event
     QueueEvent(NetworkEvent(NetworkEventType::SERVER_STARTED, 0, 
@@ -245,15 +247,11 @@ bool NetworkManager::ConnectToServerBlocking(const std::string& address, uint16_
         serverInfo.isConnected = true;
         m_ConnectedPeers.push_back(serverInfo);
         
-        // Generate a unique client ID based on connection time and address
-        // This ensures each client gets a different ID
-        uint32_t clientID = static_cast<uint32_t>(enet_time_get() % 100000) + 
-                            static_cast<uint32_t>(m_ServerPeer->address.port % 1000);
-        if (clientID == 0) clientID = 1; // Ensure client ID is never 0 (reserved for server)
+        // Don't assign our own client ID yet - wait for server to send it via PEER_ID_ASSIGNMENT packet
+        m_LocalPeerID = 0; // Will be set when we receive the assignment packet
         
-        Logger::Info("Connected to server " + address + ":" + std::to_string(port) + " with client ID: " + std::to_string(clientID));
-        QueueEvent(NetworkEvent(NetworkEventType::SERVER_CONNECTED, clientID, 
-                                "Connected to " + address + ":" + std::to_string(port)));
+        Logger::Info("Connected to server " + address + ":" + std::to_string(port) + ", waiting for peer ID assignment");
+        // Note: We'll queue the SERVER_CONNECTED event after receiving peer ID assignment
         return true;
     } else {
         enet_peer_reset(m_ServerPeer);
@@ -515,6 +513,21 @@ void NetworkManager::AddPeer(ENetPeer* enetPeer) {
     
     m_ConnectedPeers.push_back(peer);
     
+    // Send peer ID assignment to the newly connected client
+    Logger::Info("=== SERVER ASSIGNING PEER ID ===");
+    Logger::Info("Assigning peer ID: " + std::to_string(peer.id) + " to new client");
+    Logger::Info("Server local peer ID: " + std::to_string(m_LocalPeerID));
+    
+    Packet peerIDPacket = PacketFactory::CreatePeerIDAssignmentPacket(peer.id);
+    ENetPacket* enetPacket = peerIDPacket.CreateENetPacket(PacketReliability::RELIABLE);
+    if (enetPacket && enet_peer_send(enetPeer, 0, enetPacket) == 0) {
+        Logger::Info("Successfully sent PEER_ID_ASSIGNMENT packet to client (assigned ID: " + std::to_string(peer.id) + ")");
+        enet_host_flush(m_Host); // Force immediate send
+    } else {
+        Logger::Error<NetworkManager>("Failed to send peer ID assignment packet", this);
+        if (enetPacket) enet_packet_destroy(enetPacket);
+    }
+    
     QueueEvent(NetworkEvent(NetworkEventType::CLIENT_CONNECTED, peer.id, 
                            "Client " + std::to_string(peer.id) + " connected"));
 }
@@ -652,6 +665,28 @@ void NetworkManager::RegisterBuiltinHandlers() {
     RegisterPacketHandler(PacketType::PONG,
         [this](const Packet& packet, uint32_t senderID) {
             UpdatePeerLatency(senderID, packet.GetTimestamp());
+        });
+    
+        RegisterPacketHandler(PacketType::PEER_ID_ASSIGNMENT,
+        [this](const Packet& packet, uint32_t senderID) {
+            if (m_IsClient) {
+                Packet mutablePacket = packet;
+                uint32_t assignedID = mutablePacket.ReadUint32();
+                uint32_t oldID = m_LocalPeerID;
+                m_LocalPeerID = assignedID;
+                
+                Logger::Info("=== PEER ID ASSIGNMENT ===");
+                Logger::Info("Received peer ID assignment: " + std::to_string(assignedID) + 
+                           " (old ID was: " + std::to_string(oldID) + ")");
+                Logger::Info("NetworkManager.GetLocalPeerID() now returns: " + std::to_string(m_LocalPeerID));
+                
+                // Now queue the SERVER_CONNECTED event with the correct peer ID
+                QueueEvent(NetworkEvent(NetworkEventType::SERVER_CONNECTED, assignedID, 
+                                      "Connected with assigned peer ID " + std::to_string(assignedID)));
+            } else {
+                Logger::Warn<NetworkManager>("Received PEER_ID_ASSIGNMENT packet but we're not a client (senderID: " + 
+                                           std::to_string(senderID) + ")", this);
+            }
         });
 }
 

@@ -215,6 +215,14 @@ void PacketData::PlayerJoin::ReadFrom(Packet& packet) {
     spawnPosition = packet.ReadVec2();
 }
 
+void PacketData::PeerIDAssignment::WriteTo(Packet& packet) const {
+    packet.WriteUint32(assignedPeerID);
+}
+
+void PacketData::PeerIDAssignment::ReadFrom(Packet& packet) {
+    assignedPeerID = packet.ReadUint32();
+}
+
 // PacketFactory implementations
 
 Packet PacketFactory::CreatePingPacket() {
@@ -262,5 +270,11 @@ Packet PacketFactory::CreateDisconnectPacket(const std::string& reason) {
 Packet PacketFactory::CreatePlayerLeavePacket(uint32_t playerID) {
     Packet packet(PacketType::PLAYER_LEAVE);
     packet.WriteUint32(playerID);
+    return packet;
+}
+
+Packet PacketFactory::CreatePeerIDAssignmentPacket(uint32_t assignedPeerID) {
+    Packet packet(PacketType::PEER_ID_ASSIGNMENT);
+    packet.WriteUint32(assignedPeerID);
     return packet;
 } 
