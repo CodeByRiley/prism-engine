@@ -22,15 +22,7 @@ Initially cloned from [GLFWCMakeSetup](https://github.com/meemknight/GLFWCMakeSe
 - **Resource Management**: Efficient asset loading and caching
 - **Logging System**: Multi-level logging system / File logging
 
-### TODO
-- [ ] Add Audio System
-- [ ] Add Networking
-- [ ] Proper Physics
-- [ ] UI System
-    ### In Progress
-        - [ ] Entity Component System
-        - [ ] Scene Management
-        - [ ] Serialization
+[TODO: Add more features](TODO.md)
 
 ### 🛠️ Developer Tools
 - **ImGui Integration**: Real-time debugging and editor tools

@@ -1,0 +1,186 @@
+{
+	"bmi-installation" : null,
+	"compiler-frontend-variant" : "GNU",
+	"compiler-id" : "GNU",
+	"compiler-simulate-id" : "",
+	"config" : "Debug",
+	"cxx-modules" : {},
+	"database-info" : null,
+	"dir-cur-bld" : "F:/Dev Stuff/C++/GLFWEng/cmake-build-debug-mingw/thirdparty/yaml-cpp",
+	"dir-cur-src" : "F:/Dev Stuff/C++/GLFWEng/thirdparty/yaml-cpp",
+	"dir-top-bld" : "F:/Dev Stuff/C++/GLFWEng/cmake-build-debug-mingw",
+	"dir-top-src" : "F:/Dev Stuff/C++/GLFWEng",
+	"exports" : [],
+	"forward-modules-from-target-dirs" : [],
+	"include-dirs" : 
+	[
+		"F:\\Dev Stuff\\C++\\GLFWEng\\thirdparty\\yaml-cpp\\include",
+		"F:\\Dev Stuff\\C++\\GLFWEng\\thirdparty\\yaml-cpp\\src"
+	],
+	"language" : "CXX",
+	"linked-target-dirs" : [],
+	"module-dir" : "F:/Dev Stuff/C++/GLFWEng/cmake-build-debug-mingw/thirdparty/yaml-cpp/CMakeFiles/yaml-cpp.dir",
+	"sources" : 
+	{
+		"thirdparty/yaml-cpp/CMakeFiles/yaml-cpp.dir/src/binary.cpp.obj" : 
+		{
+			"language" : "CXX",
+			"source" : "F:/Dev Stuff/C++/GLFWEng/thirdparty/yaml-cpp/src/binary.cpp"
+		},
+		"thirdparty/yaml-cpp/CMakeFiles/yaml-cpp.dir/src/contrib/graphbuilder.cpp.obj" : 
+		{
+			"language" : "CXX",
+			"source" : "F:/Dev Stuff/C++/GLFWEng/thirdparty/yaml-cpp/src/contrib/graphbuilder.cpp"
+		},
+		"thirdparty/yaml-cpp/CMakeFiles/yaml-cpp.dir/src/contrib/graphbuilderadapter.cpp.obj" : 
+		{
+			"language" : "CXX",
+			"source" : "F:/Dev Stuff/C++/GLFWEng/thirdparty/yaml-cpp/src/contrib/graphbuilderadapter.cpp"
+		},
+		"thirdparty/yaml-cpp/CMakeFiles/yaml-cpp.dir/src/convert.cpp.obj" : 
+		{
+			"language" : "CXX",
+			"source" : "F:/Dev Stuff/C++/GLFWEng/thirdparty/yaml-cpp/src/convert.cpp"
+		},
+		"thirdparty/yaml-cpp/CMakeFiles/yaml-cpp.dir/src/depthguard.cpp.obj" : 
+		{
+			"language" : "CXX",
+			"source" : "F:/Dev Stuff/C++/GLFWEng/thirdparty/yaml-cpp/src/depthguard.cpp"
+		},
+		"thirdparty/yaml-cpp/CMakeFiles/yaml-cpp.dir/src/directives.cpp.obj" : 
+		{
+			"language" : "CXX",
+			"source" : "F:/Dev Stuff/C++/GLFWEng/thirdparty/yaml-cpp/src/directives.cpp"
+		},
+		"thirdparty/yaml-cpp/CMakeFiles/yaml-cpp.dir/src/emit.cpp.obj" : 
+		{
+			"language" : "CXX",
+			"source" : "F:/Dev Stuff/C++/GLFWEng/thirdparty/yaml-cpp/src/emit.cpp"
+		},
+		"thirdparty/yaml-cpp/CMakeFiles/yaml-cpp.dir/src/emitfromevents.cpp.obj" : 
+		{
+			"language" : "CXX",
+			"source" : "F:/Dev Stuff/C++/GLFWEng/thirdparty/yaml-cpp/src/emitfromevents.cpp"
+		},
+		"thirdparty/yaml-cpp/CMakeFiles/yaml-cpp.dir/src/emitter.cpp.obj" : 
+		{
+			"language" : "CXX",
+			"source" : "F:/Dev Stuff/C++/GLFWEng/thirdparty/yaml-cpp/src/emitter.cpp"
+		},
+		"thirdparty/yaml-cpp/CMakeFiles/yaml-cpp.dir/src/emitterstate.cpp.obj" : 
+		{
+			"language" : "CXX",
+			"source" : "F:/Dev Stuff/C++/GLFWEng/thirdparty/yaml-cpp/src/emitterstate.cpp"
+		},
+		"thirdparty/yaml-cpp/CMakeFiles/yaml-cpp.dir/src/emitterutils.cpp.obj" : 
+		{
+			"language" : "CXX",
+			"source" : "F:/Dev Stuff/C++/GLFWEng/thirdparty/yaml-cpp/src/emitterutils.cpp"
+		},
+		"thirdparty/yaml-cpp/CMakeFiles/yaml-cpp.dir/src/exceptions.cpp.obj" : 
+		{
+			"language" : "CXX",
+			"source" : "F:/Dev Stuff/C++/GLFWEng/thirdparty/yaml-cpp/src/exceptions.cpp"
+		},
+		"thirdparty/yaml-cpp/CMakeFiles/yaml-cpp.dir/src/exp.cpp.obj" : 
+		{
+			"language" : "CXX",
+			"source" : "F:/Dev Stuff/C++/GLFWEng/thirdparty/yaml-cpp/src/exp.cpp"
+		},
+		"thirdparty/yaml-cpp/CMakeFiles/yaml-cpp.dir/src/fptostring.cpp.obj" : 
+		{
+			"language" : "CXX",
+			"source" : "F:/Dev Stuff/C++/GLFWEng/thirdparty/yaml-cpp/src/fptostring.cpp"
+		},
+		"thirdparty/yaml-cpp/CMakeFiles/yaml-cpp.dir/src/memory.cpp.obj" : 
+		{
+			"language" : "CXX",
+			"source" : "F:/Dev Stuff/C++/GLFWEng/thirdparty/yaml-cpp/src/memory.cpp"
+		},
+		"thirdparty/yaml-cpp/CMakeFiles/yaml-cpp.dir/src/node.cpp.obj" : 
+		{
+			"language" : "CXX",
+			"source" : "F:/Dev Stuff/C++/GLFWEng/thirdparty/yaml-cpp/src/node.cpp"
+		},
+		"thirdparty/yaml-cpp/CMakeFiles/yaml-cpp.dir/src/node_data.cpp.obj" : 
+		{
+			"language" : "CXX",
+			"source" : "F:/Dev Stuff/C++/GLFWEng/thirdparty/yaml-cpp/src/node_data.cpp"
+		},
+		"thirdparty/yaml-cpp/CMakeFiles/yaml-cpp.dir/src/nodebuilder.cpp.obj" : 
+		{
+			"language" : "CXX",
+			"source" : "F:/Dev Stuff/C++/GLFWEng/thirdparty/yaml-cpp/src/nodebuilder.cpp"
+		},
+		"thirdparty/yaml-cpp/CMakeFiles/yaml-cpp.dir/src/nodeevents.cpp.obj" : 
+		{
+			"language" : "CXX",
+			"source" : "F:/Dev Stuff/C++/GLFWEng/thirdparty/yaml-cpp/src/nodeevents.cpp"
+		},
+		"thirdparty/yaml-cpp/CMakeFiles/yaml-cpp.dir/src/null.cpp.obj" : 
+		{
+			"language" : "CXX",
+			"source" : "F:/Dev Stuff/C++/GLFWEng/thirdparty/yaml-cpp/src/null.cpp"
+		},
+		"thirdparty/yaml-cpp/CMakeFiles/yaml-cpp.dir/src/ostream_wrapper.cpp.obj" : 
+		{
+			"language" : "CXX",
+			"source" : "F:/Dev Stuff/C++/GLFWEng/thirdparty/yaml-cpp/src/ostream_wrapper.cpp"
+		},
+		"thirdparty/yaml-cpp/CMakeFiles/yaml-cpp.dir/src/parse.cpp.obj" : 
+		{
+			"language" : "CXX",
+			"source" : "F:/Dev Stuff/C++/GLFWEng/thirdparty/yaml-cpp/src/parse.cpp"
+		},
+		"thirdparty/yaml-cpp/CMakeFiles/yaml-cpp.dir/src/parser.cpp.obj" : 
+		{
+			"language" : "CXX",
+			"source" : "F:/Dev Stuff/C++/GLFWEng/thirdparty/yaml-cpp/src/parser.cpp"
+		},
+		"thirdparty/yaml-cpp/CMakeFiles/yaml-cpp.dir/src/regex_yaml.cpp.obj" : 
+		{
+			"language" : "CXX",
+			"source" : "F:/Dev Stuff/C++/GLFWEng/thirdparty/yaml-cpp/src/regex_yaml.cpp"
+		},
+		"thirdparty/yaml-cpp/CMakeFiles/yaml-cpp.dir/src/scanner.cpp.obj" : 
+		{
+			"language" : "CXX",
+			"source" : "F:/Dev Stuff/C++/GLFWEng/thirdparty/yaml-cpp/src/scanner.cpp"
+		},
+		"thirdparty/yaml-cpp/CMakeFiles/yaml-cpp.dir/src/scanscalar.cpp.obj" : 
+		{
+			"language" : "CXX",
+			"source" : "F:/Dev Stuff/C++/GLFWEng/thirdparty/yaml-cpp/src/scanscalar.cpp"
+		},
+		"thirdparty/yaml-cpp/CMakeFiles/yaml-cpp.dir/src/scantag.cpp.obj" : 
+		{
+			"language" : "CXX",
+			"source" : "F:/Dev Stuff/C++/GLFWEng/thirdparty/yaml-cpp/src/scantag.cpp"
+		},
+		"thirdparty/yaml-cpp/CMakeFiles/yaml-cpp.dir/src/scantoken.cpp.obj" : 
+		{
+			"language" : "CXX",
+			"source" : "F:/Dev Stuff/C++/GLFWEng/thirdparty/yaml-cpp/src/scantoken.cpp"
+		},
+		"thirdparty/yaml-cpp/CMakeFiles/yaml-cpp.dir/src/simplekey.cpp.obj" : 
+		{
+			"language" : "CXX",
+			"source" : "F:/Dev Stuff/C++/GLFWEng/thirdparty/yaml-cpp/src/simplekey.cpp"
+		},
+		"thirdparty/yaml-cpp/CMakeFiles/yaml-cpp.dir/src/singledocparser.cpp.obj" : 
+		{
+			"language" : "CXX",
+			"source" : "F:/Dev Stuff/C++/GLFWEng/thirdparty/yaml-cpp/src/singledocparser.cpp"
+		},
+		"thirdparty/yaml-cpp/CMakeFiles/yaml-cpp.dir/src/stream.cpp.obj" : 
+		{
+			"language" : "CXX",
+			"source" : "F:/Dev Stuff/C++/GLFWEng/thirdparty/yaml-cpp/src/stream.cpp"
+		},
+		"thirdparty/yaml-cpp/CMakeFiles/yaml-cpp.dir/src/tag.cpp.obj" : 
+		{
+			"language" : "CXX",
+			"source" : "F:/Dev Stuff/C++/GLFWEng/thirdparty/yaml-cpp/src/tag.cpp"
+		}
+	}
+}

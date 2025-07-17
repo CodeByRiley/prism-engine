@@ -14,6 +14,7 @@ protected:
     virtual void OnUpdate();
     virtual void OnDraw();
     virtual void OnShutdown();
+    virtual void OnResize(int width, int height) {}  // Empty default implementation
 
     // Window and context
     struct GLFWwindow* m_Window;

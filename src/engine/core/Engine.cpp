@@ -33,6 +33,9 @@ Engine::~Engine() {
 }
 
 void Engine::Run() {
+    // Initialize the game before starting the main loop
+    OnInit();
+    
     auto lastTime = std::chrono::high_resolution_clock::now();
     while (m_Running && !glfwWindowShouldClose(m_Window)) {
         // Clear the screen

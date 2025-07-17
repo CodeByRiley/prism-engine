@@ -1,0 +1,17 @@
+{
+	"InstallScripts" : 
+	[
+		"F:/Dev Stuff/C++/GLFWEng/cmake-build-debug-mingw/cmake_install.cmake",
+		"F:/Dev Stuff/C++/GLFWEng/cmake-build-debug-mingw/thirdparty/glfw-3.3.2/cmake_install.cmake",
+		"F:/Dev Stuff/C++/GLFWEng/cmake-build-debug-mingw/thirdparty/glfw-3.3.2/src/cmake_install.cmake",
+		"F:/Dev Stuff/C++/GLFWEng/cmake-build-debug-mingw/thirdparty/glad/cmake_install.cmake",
+		"F:/Dev Stuff/C++/GLFWEng/cmake-build-debug-mingw/thirdparty/stb_image/cmake_install.cmake",
+		"F:/Dev Stuff/C++/GLFWEng/cmake-build-debug-mingw/thirdparty/stb_truetype/cmake_install.cmake",
+		"F:/Dev Stuff/C++/GLFWEng/cmake-build-debug-mingw/thirdparty/enet-1.3.17/cmake_install.cmake",
+		"F:/Dev Stuff/C++/GLFWEng/cmake-build-debug-mingw/thirdparty/raudio/cmake_install.cmake",
+		"F:/Dev Stuff/C++/GLFWEng/cmake-build-debug-mingw/thirdparty/glm/cmake_install.cmake",
+		"F:/Dev Stuff/C++/GLFWEng/cmake-build-debug-mingw/thirdparty/imgui-docking/cmake_install.cmake",
+		"F:/Dev Stuff/C++/GLFWEng/cmake-build-debug-mingw/thirdparty/yaml-cpp/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

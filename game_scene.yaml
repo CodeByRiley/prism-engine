@@ -1,0 +1,28 @@
+name: GameScene
+id: 1
+active: true
+entities:
+  - id: 1
+    name: Player
+    active: true
+    components: ~
+  - id: 2
+    name: Obstacle_0
+    active: true
+    components: ~
+  - id: 3
+    name: Obstacle_1
+    active: true
+    components: ~
+  - id: 4
+    name: Obstacle_2
+    active: true
+    components: ~
+  - id: 5
+    name: Obstacle_3
+    active: true
+    components: ~
+  - id: 6
+    name: MainLight
+    active: true
+    components: ~

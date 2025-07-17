@@ -1,0 +1,217 @@
+name: GameScene
+id: 1
+active: true
+entities:
+  - id: 5
+    name: Obstacle_3
+    active: true
+    components:
+      - type: ObstacleComponent
+        enabled: true
+        data:
+          size:
+            x: 80
+            y: 300
+      - type: TagComponent
+        enabled: true
+        data:
+          tag: obstacle
+      - type: RenderableComponent
+        enabled: true
+        data:
+          meshName: ""
+          materialName: ""
+          color:
+            r: 1
+            g: 0.25
+            b: 0.45
+            a: 1
+          visible: true
+          renderLayer: 0
+      - type: TransformComponent
+        enabled: true
+        data:
+          position:
+            x: 1000
+            y: 200
+            z: 0
+          rotation:
+            x: 0
+            y: 0
+            z: 0
+          scale:
+            x: 1
+            y: 1
+            z: 1
+  - id: 4
+    name: Obstacle_2
+    active: true
+    components:
+      - type: ObstacleComponent
+        enabled: true
+        data:
+          size:
+            x: 120
+            y: 120
+      - type: TagComponent
+        enabled: true
+        data:
+          tag: obstacle
+      - type: RenderableComponent
+        enabled: true
+        data:
+          meshName: ""
+          materialName: ""
+          color:
+            r: 1
+            g: 0.25
+            b: 0.45
+            a: 1
+          visible: true
+          renderLayer: 0
+      - type: TransformComponent
+        enabled: true
+        data:
+          position:
+            x: 200
+            y: 500
+            z: 0
+          rotation:
+            x: 0
+            y: 0
+            z: 0
+          scale:
+            x: 1
+            y: 1
+            z: 1
+  - id: 3
+    name: Obstacle_1
+    active: true
+    components:
+      - type: ObstacleComponent
+        enabled: true
+        data:
+          size:
+            x: 150
+            y: 80
+      - type: TagComponent
+        enabled: true
+        data:
+          tag: obstacle
+      - type: RenderableComponent
+        enabled: true
+        data:
+          meshName: ""
+          materialName: ""
+          color:
+            r: 1
+            g: 0.25
+            b: 0.45
+            a: 1
+          visible: true
+          renderLayer: 0
+      - type: TransformComponent
+        enabled: true
+        data:
+          position:
+            x: 800
+            y: 400
+            z: 0
+          rotation:
+            x: 0
+            y: 0
+            z: 0
+          scale:
+            x: 1
+            y: 1
+            z: 1
+  - id: 2
+    name: Obstacle_0
+    active: true
+    components:
+      - type: ObstacleComponent
+        enabled: true
+        data:
+          size:
+            x: 100
+            y: 200
+      - type: TagComponent
+        enabled: true
+        data:
+          tag: obstacle
+      - type: RenderableComponent
+        enabled: true
+        data:
+          meshName: ""
+          materialName: ""
+          color:
+            r: 1
+            g: 0.25
+            b: 0.45
+            a: 1
+          visible: true
+          renderLayer: 0
+      - type: TransformComponent
+        enabled: true
+        data:
+          position:
+            x: 400
+            y: 300
+            z: 0
+          rotation:
+            x: 0
+            y: 0
+            z: 0
+          scale:
+            x: 1
+            y: 1
+            z: 1
+  - id: 1
+    name: Player
+    active: true
+    components:
+      - type: TagComponent
+        enabled: true
+        data:
+          tag: player
+      - type: InputComponent
+        enabled: true
+        data:
+          enabled: true
+      - type: PlayerComponent
+        enabled: true
+        data:
+          speed: 700
+          direction:
+            x: -0.68033856
+            y: -0.7328979
+          size:
+            x: 32
+            y: 32
+      - type: RenderableComponent
+        enabled: true
+        data:
+          meshName: ""
+          materialName: ""
+          color:
+            r: 1
+            g: 0
+            b: 1
+            a: 1
+          visible: true
+          renderLayer: 0
+      - type: TransformComponent
+        enabled: true
+        data:
+          position:
+            x: 588.7398
+            y: 229.77574
+            z: 0
+          rotation:
+            x: 0
+            y: 0
+            z: -0.82257175
+          scale:
+            x: 1
+            y: 1
+            z: 1
