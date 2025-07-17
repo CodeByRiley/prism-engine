@@ -9,6 +9,7 @@
 #include "../engine/renderer/fog/FogRenderer2D.h"
 #include "../engine/renderer/vision/VisionRenderer2D.h"
 #include "../engine/renderer/lighting/LightRenderer2D.h"
+#include "../engine/renderer/lighting/Light.h"
 #include <engine/renderer/QuadBatch.h>
 #include <engine/renderer/Shader.h>
 #include <glm/glm.hpp>
@@ -186,7 +187,11 @@ void Game::SetupECSLights() {
     // Create light entity matching the original setup
     Entity light = m_scene->CreateEntity("MainLight");
     light.AddComponent<TransformComponent>(glm::vec3(640, 360, 0.0f));
-    light.AddComponent<LightComponent>(1204.0f, glm::vec3(1.0f, 1.0f, 1.0f), 5.25f);
+    
+    // Create a proper Light struct for the LightComponent
+    Light lightData(glm::vec2(640, 360), 1204.0f, glm::vec3(1.0f, 1.0f, 1.0f), 5.25f);
+    light.AddComponent<LightComponent>(lightData);
+    
     light.AddComponent<TagComponent>("light");
 }
 
@@ -222,9 +227,9 @@ void Game::UpdateRenderersFromECS() {
         if (transform && lightComp) {
             m_Lights.emplace_back(
                 glm::vec2(transform->position),
-                lightComp->radius,
-                lightComp->color,
-                lightComp->intensity
+                lightComp->light.range,
+                lightComp->light.color,
+                lightComp->light.intensity
             );
         }
     }

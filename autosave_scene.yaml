@@ -2,6 +2,45 @@ name: GameScene
 id: 1
 active: true
 entities:
+  - id: 6
+    name: MainLight
+    active: true
+    components:
+      - type: LightComponent
+        enabled: true
+        data:
+          type: 0
+          position_x: 640
+          position_y: 360
+          direction_x: 0
+          direction_y: -1
+          color_r: 0
+          color_g: 1
+          color_b: 0
+          intensity: 10
+          range: 1204
+          innerAngle: 0
+          outerAngle: 6.28318
+          bloom: 0
+      - type: TagComponent
+        enabled: true
+        data:
+          tag: light
+      - type: TransformComponent
+        enabled: true
+        data:
+          position:
+            x: 640
+            y: 360
+            z: 0
+          rotation:
+            x: 0
+            y: 0
+            z: 0
+          scale:
+            x: 1
+            y: 1
+            z: 1
   - id: 5
     name: Obstacle_3
     active: true
@@ -183,8 +222,8 @@ entities:
         data:
           speed: 700
           direction:
-            x: -0.68033856
-            y: -0.7328979
+            x: 0.99412644
+            y: 0.10822444
           size:
             x: 32
             y: 32
@@ -204,13 +243,13 @@ entities:
         enabled: true
         data:
           position:
-            x: 588.7398
-            y: 229.77574
+            x: 588.52985
+            y: 467.63824
             z: 0
           rotation:
             x: 0
             y: 0
-            z: -0.82257175
+            z: 3.033156
           scale:
             x: 1
             y: 1

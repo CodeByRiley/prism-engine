@@ -4,6 +4,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <string>
+#include "../../renderer/lighting/Light.h"
 
 // Transform Component - Position, rotation, scale
 class TransformComponent : public Component {
@@ -294,3 +295,53 @@ public:
         maxDistance = node["maxDistance"].as<float>(100.0f);
     }
 }; 
+
+// Light Component - For lighting
+class LightComponent : public Component {
+public:
+    Light light;
+    COMPONENT_TYPE(LightComponent)
+
+    LightComponent() = default;
+    LightComponent(const Light& l) : light(l) {}
+
+    YAML::Node Serialize() const override {
+        YAML::Node node;
+        node["type"] = static_cast<int>(light.type);
+        node["position_x"] = light.position.x;
+        node["position_y"] = light.position.y;
+        node["direction_x"] = light.direction.x;
+        node["direction_y"] = light.direction.y;
+        node["color_r"] = light.color.r;
+        node["color_g"] = light.color.g;
+        node["color_b"] = light.color.b;
+        node["intensity"] = light.intensity;
+        node["range"] = light.range;
+        node["innerAngle"] = light.innerAngle;
+        node["outerAngle"] = light.outerAngle;
+        node["bloom"] = light.bloom;
+        return node;
+    }
+
+    void Deserialize(const YAML::Node& node) override {
+        light.type = static_cast<LightType>(node["type"].as<int>(0));
+        light.position = glm::vec2(
+            node["position_x"].as<float>(0.0f),
+            node["position_y"].as<float>(0.0f)
+        );
+        light.direction = glm::vec2(
+            node["direction_x"].as<float>(0.0f),
+            node["direction_y"].as<float>(-1.0f)
+        );
+        light.color = glm::vec3(
+            node["color_r"].as<float>(1.0f),
+            node["color_g"].as<float>(1.0f),
+            node["color_b"].as<float>(1.0f)
+        );
+        light.intensity = node["intensity"].as<float>(1.0f);
+        light.range = node["range"].as<float>(1.0f);
+        light.innerAngle = node["innerAngle"].as<float>(0.0f);
+        light.outerAngle = node["outerAngle"].as<float>(0.0f);
+        light.bloom = node["bloom"].as<float>(0.0f);
+    }
+};

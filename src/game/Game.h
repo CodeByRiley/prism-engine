@@ -110,39 +110,6 @@ public:
     }
 };
 
-class LightComponent : public Component {
-public:
-    float radius = 300.0f;
-    glm::vec3 color{1.0f, 1.0f, 1.0f};
-    float intensity = 1.0f;
-    
-    COMPONENT_TYPE(LightComponent)
-    
-    LightComponent() = default;
-    LightComponent(float r, const glm::vec3& c, float i) 
-        : radius(r), color(c), intensity(i) {}
-
-    YAML::Node Serialize() const override {
-        YAML::Node node;
-        node["radius"] = radius;
-        node["color"]["r"] = color.r;
-        node["color"]["g"] = color.g;
-        node["color"]["b"] = color.b;
-        node["intensity"] = intensity;
-        return node;
-    }
-
-    void Deserialize(const YAML::Node& node) override {
-        radius = node["radius"].as<float>(300.0f);
-        if (node["color"]) {
-            color.r = node["color"]["r"].as<float>(1.0f);
-            color.g = node["color"]["g"].as<float>(1.0f);
-            color.b = node["color"]["b"].as<float>(1.0f);
-        }
-        intensity = node["intensity"].as<float>(1.0f);
-    }
-};
-
 // Input component for entities that can be controlled
 class InputComponent : public Component {
 public:
