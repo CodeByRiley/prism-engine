@@ -1,0 +1,10 @@
+/out
+bin/
+build/
+/.vs
+.idea/
+CMakeSettings.json
+Makefile
+
+/src/game/Game.cpp
+/src/game/Game.h
