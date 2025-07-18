@@ -18,6 +18,8 @@
 #include "../engine/utils/Time.h"
 #include "../engine/core/networking/NetworkManager.h"
 #include "../engine/core/networking/Packet.h"
+#include "../engine/core/audio/AudioManager.h"
+#include "../engine/core/audio/Sound.h"
 
 #include "Player.h"
 
@@ -46,7 +48,8 @@ public:
     float speed = 700.0f;
     glm::vec2 direction{0.0f, -1.0f}; // Facing up initially
     glm::vec2 size{32.0f, 32.0f};
-    
+    ::SoundAsset footsteps[3]; // 3 different footsteps sounds
+
     COMPONENT_TYPE(PlayerComponent)
     
     glm::vec2 GetDirectionIndicatorPos(const glm::vec2& position) const {
@@ -75,6 +78,14 @@ public:
         node["direction"]["y"] = direction.y;
         node["size"]["x"] = size.x;
         node["size"]["y"] = size.y;
+        for (int i = 0; i < 3; i++) {
+            Logger::Info("Serializing footsteps: " + footsteps[i].name);
+            node["audio"]["footsteps"][i]["name"] = footsteps[i].name;
+            node["audio"]["footsteps"][i]["filePath"] = footsteps[i].filePath;
+            node["audio"]["footsteps"][i]["volume"] = footsteps[i].volume;
+            node["audio"]["footsteps"][i]["pitch"] = footsteps[i].pitch;
+            node["audio"]["footsteps"][i]["pan"] = footsteps[i].pan;
+        }
         return node;
     }
 
@@ -87,6 +98,17 @@ public:
         if (node["size"]) {
             size.x = node["size"]["x"].as<float>(32.0f);
             size.y = node["size"]["y"].as<float>(32.0f);
+        }
+        if (node["audio"]) {
+            for (int i = 0; i < 3; i++) {
+                Logger::Info("Deserializing footsteps: " + node["audio"]["footsteps"][i]["name"].as<std::string>(""));
+                auto footstep = ::SoundAsset(node["audio"]["footsteps"][i]["name"].as<std::string>(""),
+                                             node["audio"]["footsteps"][i]["filePath"].as<std::string>(""),
+                                             node["audio"]["footsteps"][i]["volume"].as<float>(1.0f),
+                                             node["audio"]["footsteps"][i]["pitch"].as<float>(1.0f),
+                                             node["audio"]["footsteps"][i]["pan"].as<float>(0.0f));
+                footsteps[i] = footstep;
+            }
         }
     }
 };
@@ -161,17 +183,26 @@ public:
             // Handle movement input
             if (Input::IsKeyHeld(GLFW_KEY_W)) {
                 movementDelta.y -= player->speed * deltaTime;
+                PlayFootstepSound(entityID);
             }
             if (Input::IsKeyHeld(GLFW_KEY_S)) {
                 movementDelta.y += player->speed * deltaTime;
+                PlayFootstepSound(entityID);
             }
             if (Input::IsKeyHeld(GLFW_KEY_A)) {
                 movementDelta.x -= player->speed * deltaTime;
+                PlayFootstepSound(entityID);
             }
             if (Input::IsKeyHeld(GLFW_KEY_D)) {
                 movementDelta.x += player->speed * deltaTime;
+                PlayFootstepSound(entityID);
             }
             
+            // Normalize movement delta
+            if (glm::length(movementDelta) > 0.001f) {
+                movementDelta = glm::normalize(movementDelta);
+            }
+
             // Apply movement
             glm::vec2 newPosition2D = glm::vec2(transform->position) + movementDelta;
             
@@ -192,12 +223,22 @@ public:
             float halfWidth = player->size.x * 0.5f;
             float halfHeight = player->size.y * 0.5f;
             transform->position.x = glm::clamp(transform->position.x, halfWidth, 
-                                             (float)windowWidth - halfWidth);
+                                              (float)windowWidth - halfWidth);
             transform->position.y = glm::clamp(transform->position.y, halfHeight, 
-                                             (float)windowHeight - halfHeight);
+                                              (float)windowHeight - halfHeight);
         }
     }
-    
+    void PlayFootstepSound(EntityID entityID) {
+        auto* player = m_componentManager->GetComponent<PlayerComponent>(entityID);
+        if (!player) return;
+        if (player->footsteps[0].name.empty()) return;
+        int randomIndex = rand() % 3;
+        if (player->footsteps[randomIndex].isPlaying) return;
+
+        Audio::PlaySound(player->footsteps[randomIndex].name);
+        player->footsteps[randomIndex].isPlaying = true;
+    }
+
     void SetWindowSize(int width, int height) {
         windowWidth = width;
         windowHeight = height;
@@ -269,7 +310,7 @@ protected:
     unsigned int sceneTexture = 0;
     int windowWidth = 1280;
     int windowHeight = 720;
-    
+
 public:
     Game(int width, int height, const char* title);
     ~Game();
@@ -291,6 +332,11 @@ public:
     void ClearNetworkPlayers();
     void DisconnectFromServer();
     void RenderUI();
+    
+    // Audio methods
+    void SetupAudioSystem();
+    void LoadGameAudio();
+    void HandleAudioEvents(const AudioEvent& event);
     
     int viewportX = 0, viewportY = 0, viewportWidth = 1280, viewportHeight = 720;
 
@@ -316,6 +362,8 @@ protected:
     // Network UI
     std::unique_ptr<NetworkUI> m_networkUI;
     
+    // Audio
+    std::unique_ptr<AudioManager> m_audioManager;
 
 private:
     // ECS components

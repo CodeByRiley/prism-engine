@@ -10,6 +10,7 @@
 #include "entity/EntityManager.h"
 #include "component/ComponentManager.h"
 #include "system/System.h"
+#include "..\utils\Logger.h"
 
 class Scene {
 private:
@@ -168,7 +169,9 @@ public:
         if (sceneNode["name"]) {
             m_name = sceneNode["name"].as<std::string>();
         }
-        
+        Logger::Info("Deserializing scene: " + m_name);
+
+
         if (sceneNode["id"]) {
             m_id = sceneNode["id"].as<uint32_t>();
         }
@@ -208,7 +211,7 @@ public:
             outFile << sceneNode;
             return true;
         } catch (const std::exception& e) {
-            // Log error (you might want to use your Logger here)
+            Logger::Error<Scene>("Failed to save scene to file: " + std::string(e.what()), this);
             return false;
         }
     }
@@ -219,7 +222,7 @@ public:
             Deserialize(sceneNode);
             return true;
         } catch (const std::exception& e) {
-            // Log error (you might want to use your Logger here)
+            Logger::Error<Scene>("Failed to load scene from file: " + std::string(e.what()), this);
             return false;
         }
     }

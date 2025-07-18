@@ -7,7 +7,7 @@
 #include "engine/utils/ResourcePath.h"
 
 Engine::Engine(int width, int height, const char* title)
-    : m_Width(width), m_Height(height), m_Running(true)
+    : m_Width(width), m_Height(height), m_Running(true), m_isShuttingDown(false)
 {
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
@@ -37,7 +37,7 @@ void Engine::Run() {
     OnInit();
     
     auto lastTime = std::chrono::high_resolution_clock::now();
-    while (m_Running && !glfwWindowShouldClose(m_Window)) {
+    while (m_Running && !glfwWindowShouldClose(m_Window) && !m_isShuttingDown) {
         // Clear the screen
         glClearColor(0.1f, 0.1f, 0.1f, 1.0f); // Dark gray background
         glClear(GL_COLOR_BUFFER_BIT);
@@ -53,8 +53,11 @@ void Engine::Run() {
 
 void Engine::PollEvents() {
     glfwPollEvents();
-    if (glfwWindowShouldClose(m_Window))
+    if (glfwWindowShouldClose(m_Window)) {
         m_Running = false;
+        m_isShuttingDown = true;
+        OnShutdown();
+    }
 }
 
 void Engine::OnInit()    {}

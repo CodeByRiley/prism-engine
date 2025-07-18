@@ -20,6 +20,7 @@ protected:
     struct GLFWwindow* m_Window;
     int m_Width, m_Height;
     bool m_Running;
+    bool m_isShuttingDown;
 
 private:
     void PollEvents();

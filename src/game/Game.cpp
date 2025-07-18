@@ -108,6 +108,10 @@ void Game::OnInit() {
     Logger::Info("Press F1 to toggle ECS Inspector");
     Logger::Info("Press F6 to toggle Network UI");
     Logger::Info("Press F7 to disconnect from server");
+    Logger::Info("Press M to toggle background music");
+    Logger::Info("Press N to play UI click sound");
+    Logger::Info("Press B to play item pickup sound");
+    Logger::Info("Press +/- to adjust master volume");
     
     // Initialize Inspector UI
     m_inspectorUI = std::make_unique<GameInspectorUI>();
@@ -125,6 +129,9 @@ void Game::OnInit() {
     if (!m_networkUI->Initialize(m_Window)) {
         Logger::Error<Game>("Failed to initialize Network UI", this);
     }
+    
+    // Initialize Audio System
+    SetupAudioSystem();
     
     // Set up networking packet handlers for game events
     SetupNetworkingHandlers();
@@ -771,8 +778,12 @@ void Game::UpdateRenderersFromECS() {
 }
 
 void Game::OnUpdate() {
+    float deltaTime = Time::DeltaTime();
+    
     if (Input::IsKeyPressed(GLFW_KEY_ESCAPE)) {
-        this->m_Running = false;
+        // Why? this should call shutdown
+        //this->m_Running = false;
+        this->OnShutdown();
     }
     
     // Cycle between rendering systems
@@ -807,6 +818,66 @@ void Game::OnUpdate() {
         DisconnectFromServer();
     }
     
+    // Audio controls
+    static bool mKeyPressed = false;
+    static bool nKeyPressed = false;
+    static bool bKeyPressed = false;
+    static bool plusKeyPressed = false;
+    static bool minusKeyPressed = false;
+    
+    // Toggle music playback with M key
+    if (Input::IsKeyHeld(GLFW_KEY_M) && !mKeyPressed) {
+        mKeyPressed = true;
+        if (Audio::GetManager().IsMusicPlaying("game_music")) {
+            Audio::StopMusic("game_music");
+            Logger::Info("Music stopped");
+        } else {
+            Audio::PlayMusic("game_music", true);
+            Logger::Info("Music started");
+        }
+    } else if (!Input::IsKeyHeld(GLFW_KEY_M)) {
+        mKeyPressed = false;
+    }
+    
+    // Play sound effect 1 with N key
+    if (Input::IsKeyHeld(GLFW_KEY_N) && !nKeyPressed) {
+        nKeyPressed = true;
+        Audio::PlaySound("gui_click");
+        Logger::Info("Played gui_click sound");
+    } else if (!Input::IsKeyHeld(GLFW_KEY_N)) {
+        nKeyPressed = false;
+    }
+    
+    // Play sound effect 2 with B key
+    if (Input::IsKeyHeld(GLFW_KEY_B) && !bKeyPressed) {
+        bKeyPressed = true;
+        Audio::PlaySound("gui_check");
+        Logger::Info("Played gui_check sound");
+    } else if (!Input::IsKeyHeld(GLFW_KEY_B)) {
+        bKeyPressed = false;
+    }
+    
+    // Volume controls
+    if (Input::IsKeyHeld(GLFW_KEY_EQUAL) && !plusKeyPressed) {
+        plusKeyPressed = true;
+        float volume = Audio::GetManager().GetMasterVolume();
+        volume = std::min(volume + 0.1f, 1.0f);
+        Audio::SetMasterVolume(volume);
+        Logger::Info("Master volume: " + std::to_string(volume));
+    } else if (!Input::IsKeyHeld(GLFW_KEY_EQUAL)) {
+        plusKeyPressed = false;
+    }
+    
+    if (Input::IsKeyHeld(GLFW_KEY_MINUS) && !minusKeyPressed) {
+        minusKeyPressed = true;
+        float volume = Audio::GetManager().GetMasterVolume();
+        volume = std::max(volume - 0.1f, 0.0f);
+        Audio::SetMasterVolume(volume);
+        Logger::Info("Master volume: " + std::to_string(volume));
+    } else if (!Input::IsKeyHeld(GLFW_KEY_MINUS)) {
+        minusKeyPressed = false;
+    }
+    
     // Save/Load scene
     if (Input::IsKeyPressed(GLFW_KEY_F5)) {
         bool success = m_scene->SaveToFile("game_scene.yaml");
@@ -836,18 +907,36 @@ void Game::OnUpdate() {
     }
     
     // Update ECS scene
-    m_scene->Update(Time::DeltaTime());
+    m_scene->Update(deltaTime);
+    
+    // Update Audio System
+    Audio::Update();
     
     // Send movement updates if connected to network
     static float movementUpdateTimer = 0.0f;
-    movementUpdateTimer += Time::DeltaTime();
+    movementUpdateTimer += deltaTime;
     if (movementUpdateTimer >= 0.0078125f) { // Send movement updates 128 times per second
         SendPlayerMovement();
         movementUpdateTimer = 0.0f;
     }
+    
+    // Update network UI if it exists
+    if (m_networkUI && m_networkUI->IsVisible()) {
+        // Don't call Render() here, we'll handle all ImGui rendering in OnDraw
+    }
+    
+    // Update inspector UI if it exists
+    if (m_inspectorUI && m_inspectorUI->IsVisible()) {
+        // Don't call Render() here, we'll handle all ImGui rendering in OnDraw
+    }
 }
 
 void Game::OnDraw() {
+    if (m_isShuttingDown) {
+        Logger::Info("Game is shutting down, skipping draw");
+        return;
+    }
+
     glClearColor(0.2f, 0.2f, 0.2f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
 
@@ -1000,6 +1089,7 @@ void Game::OnResize(int width, int height) {
 }
 
 void Game::OnShutdown() {
+    m_isShuttingDown = true;
     Logger::Info("Game Shutdown");
     
     // Save scene before shutdown
@@ -1007,6 +1097,20 @@ void Game::OnShutdown() {
         m_scene->SaveToFile("autosave_scene.yaml");
         Logger::Info("Auto-saved scene to autosave_scene.yaml");
     }
+    
+    // Clean up network system first (before we destroy entities)
+    if (Network::GetManager().IsClient()) {
+        // Make sure we disconnect as a client if connected
+        DisconnectFromServer();
+    } else if (Network::GetManager().IsServer()) {
+        // Stop server if running
+        Network::GetManager().StopServer();
+    }
+    Network::Shutdown();
+    Logger::Info("Network system shut down");
+    
+    // Clear network players first (to prevent access during shutdown)
+    ClearNetworkPlayers();
     
     // Shutdown inspector
     if (m_inspectorUI) {
@@ -1020,10 +1124,52 @@ void Game::OnShutdown() {
         m_networkUI.reset();
     }
     
-    delete renderer;
-    delete fogRenderer;
-    delete visionRenderer;
-    delete lightRenderer;
+    // Shutdown Audio System
+    Audio::Shutdown();
+    Logger::Info("Audio system shut down");
+    
+    // Add a small delay to ensure audio callbacks have completed
+    std::this_thread::sleep_for(std::chrono::milliseconds(50));
+    
+    // Clean up renderers safely
+    Logger::Info("Starting renderer cleanup...");
+    
+    try {
+        if (renderer) {
+            // Perform any renderer-specific cleanup before deletion
+            Logger::Info("Cleaning up main renderer");
+            delete renderer;
+            renderer = nullptr;
+        }
+        
+        if (fogRenderer) {
+            Logger::Info("Cleaning up fog renderer");
+            delete fogRenderer;
+            fogRenderer = nullptr;
+        }
+        
+        if (visionRenderer) {
+            Logger::Info("Cleaning up vision renderer");
+            delete visionRenderer;
+            visionRenderer = nullptr;
+        }
+        
+        if (lightRenderer) {
+            Logger::Info("Cleaning up light renderer");
+            delete lightRenderer;
+            lightRenderer = nullptr;
+        }
+        
+        Logger::Info("Renderers cleaned up successfully");
+    }
+    catch (const std::exception& e) {
+        Logger::Error<Game>("Exception during renderer cleanup: " + std::string(e.what()), this);
+    }
+    catch (...) {
+        Logger::Error<Game>("Unknown error during renderer cleanup", this);
+    }
+    
+    Logger::Info("Shutdown complete");
 }
 
 // Legacy collision detection helper functions (kept for compatibility)
@@ -1088,4 +1234,128 @@ glm::vec2 Game::ResolveCollision(const Player& player, const glm::vec2& newPos) 
     }
     
     return resolvedPos;
+}
+
+// Audio System Implementation
+void Game::SetupAudioSystem() {
+    Logger::Info("Initializing Audio System...");
+    
+    // Initialize the global audio manager
+    if (!Audio::Initialize()) {
+        Logger::Error<Game>("Failed to initialize Audio System", this);
+        return;
+    }
+    
+    // Set up audio event callback
+    Audio::GetManager().SetEventCallback([this](const AudioEvent& event) {
+        HandleAudioEvents(event);
+    });
+    
+    // Load game audio assets
+    LoadGameAudio();
+    
+    Logger::Info("Audio System initialized successfully");
+}
+
+void Game::LoadGameAudio() {
+    Logger::Info("Loading game audio assets...");
+    
+    // Load sound effects using batch loading for efficiency
+    std::vector<SoundAsset> soundEffects = {
+        SoundAsset("gui_click", "resources/audio/sounds/gui/gui_click_7.mp3", 0.6f, 1.0f, 0.5f),
+        SoundAsset("gui_check", "resources/audio/sounds/gui/gui_check_1.mp3", 0.6f, 1.0f, 0.5f),
+        
+        // Footstep sounds with different variations
+        SoundAsset("footstep_concrete_1", "resources/audio/sounds/player/footsteps/concrete_1.mp3", 0.3f, 1.0f, 0.5f),
+        SoundAsset("footstep_concrete_2", "resources/audio/sounds/player/footsteps/concrete_2.mp3", 0.3f, 1.0f, 0.5f),
+        SoundAsset("footstep_concrete_3", "resources/audio/sounds/player/footsteps/concrete_3.mp3", 0.3f, 1.0f, 0.5f),
+    };
+    
+    // Load background music
+    std::vector<MusicAsset> backgroundMusic = {
+        MusicAsset("game_music", "resources/audio/music/hope.ogg", true, 0.7f, 1.0f, 0.5f),
+    };
+    
+    // Batch load all audio assets
+    Audio::GetManager().LoadSoundBatch(soundEffects);
+    Audio::GetManager().LoadMusicBatch(backgroundMusic);
+    
+    // Set initial master volume
+    Audio::SetMasterVolume(0.7f);
+    
+    // Set up default player footsteps if needed
+    if (m_scene) {
+        auto entities = m_scene->GetEntitiesWith<PlayerComponent>();
+        for (EntityID entityID : entities) {
+            Entity entity(entityID, m_scene->GetEntityManager(), m_scene->GetComponentManager());
+            auto* player = entity.GetComponent<PlayerComponent>();
+            if (player) {
+                // Only set up footsteps if they're not already set
+                if (player->footsteps[0].name.empty()) {
+                    player->footsteps[0] = SoundAsset("footstep_concrete_1", "resources/audio/sounds/player/footsteps/concrete_1.mp3", 0.3f, 1.0f, 0.5f);
+                    player->footsteps[1] = SoundAsset("footstep_concrete_2", "resources/audio/sounds/player/footsteps/concrete_2.mp3", 0.3f, 1.0f, 0.5f);
+                    player->footsteps[2] = SoundAsset("footstep_concrete_3", "resources/audio/sounds/player/footsteps/concrete_3.mp3", 0.3f, 1.0f, 0.5f);
+                }
+            }
+        }
+    }
+    
+    Logger::Info("Audio assets loading initiated...");
+}
+
+void Game::HandleAudioEvents(const AudioEvent& event) {
+    switch (event.type) {
+        case AudioEventType::SOUND_LOADED:
+            Logger::Info("Sound loaded: " + event.soundName);
+            break;
+            
+        case AudioEventType::SOUND_UNLOADED:
+            Logger::Info("Sound unloaded: " + event.soundName);
+            break;
+            
+        case AudioEventType::SOUND_STOPPED:
+            Logger::Info("Sound stopped: " + event.soundName);
+            // Reset footstep sound playing flag when footstep sounds stop
+            if (m_scene && event.soundName.find("footstep") != std::string::npos) {
+                auto entities = m_scene->GetEntitiesWith<PlayerComponent>();
+                for (EntityID entityID : entities) {
+                    Entity entity(entityID, m_scene->GetEntityManager(), m_scene->GetComponentManager());
+                    auto* player = entity.GetComponent<PlayerComponent>();
+                    if (player) {
+                        for (int i = 0; i < 3; i++) {
+                            if (player->footsteps[i].name == event.soundName) {
+                                player->footsteps[i].isPlaying = false;
+                                Logger::Info("Reset isPlaying flag for " + event.soundName);
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+            break;
+            
+        case AudioEventType::MUSIC_LOADED:
+            Logger::Info("Music loaded: " + event.soundName);
+            // Auto-start background music when it's loaded
+            if (event.soundName == "game_music") {
+                Audio::PlayMusic("game_music", true);
+                Logger::Info("Started background music");
+            }
+            break;
+            
+        case AudioEventType::MUSIC_STARTED:
+            Logger::Info("Music started: " + event.soundName);
+            break;
+            
+        case AudioEventType::MUSIC_FINISHED:
+            Logger::Info("Music finished: " + event.soundName);
+            break;
+            
+        case AudioEventType::AUDIO_ERROR:
+            Logger::Error<Game>("Audio error for '" + event.soundName + "': " + event.message, this);
+            break;
+            
+        default:
+            break;
+    }
 }

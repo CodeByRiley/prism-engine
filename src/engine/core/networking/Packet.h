@@ -34,6 +34,10 @@ enum class PacketType : uint8_t {
     // Chat/Communication
     CHAT_MESSAGE,
     
+    // Audio
+    AUDIO_DATA,
+
+
     // Custom game-specific packets
     CUSTOM_GAME_EVENT = 100
 };

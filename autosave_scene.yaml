@@ -2,96 +2,6 @@ name: GameScene
 id: 1
 active: true
 entities:
-  - id: 8
-    name: NetworkPlayer_1
-    active: true
-    components:
-      - type: TagComponent
-        enabled: true
-        data:
-          tag: network_player_1
-      - type: PlayerComponent
-        enabled: true
-        data:
-          speed: 700
-          direction:
-            x: -0.96179366
-            y: -0.27377543
-          size:
-            x: 32
-            y: 32
-      - type: RenderableComponent
-        enabled: true
-        data:
-          meshName: ""
-          materialName: ""
-          color:
-            r: 0
-            g: 1
-            b: 0
-            a: 1
-          visible: true
-          renderLayer: 0
-      - type: TransformComponent
-        enabled: true
-        data:
-          position:
-            x: 842.8989
-            y: 610.42865
-            z: 0
-          rotation:
-            x: 0
-            y: 0
-            z: -2.8642764
-          scale:
-            x: 1
-            y: 1
-            z: 1
-  - id: 7
-    name: NetworkPlayer_1
-    active: true
-    components:
-      - type: TagComponent
-        enabled: true
-        data:
-          tag: network_player_1
-      - type: PlayerComponent
-        enabled: true
-        data:
-          speed: 700
-          direction:
-            x: 0.99961126
-            y: 0.027880171
-          size:
-            x: 32
-            y: 32
-      - type: RenderableComponent
-        enabled: true
-        data:
-          meshName: ""
-          materialName: ""
-          color:
-            r: 0
-            g: 1
-            b: 0
-            a: 1
-          visible: true
-          renderLayer: 0
-      - type: TransformComponent
-        enabled: true
-        data:
-          position:
-            x: 917.95825
-            y: 521.17816
-            z: 0
-          rotation:
-            x: 0
-            y: 0
-            z: 0.027883785
-          scale:
-            x: 1
-            y: 1
-            z: 1
   - id: 6
     name: MainLight
     active: true
@@ -312,8 +222,8 @@ entities:
         data:
           speed: 700
           direction:
-            x: -0.86917615
-            y: -0.49450263
+            x: 0.62325203
+            y: 0.7820209
           size:
             x: 32
             y: 32
@@ -333,13 +243,13 @@ entities:
         enabled: true
         data:
           position:
-            x: 825.60187
-            y: 551.9485
+            x: 825.09705
+            y: 190.03232
             z: 0
           rotation:
             x: 0
             y: 0
-            z: -0.5172625
+            z: 2.2436907
           scale:
             x: 1
             y: 1

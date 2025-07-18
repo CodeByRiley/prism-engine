@@ -1,130 +1,247 @@
-F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp: In constructor 'Game::Game(int, int, const char*)':
-[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp:59:7: error: class 'Game' does not have any field named 'm_localPlayerNetworkID'
-[build]    59 |       m_localPlayerNetworkID(0)
-[build]       |       ^~~~~~~~~~~~~~~~~~~~~~
-[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp: In member function 'virtual void Game::OnInit()':
-[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp:123:5: error: 'm_networkUI' was not declared in this scope
-[build]   123 |     m_networkUI = std::make_unique<NetworkUI>();
-[build]       |     ^~~~~~~~~~~
-[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp:123:36: error: 'NetworkUI' was not declared in this scope
-[build]   123 |     m_networkUI = std::make_unique<NetworkUI>();
-[build]       |                                    ^~~~~~~~~
-[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp:123:46: error: no matching function for call to 'make_unique<<expression error> >()'
-[build]   123 |     m_networkUI = std::make_unique<NetworkUI>();
-[build]       |                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~^~
-[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp:123:46: note: there are 3 candidates
-[build] In file included from C:/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/c++/memory:80,
-[build]                  from F:\Dev Stuff\C++\GLFWEng\src\game\Game.h:8:
-[build] C:/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/c++/bits/unique_ptr.h:1084:5: note: candidate 1: 'template<class _Tp, class ... _Args> std::__detail::__unique_ptr_t<_Tp> std::make_unique(_Args&& ...)'
-[build]  1084 |     make_unique(_Args&&... __args)
-[build]       |     ^~~~~~~~~~~
-[build] C:/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/c++/bits/unique_ptr.h:1084:5: note: template argument deduction/substitution failed:
-[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp:123:46: error: template argument 1 is invalid
-[build]   123 |     m_networkUI = std::make_unique<NetworkUI>();
-[build]       |                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~^~
-[build] C:/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/c++/bits/unique_ptr.h:1099:5: note: candidate 2: 'template<class _Tp> std::__detail::__unique_ptr_array_t<_Tp> std::make_unique(size_t)'
-[build]  1099 |     make_unique(size_t __num)
-[build]       |     ^~~~~~~~~~~
-[build] C:/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/c++/bits/unique_ptr.h:1099:5: note: candidate expects 1 argument, 0 provided
-[build] C:/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/c++/bits/unique_ptr.h:1109:5: note: candidate 3: 'template<class _Tp, class ... _Args> std::__detail::__invalid_make_unique_t<_Tp> std::make_unique(_Args&& ...)' (deleted)
-[build]  1109 |     make_unique(_Args&&...) = delete;
-[build]       |     ^~~~~~~~~~~
-[build] C:/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/c++/bits/unique_ptr.h:1109:5: note: template argument deduction/substitution failed:
-[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp:123:46: error: template argument 1 is invalid
-[build]   123 |     m_networkUI = std::make_unique<NetworkUI>();
-[build]       |                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~^~
-[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp:129:5: error: 'SetupNetworkingHandlers' was not declared in this scope
-[build]   129 |     SetupNetworkingHandlers();
-[build]       |     ^~~~~~~~~~~~~~~~~~~~~~~
-[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp: At global scope:
-[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp:132:6: error: no declaration matches 'void Game::SetupNetworkingHandlers()'
-[build]   132 | void Game::SetupNetworkingHandlers() {
-[build]       |      ^~~~
-[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp:132:6: note: no functions named 'void Game::SetupNetworkingHandlers()'
-[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.h:261:7: note: 'class Game' defined here
-[build]   261 | class Game : public Engine {
-[build]       |       ^~~~
-[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp:324:6: error: no declaration matches 'void Game::SendPlayerJoinToServer()'
-[build]   324 | void Game::SendPlayerJoinToServer() {
-[build]       |      ^~~~
-[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp:324:6: note: no functions named 'void Game::SendPlayerJoinToServer()'
-[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.h:261:7: note: 'class Game' defined here
-[build]   261 | class Game : public Engine {
-[build]       |       ^~~~
-[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp:352:6: error: no declaration matches 'void Game::SendPlayerLeaveToServer(uint32_t)'
-[build]   352 | void Game::SendPlayerLeaveToServer(uint32_t playerID) {
-[build]       |      ^~~~
-[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp:352:6: note: no functions named 'void Game::SendPlayerLeaveToServer(uint32_t)'
-[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.h:261:7: note: 'class Game' defined here
-[build]   261 | class Game : public Engine {
-[build]       |       ^~~~
-[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp:365:6: error: no declaration matches 'void Game::SendPlayerLeaveToClients(uint32_t)'
-[build]   365 | void Game::SendPlayerLeaveToClients(uint32_t playerID) {
-[build]       |      ^~~~
-[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp:365:6: note: no functions named 'void Game::SendPlayerLeaveToClients(uint32_t)'
-[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.h:261:7: note: 'class Game' defined here
-[build]   261 | class Game : public Engine {
-[build]       |       ^~~~
-[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp:376:6: error: no declaration matches 'void Game::SendPlayerJoinToClients()'
-[build]   376 | void Game::SendPlayerJoinToClients() {
-[build]       |      ^~~~
-[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp:376:6: note: no functions named 'void Game::SendPlayerJoinToClients()'
-[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.h:261:7: note: 'class Game' defined here
-[build]   261 | class Game : public Engine {
-[build]       |       ^~~~
-[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp:402:6: error: no declaration matches 'void Game::SendPlayerMovement()'
-[build]   402 | void Game::SendPlayerMovement() {
-[build]       |      ^~~~
-[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp:402:6: note: no functions named 'void Game::SendPlayerMovement()'
-[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.h:261:7: note: 'class Game' defined here
-[build]   261 | class Game : public Engine {
-[build]       |       ^~~~
-[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp:435:6: error: no declaration matches 'void Game::ClearNetworkPlayers()'
-[build]   435 | void Game::ClearNetworkPlayers() {
-[build]       |      ^~~~
-[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp:435:6: note: no functions named 'void Game::ClearNetworkPlayers()'
-[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.h:261:7: note: 'class Game' defined here
-[build]   261 | class Game : public Engine {
-[build]       |       ^~~~
-[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp:454:6: error: no declaration matches 'void Game::DisconnectFromServer()'
-[build]   454 | void Game::DisconnectFromServer() {
-[build]       |      ^~~~
-[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp:454:6: note: no functions named 'void Game::DisconnectFromServer()'
-[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.h:261:7: note: 'class Game' defined here
-[build]   261 | class Game : public Engine {
-[build]       |       ^~~~
-[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp: In member function 'virtual void Game::OnUpdate()':
-[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp:631:13: error: 'm_networkUI' was not declared in this scope
-[build]   631 |         if (m_networkUI) {
-[build]       |             ^~~~~~~~~~~
-[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp:640:9: error: 'DisconnectFromServer' was not declared in this scope
-[build]   640 |         DisconnectFromServer();
-[build]       |         ^~~~~~~~~~~~~~~~~~~~
-[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp:672:21: error: 'Time' has not been declared
-[build]   672 |     m_scene->Update(Time::DeltaTime());
-[build]       |                     ^~~~
-[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp:676:28: error: 'Time' has not been declared
-[build]   676 |     movementUpdateTimer += Time::DeltaTime();
-[build]       |                            ^~~~
-[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp:678:9: error: 'SendPlayerMovement' was not declared in this scope
-[build]   678 |         SendPlayerMovement();
-[build]       |         ^~~~~~~~~~~~~~~~~~
-[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp: In member function 'virtual void Game::OnDraw()':
-[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp:778:5: error: 'RenderUI' was not declared in this scope; did you mean 'Renderer2D'?
-[build]   778 |     RenderUI();
-[build]       |     ^~~~~~~~
-[build]       |     Renderer2D
-[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp: At global scope:
-[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp:781:6: error: no declaration matches 'void Game::RenderUI()'
-[build]   781 | void Game::RenderUI() {
-[build]       |      ^~~~
-[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp:781:6: note: no functions named 'void Game::RenderUI()'
-[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.h:261:7: note: 'class Game' defined here
-[build]   261 | class Game : public Engine {
-[build]       |       ^~~~
-[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp: In member function 'virtual void Game::OnShutdown()':
-[build] F:\Dev Stuff\C++\GLFWEng\src\game\Game.cpp:851:9: error: 'm_networkUI' was not declared in this scope
-[build]   851 |     if (m_networkUI) {
-[build]       |         ^~~~~~~~~~~
-[build] mingw32-make[2]: *** [CMakeFiles\prism.dir\build.make:349: CMakeFiles/prism.dir/src/game/Game.cpp.obj] Error 1
-[build] mingw32-make[1]: *** [CMakeFiles\Makefile2:346: CMakeFiles/prism.dir/all] Error 2
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.h: In member function 'LoadedMusic& LoadedMusic::operator=(LoadedMusic&&)':
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.h:155:13: warning: possible problem detected in invocation of 'operator delete' [-Wdelete-incomplete]
+[build]   155 |             delete raudioMusic;
+[build]       |             ^~~~~~~~~~~~~~~~~~
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.h:155:20: warning: invalid use of incomplete type 'struct Music'
+[build]   155 |             delete raudioMusic;
+[build]       |                    ^~~~~~~~~~~
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.h:18:8: note: forward declaration of 'struct Music'
+[build]    18 | struct Music;
+[build]       |        ^~~~~
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.h:155:13: note: neither the destructor nor the class-specific 'operator delete' will be called, even if they are declared when the class is defined
+[build]   155 |             delete raudioMusic;
+[build]       |             ^~~~~~~~~~~~~~~~~~
+[build] In file included from F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.cpp:6:
+[build] F:/Dev Stuff/C++/GLFWEng/thirdparty/raudio/src/raudio.h: At global scope:
+[build] F:/Dev Stuff/C++/GLFWEng/thirdparty/raudio/src/raudio.h:112:16: error: redefinition of 'struct Sound'
+[build]   112 | typedef struct Sound {
+[build]       |                ^~~~~
+[build] In file included from F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.h:14:
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\Sound.h:7:8: note: previous definition of 'struct Sound'
+[build]     7 | struct Sound {
+[build]       |        ^~~~~
+[build] F:/Dev Stuff/C++/GLFWEng/thirdparty/raudio/src/raudio.h:115:3: error: conflicting declaration 'typedef int Sound'
+[build]   115 | } Sound;
+[build]       |   ^~~~~
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\Sound.h:7:8: note: previous declaration as 'struct Sound'
+[build]     7 | struct Sound {
+[build]       |        ^~~~~
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.cpp: In member function 'void AudioManager::Shutdown()':
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.cpp:94:29: error: cannot convert 'Sound' to 'const std::string&' {aka 'const std::__cxx11::basic_string<char>&'}
+[build]    94 |                 UnloadSound(*pair.second.raudiosound);
+[build]       |                             ^~~~~~~~~~~~~~~~~~~~~~~~
+[build]       |                             |
+[build]       |                             Sound
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.h:182:41: note: initializing argument 1 of 'void AudioManager::UnloadSound(const std::string&)'
+[build]   182 |     void UnloadSound(const std::string& soundName);
+[build]       |                      ~~~~~~~~~~~~~~~~~~~^~~~~~~~~
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.cpp: In member function 'void AudioManager::ProcessLoadSound(const AudioCommand&)':
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.cpp:235:36: error: no matching function for call to 'AudioManager::LoadSound(const char*)'
+[build]   235 |     ::Sound raudioSound = LoadSound(cmd.filePath.c_str());
+[build]       |                           ~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.cpp:235:36: note: there is 1 candidate
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.h:181:10: note: candidate 1: 'bool AudioManager::LoadSound(const std::string&, const std::string&)'
+[build]   181 |     bool LoadSound(const std::string& soundName, const std::string& filePath);
+[build]       |          ^~~~~~~~~
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.h:181:10: note: candidate expects 2 arguments, 1 provided
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.cpp:252:20: error: cannot convert 'Sound' to 'const std::string&' {aka 'const std::__cxx11::basic_string<char>&'}
+[build]   252 |     SetSoundVolume(*loadedSound.raudiosound, loadedSound.volume);
+[build]       |                    ^~~~~~~~~~~~~~~~~~~~~~~~
+[build]       |                    |
+[build]       |                    Sound
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.h:194:44: note: initializing argument 1 of 'void AudioManager::SetSoundVolume(const std::string&, float)'
+[build]   194 |     void SetSoundVolume(const std::string& soundName, float volume);
+[build]       |                         ~~~~~~~~~~~~~~~~~~~^~~~~~~~~
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.cpp:253:19: error: cannot convert 'Sound' to 'const std::string&' {aka 'const std::__cxx11::basic_string<char>&'}
+[build]   253 |     SetSoundPitch(*loadedSound.raudiosound, loadedSound.pitch);
+[build]       |                   ^~~~~~~~~~~~~~~~~~~~~~~~
+[build]       |                   |
+[build]       |                   Sound
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.h:195:43: note: initializing argument 1 of 'void AudioManager::SetSoundPitch(const std::string&, float)'
+[build]   195 |     void SetSoundPitch(const std::string& soundName, float pitch);
+[build]       |                        ~~~~~~~~~~~~~~~~~~~^~~~~~~~~
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.cpp:254:17: error: cannot convert 'Sound' to 'const std::string&' {aka 'const std::__cxx11::basic_string<char>&'}
+[build]   254 |     SetSoundPan(*loadedSound.raudiosound, loadedSound.pan);
+[build]       |                 ^~~~~~~~~~~~~~~~~~~~~~~~
+[build]       |                 |
+[build]       |                 Sound
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.h:196:41: note: initializing argument 1 of 'void AudioManager::SetSoundPan(const std::string&, float)'
+[build]   196 |     void SetSoundPan(const std::string& soundName, float pan);
+[build]       |                      ~~~~~~~~~~~~~~~~~~~^~~~~~~~~
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.cpp: In member function 'void AudioManager::ProcessUnloadSound(const AudioCommand&)':
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.cpp:274:21: error: cannot convert 'Sound' to 'const std::string&' {aka 'const std::__cxx11::basic_string<char>&'}
+[build]   274 |         UnloadSound(*it->second.raudiosound);
+[build]       |                     ^~~~~~~~~~~~~~~~~~~~~~~
+[build]       |                     |
+[build]       |                     Sound
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.h:182:41: note: initializing argument 1 of 'void AudioManager::UnloadSound(const std::string&)'
+[build]   182 |     void UnloadSound(const std::string& soundName);
+[build]       |                      ~~~~~~~~~~~~~~~~~~~^~~~~~~~~
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.cpp: In member function 'void AudioManager::ProcessPlaySound(const AudioCommand&)':
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.cpp:294:19: error: cannot convert 'Sound' to 'const std::string&' {aka 'const std::__cxx11::basic_string<char>&'}
+[build]   294 |         PlaySound(*it->second.raudiosound);
+[build]       |                   ^~~~~~~~~~~~~~~~~~~~~~~
+[build]       |                   |
+[build]       |                   Sound
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.h:186:39: note: initializing argument 1 of 'void AudioManager::PlaySound(const std::string&)'
+[build]   186 |     void PlaySound(const std::string& soundName);
+[build]       |                    ~~~~~~~~~~~~~~~~~~~^~~~~~~~~
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.cpp: In member function 'void AudioManager::ProcessStopSound(const AudioCommand&)':
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.cpp:311:19: error: cannot convert 'Sound' to 'const std::string&' {aka 'const std::__cxx11::basic_string<char>&'}
+[build]   311 |         StopSound(*it->second.raudiosound);
+[build]       |                   ^~~~~~~~~~~~~~~~~~~~~~~
+[build]       |                   |
+[build]       |                   Sound
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.h:187:39: note: initializing argument 1 of 'void AudioManager::StopSound(const std::string&)'
+[build]   187 |     void StopSound(const std::string& soundName);
+[build]       |                    ~~~~~~~~~~~~~~~~~~~^~~~~~~~~
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.cpp: In member function 'void AudioManager::ProcessPauseSound(const AudioCommand&)':
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.cpp:328:20: error: cannot convert 'Sound' to 'const std::string&' {aka 'const std::__cxx11::basic_string<char>&'}
+[build]   328 |         PauseSound(*it->second.raudiosound);
+[build]       |                    ^~~~~~~~~~~~~~~~~~~~~~~
+[build]       |                    |
+[build]       |                    Sound
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.h:188:40: note: initializing argument 1 of 'void AudioManager::PauseSound(const std::string&)'
+[build]   188 |     void PauseSound(const std::string& soundName);
+[build]       |                     ~~~~~~~~~~~~~~~~~~~^~~~~~~~~
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.cpp: In member function 'void AudioManager::ProcessResumeSound(const AudioCommand&)':
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.cpp:344:21: error: cannot convert 'Sound' to 'const std::string&' {aka 'const std::__cxx11::basic_string<char>&'}
+[build]   344 |         ResumeSound(*it->second.raudiosound);
+[build]       |                     ^~~~~~~~~~~~~~~~~~~~~~~
+[build]       |                     |
+[build]       |                     Sound
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.h:189:41: note: initializing argument 1 of 'void AudioManager::ResumeSound(const std::string&)'
+[build]   189 |     void ResumeSound(const std::string& soundName);
+[build]       |                      ~~~~~~~~~~~~~~~~~~~^~~~~~~~~
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.cpp: In member function 'void AudioManager::ProcessSetSoundVolume(const AudioCommand&)':
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.cpp:361:24: error: cannot convert 'Sound' to 'const std::string&' {aka 'const std::__cxx11::basic_string<char>&'}
+[build]   361 |         SetSoundVolume(*it->second.raudiosound, cmd.value1);
+[build]       |                        ^~~~~~~~~~~~~~~~~~~~~~~
+[build]       |                        |
+[build]       |                        Sound
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.h:194:44: note: initializing argument 1 of 'void AudioManager::SetSoundVolume(const std::string&, float)'
+[build]   194 |     void SetSoundVolume(const std::string& soundName, float volume);
+[build]       |                         ~~~~~~~~~~~~~~~~~~~^~~~~~~~~
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.cpp: In member function 'void AudioManager::ProcessSetSoundPitch(const AudioCommand&)':
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.cpp:375:23: error: cannot convert 'Sound' to 'const std::string&' {aka 'const std::__cxx11::basic_string<char>&'}
+[build]   375 |         SetSoundPitch(*it->second.raudiosound, cmd.value1);
+[build]       |                       ^~~~~~~~~~~~~~~~~~~~~~~
+[build]       |                       |
+[build]       |                       Sound
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.h:195:43: note: initializing argument 1 of 'void AudioManager::SetSoundPitch(const std::string&, float)'
+[build]   195 |     void SetSoundPitch(const std::string& soundName, float pitch);
+[build]       |                        ~~~~~~~~~~~~~~~~~~~^~~~~~~~~
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.cpp: In member function 'void AudioManager::ProcessSetSoundPan(const AudioCommand&)':
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.cpp:389:21: error: cannot convert 'Sound' to 'const std::string&' {aka 'const std::__cxx11::basic_string<char>&'}
+[build]   389 |         SetSoundPan(*it->second.raudiosound, cmd.value1);
+[build]       |                     ^~~~~~~~~~~~~~~~~~~~~~~
+[build]       |                     |
+[build]       |                     Sound
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.h:196:41: note: initializing argument 1 of 'void AudioManager::SetSoundPan(const std::string&, float)'
+[build]   196 |     void SetSoundPan(const std::string& soundName, float pan);
+[build]       |                      ~~~~~~~~~~~~~~~~~~~^~~~~~~~~
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.cpp: In member function 'void AudioManager::ProcessLoadMusic(const AudioCommand&)':
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.cpp:420:20: error: cannot convert 'Music' to 'const std::string&' {aka 'const std::__cxx11::basic_string<char>&'}
+[build]   420 |     SetMusicVolume(*loadedMusic.raudioMusic, loadedMusic.volume);
+[build]       |                    ^~~~~~~~~~~~~~~~~~~~~~~~
+[build]       |                    |
+[build]       |                    Music
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.h:212:44: note: initializing argument 1 of 'void AudioManager::SetMusicVolume(const std::string&, float)'
+[build]   212 |     void SetMusicVolume(const std::string& musicName, float volume);
+[build]       |                         ~~~~~~~~~~~~~~~~~~~^~~~~~~~~
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.cpp:421:19: error: cannot convert 'Music' to 'const std::string&' {aka 'const std::__cxx11::basic_string<char>&'}
+[build]   421 |     SetMusicPitch(*loadedMusic.raudioMusic, loadedMusic.pitch);
+[build]       |                   ^~~~~~~~~~~~~~~~~~~~~~~~
+[build]       |                   |
+[build]       |                   Music
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.h:213:43: note: initializing argument 1 of 'void AudioManager::SetMusicPitch(const std::string&, float)'
+[build]   213 |     void SetMusicPitch(const std::string& musicName, float pitch);
+[build]       |                        ~~~~~~~~~~~~~~~~~~~^~~~~~~~~
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.cpp:422:17: error: cannot convert 'Music' to 'const std::string&' {aka 'const std::__cxx11::basic_string<char>&'}
+[build]   422 |     SetMusicPan(*loadedMusic.raudioMusic, loadedMusic.pan);
+[build]       |                 ^~~~~~~~~~~~~~~~~~~~~~~~
+[build]       |                 |
+[build]       |                 Music
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.h:214:41: note: initializing argument 1 of 'void AudioManager::SetMusicPan(const std::string&, float)'
+[build]   214 |     void SetMusicPan(const std::string& musicName, float pan);
+[build]       |                      ~~~~~~~~~~~~~~~~~~~^~~~~~~~~
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.cpp: In member function 'void AudioManager::ProcessSetMusicVolume(const AudioCommand&)':
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.cpp:527:24: error: cannot convert 'Music' to 'const std::string&' {aka 'const std::__cxx11::basic_string<char>&'}
+[build]   527 |         SetMusicVolume(*it->second.raudioMusic, cmd.value1);
+[build]       |                        ^~~~~~~~~~~~~~~~~~~~~~~
+[build]       |                        |
+[build]       |                        Music
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.h:212:44: note: initializing argument 1 of 'void AudioManager::SetMusicVolume(const std::string&, float)'
+[build]   212 |     void SetMusicVolume(const std::string& musicName, float volume);
+[build]       |                         ~~~~~~~~~~~~~~~~~~~^~~~~~~~~
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.cpp: In member function 'void AudioManager::ProcessSetMusicPitch(const AudioCommand&)':
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.cpp:541:23: error: cannot convert 'Music' to 'const std::string&' {aka 'const std::__cxx11::basic_string<char>&'}
+[build]   541 |         SetMusicPitch(*it->second.raudioMusic, cmd.value1);
+[build]       |                       ^~~~~~~~~~~~~~~~~~~~~~~
+[build]       |                       |
+[build]       |                       Music
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.h:213:43: note: initializing argument 1 of 'void AudioManager::SetMusicPitch(const std::string&, float)'
+[build]   213 |     void SetMusicPitch(const std::string& musicName, float pitch);
+[build]       |                        ~~~~~~~~~~~~~~~~~~~^~~~~~~~~
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.cpp: In member function 'void AudioManager::ProcessSetMusicPan(const AudioCommand&)':
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.cpp:555:21: error: cannot convert 'Music' to 'const std::string&' {aka 'const std::__cxx11::basic_string<char>&'}
+[build]   555 |         SetMusicPan(*it->second.raudioMusic, cmd.value1);
+[build]       |                     ^~~~~~~~~~~~~~~~~~~~~~~
+[build]       |                     |
+[build]       |                     Music
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.h:214:41: note: initializing argument 1 of 'void AudioManager::SetMusicPan(const std::string&, float)'
+[build]   214 |     void SetMusicPan(const std::string& musicName, float pan);
+[build]       |                      ~~~~~~~~~~~~~~~~~~~^~~~~~~~~
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.cpp: In member function 'void AudioManager::ProcessStopAllSounds(const AudioCommand&)':
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.cpp:570:23: error: cannot convert 'Sound' to 'const std::string&' {aka 'const std::__cxx11::basic_string<char>&'}
+[build]   570 |             StopSound(*pair.second.raudiosound);
+[build]       |                       ^~~~~~~~~~~~~~~~~~~~~~~~
+[build]       |                       |
+[build]       |                       Sound
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.h:187:39: note: initializing argument 1 of 'void AudioManager::StopSound(const std::string&)'
+[build]   187 |     void StopSound(const std::string& soundName);
+[build]       |                    ~~~~~~~~~~~~~~~~~~~^~~~~~~~~
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.cpp: In member function 'void AudioManager::ProcessPauseAllSounds(const AudioCommand&)':
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.cpp:582:24: error: cannot convert 'Sound' to 'const std::string&' {aka 'const std::__cxx11::basic_string<char>&'}
+[build]   582 |             PauseSound(*pair.second.raudiosound);
+[build]       |                        ^~~~~~~~~~~~~~~~~~~~~~~~
+[build]       |                        |
+[build]       |                        Sound
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.h:188:40: note: initializing argument 1 of 'void AudioManager::PauseSound(const std::string&)'
+[build]   188 |     void PauseSound(const std::string& soundName);
+[build]       |                     ~~~~~~~~~~~~~~~~~~~^~~~~~~~~
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.cpp: In member function 'void AudioManager::ProcessResumeAllSounds(const AudioCommand&)':
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.cpp:593:25: error: cannot convert 'Sound' to 'const std::string&' {aka 'const std::__cxx11::basic_string<char>&'}
+[build]   593 |             ResumeSound(*pair.second.raudiosound);
+[build]       |                         ^~~~~~~~~~~~~~~~~~~~~~~~
+[build]       |                         |
+[build]       |                         Sound
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.h:189:41: note: initializing argument 1 of 'void AudioManager::ResumeSound(const std::string&)'
+[build]   189 |     void ResumeSound(const std::string& soundName);
+[build]       |                      ~~~~~~~~~~~~~~~~~~~^~~~~~~~~
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.cpp: In member function 'void AudioManager::CleanupFinishedSounds()':
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.cpp:620:81: error: cannot convert 'Sound' to 'const std::string&' {aka 'const std::__cxx11::basic_string<char>&'}
+[build]   620 |         if (pair.second.isPlaying && pair.second.raudiosound && !IsSoundPlaying(*pair.second.raudiosound)) {
+[build]       |                                                                                 ^~~~~~~~~~~~~~~~~~~~~~~~
+[build]       |                                                                                 |
+[build]       |                                                                                 Sound
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.h:190:44: note: initializing argument 1 of 'bool AudioManager::IsSoundPlaying(const std::string&) const'
+[build]   190 |     bool IsSoundPlaying(const std::string& soundName) const;
+[build]       |                         ~~~~~~~~~~~~~~~~~~~^~~~~~~~~
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.cpp: In member function 'float AudioManager::GetMusicTimeLength(const std::string&) const':
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.cpp:972:35: error: cannot convert 'Music' to 'const std::string&' {aka 'const std::__cxx11::basic_string<char>&'}
+[build]   972 |         return GetMusicTimeLength(*it->second.raudioMusic);
+[build]       |                                   ^~~~~~~~~~~~~~~~~~~~~~~
+[build]       |                                   |
+[build]       |                                   Music
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.cpp:967:59: note: initializing argument 1 of 'float AudioManager::GetMusicTimeLength(const std::string&) const'
+[build]   967 | float AudioManager::GetMusicTimeLength(const std::string& musicName) const {
+[build]       |                                        ~~~~~~~~~~~~~~~~~~~^~~~~~~~~
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.cpp: In member function 'float AudioManager::GetMusicTimePlayed(const std::string&) const':
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.cpp:982:35: error: cannot convert 'Music' to 'const std::string&' {aka 'const std::__cxx11::basic_string<char>&'}
+[build]   982 |         return GetMusicTimePlayed(*it->second.raudioMusic);
+[build]       |                                   ^~~~~~~~~~~~~~~~~~~~~~~
+[build]       |                                   |
+[build]       |                                   Music
+[build] F:\Dev Stuff\C++\GLFWEng\src\engine\core\audio\AudioManager.cpp:977:59: note: initializing argument 1 of 'float AudioManager::GetMusicTimePlayed(const std::string&) const'
+[build]   977 | float AudioManager::GetMusicTimePlayed(const std::string& musicName) const {
