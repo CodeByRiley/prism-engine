@@ -11,7 +11,7 @@ class InputComponent;
 
 class GameInspectorUI : public InspectorUI {
 public:
-    GameInspectorUI();
+    GameInspectorUI() = default;
     ~GameInspectorUI() override = default;
     
     // Override to handle game-specific components

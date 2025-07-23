@@ -32,9 +32,8 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-// Inspector UI
-#include "../engine/renderer/ui/GameInspectorUI.h"
-#include "../engine/renderer/ui/NetworkUI.h"
+// GUI
+#include "../engine/renderer/ui/GuiLayout.h"
 
 enum class RenderMode {
     FOG,
@@ -360,7 +359,7 @@ protected:
     RenderMode m_RenderMode = RenderMode::LIGHTING;
     
     // Network UI
-    std::unique_ptr<NetworkUI> m_networkUI;
+    //std::unique_ptr<NetworkUI> m_networkUI;
     
     // Audio
     std::unique_ptr<AudioManager> m_audioManager;
@@ -380,7 +379,17 @@ private:
     void SetupECSObstacles();
     void SetupECSLights();
     void UpdateRenderersFromECS();
-    
+
+    // GUIs
+    std::unique_ptr<GuiLayout> m_GameInspector;
+    std::unique_ptr<GuiLayout> m_EcsInspector;
+    std::unique_ptr<GuiLayout> m_NetworkManager;
+    std::unique_ptr<GuiLayout> m_DebugInspector;
+
+    bool m_ImGuiInitialized = false;
+
     // Inspector UI
-    std::unique_ptr<GameInspectorUI> m_inspectorUI;
+    //std::unique_ptr<GameInspectorUI> m_inspectorUI;
+    EntityID m_selectedEntityID = INVALID_ENTITY_ID;
+
 };

@@ -12,7 +12,9 @@
 // Windows-specific includes
 #ifdef _WIN32
 #define WIN32_LEAN_AND_MEAN
+#ifndef NOMINMAX
 #define NOMINMAX
+#endif
 #include <windows.h>
 #endif
 
@@ -85,7 +87,9 @@ public:
     static void SetLogLevel(LogLevel level) {
         Get().m_CurrentLevel = level;
     }
-
+    static void SetNewLine(bool newLine) {
+        Get().m_NewLine = newLine;
+    }
 private:
     Logger() = default;
     ~Logger() {
@@ -130,7 +134,7 @@ private:
         return prettyFunction.substr(begin, colons - begin);
     }
 
-    static void Log(LogLevel level, const std::string& message, const std::string& className = "") {
+    static void Log(LogLevel level, const std::string& message, const std::string& className = "", bool newLine = true) {
         auto& logger = Get();
         if (level < logger.m_CurrentLevel) return;
 
@@ -144,7 +148,10 @@ private:
             ss << " ";
         }
 
-        ss << message << std::endl;
+        ss << message;
+        if (newLine) {
+            ss << std::endl;
+        }
 
         std::lock_guard<std::mutex> lock(logger.m_Mutex);
         std::cout << ss.str();
@@ -158,6 +165,7 @@ private:
     std::ofstream m_LogFile;
     std::mutex m_Mutex;
     LogLevel m_CurrentLevel = LogLevel::INFO;
+    bool m_NewLine = true;
 };
 
 // Helper macros for easier logging

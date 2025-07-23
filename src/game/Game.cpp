@@ -18,6 +18,98 @@
 #include "backends/imgui_impl_glfw.h"
 #include "backends/imgui_impl_opengl3.h"
 
+Shader* pseudo3DShader;
+
+void SetupImGuiStyle()
+{
+	// Fork of Comfortable Dark Cyan style from ImThemes
+	ImGuiStyle& style = ImGui::GetStyle();
+	
+	style.Alpha = 1.0f;
+	style.DisabledAlpha = 1.0f;
+	style.WindowPadding = ImVec2(20.0f, 20.0f);
+	style.WindowRounding = 3.0f;
+	style.WindowBorderSize = 0.0f;
+	style.WindowMinSize = ImVec2(20.0f, 20.0f);
+	style.WindowTitleAlign = ImVec2(0.5f, 0.5f);
+	style.WindowMenuButtonPosition = ImGuiDir_None;
+	style.ChildRounding = 3.5f;
+	style.ChildBorderSize = 1.0f;
+	style.PopupRounding = 3.5f;
+	style.PopupBorderSize = 1.0f;
+	style.FramePadding = ImVec2(20.0f, 3.400000095367432f);
+	style.FrameRounding = 3.5f;
+	style.FrameBorderSize = 0.0f;
+	style.ItemSpacing = ImVec2(8.899999618530273f, 13.39999961853027f);
+	style.ItemInnerSpacing = ImVec2(7.099999904632568f, 1.799999952316284f);
+	style.CellPadding = ImVec2(12.10000038146973f, 9.199999809265137f);
+	style.IndentSpacing = 0.0f;
+	style.ColumnsMinSpacing = 8.699999809265137f;
+	style.ScrollbarSize = 11.60000038146973f;
+	style.ScrollbarRounding = 3.5f;
+	style.GrabMinSize = 4.0f;
+	style.GrabRounding = 0.0f;
+	style.TabRounding = 0.0f;
+	style.TabBorderSize = 0.0f;
+	style.TabMinWidthForCloseButton = 0.0f;
+	style.ColorButtonPosition = ImGuiDir_Right;
+	style.ButtonTextAlign = ImVec2(0.5f, 0.5f);
+	style.SelectableTextAlign = ImVec2(0.0f, 0.0f);
+	
+	style.Colors[ImGuiCol_Text] = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+	style.Colors[ImGuiCol_TextDisabled] = ImVec4(0.2745098173618317f, 0.3176470696926117f, 0.4509803950786591f, 1.0f);
+	style.Colors[ImGuiCol_WindowBg] = ImVec4(0.0784313753247261f, 0.08627451211214066f, 0.1019607856869698f, 1.0f);
+	style.Colors[ImGuiCol_ChildBg] = ImVec4(0.09411764889955521f, 0.1019607856869698f, 0.1176470592617989f, 1.0f);
+	style.Colors[ImGuiCol_PopupBg] = ImVec4(0.0784313753247261f, 0.08627451211214066f, 0.1019607856869698f, 1.0f);
+	style.Colors[ImGuiCol_Border] = ImVec4(0.1568627506494522f, 0.168627455830574f, 0.1921568661928177f, 1.0f);
+	style.Colors[ImGuiCol_BorderShadow] = ImVec4(0.0784313753247261f, 0.08627451211214066f, 0.1019607856869698f, 1.0f);
+	style.Colors[ImGuiCol_FrameBg] = ImVec4(0.1137254908680916f, 0.125490203499794f, 0.1529411822557449f, 1.0f);
+	style.Colors[ImGuiCol_FrameBgHovered] = ImVec4(0.1568627506494522f, 0.168627455830574f, 0.1921568661928177f, 1.0f);
+	style.Colors[ImGuiCol_FrameBgActive] = ImVec4(0.1568627506494522f, 0.168627455830574f, 0.1921568661928177f, 1.0f);
+	style.Colors[ImGuiCol_TitleBg] = ImVec4(0.0470588244497776f, 0.05490196123719215f, 0.07058823853731155f, 1.0f);
+	style.Colors[ImGuiCol_TitleBgActive] = ImVec4(0.0470588244497776f, 0.05490196123719215f, 0.07058823853731155f, 1.0f);
+	style.Colors[ImGuiCol_TitleBgCollapsed] = ImVec4(0.0784313753247261f, 0.08627451211214066f, 0.1019607856869698f, 1.0f);
+	style.Colors[ImGuiCol_MenuBarBg] = ImVec4(0.09803921729326248f, 0.105882354080677f, 0.1215686276555061f, 1.0f);
+	style.Colors[ImGuiCol_ScrollbarBg] = ImVec4(0.0470588244497776f, 0.05490196123719215f, 0.07058823853731155f, 1.0f);
+	style.Colors[ImGuiCol_ScrollbarGrab] = ImVec4(0.1176470592617989f, 0.1333333402872086f, 0.1490196138620377f, 1.0f);
+	style.Colors[ImGuiCol_ScrollbarGrabHovered] = ImVec4(0.1568627506494522f, 0.168627455830574f, 0.1921568661928177f, 1.0f);
+	style.Colors[ImGuiCol_ScrollbarGrabActive] = ImVec4(0.1176470592617989f, 0.1333333402872086f, 0.1490196138620377f, 1.0f);
+	style.Colors[ImGuiCol_CheckMark] = ImVec4(0.0313725508749485f, 0.9490196108818054f, 0.843137264251709f, 1.0f);
+	style.Colors[ImGuiCol_SliderGrab] = ImVec4(0.0313725508749485f, 0.9490196108818054f, 0.843137264251709f, 1.0f);
+	style.Colors[ImGuiCol_SliderGrabActive] = ImVec4(0.6000000238418579f, 0.9647058844566345f, 0.0313725508749485f, 1.0f);
+	style.Colors[ImGuiCol_Button] = ImVec4(0.1176470592617989f, 0.1333333402872086f, 0.1490196138620377f, 1.0f);
+	style.Colors[ImGuiCol_ButtonHovered] = ImVec4(0.1803921610116959f, 0.1882352977991104f, 0.196078434586525f, 1.0f);
+	style.Colors[ImGuiCol_ButtonActive] = ImVec4(0.1529411822557449f, 0.1529411822557449f, 0.1529411822557449f, 1.0f);
+	style.Colors[ImGuiCol_Header] = ImVec4(0.1411764770746231f, 0.1647058874368668f, 0.2078431397676468f, 1.0f);
+	style.Colors[ImGuiCol_HeaderHovered] = ImVec4(0.105882354080677f, 0.105882354080677f, 0.105882354080677f, 1.0f);
+	style.Colors[ImGuiCol_HeaderActive] = ImVec4(0.0784313753247261f, 0.08627451211214066f, 0.1019607856869698f, 1.0f);
+	style.Colors[ImGuiCol_Separator] = ImVec4(0.1294117718935013f, 0.1490196138620377f, 0.1921568661928177f, 1.0f);
+	style.Colors[ImGuiCol_SeparatorHovered] = ImVec4(0.1568627506494522f, 0.1843137294054031f, 0.250980406999588f, 1.0f);
+	style.Colors[ImGuiCol_SeparatorActive] = ImVec4(0.1568627506494522f, 0.1843137294054031f, 0.250980406999588f, 1.0f);
+	style.Colors[ImGuiCol_ResizeGrip] = ImVec4(0.1450980454683304f, 0.1450980454683304f, 0.1450980454683304f, 1.0f);
+	style.Colors[ImGuiCol_ResizeGripHovered] = ImVec4(0.0313725508749485f, 0.9490196108818054f, 0.843137264251709f, 1.0f);
+	style.Colors[ImGuiCol_ResizeGripActive] = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+	style.Colors[ImGuiCol_Tab] = ImVec4(0.0784313753247261f, 0.08627451211214066f, 0.1019607856869698f, 1.0f);
+	style.Colors[ImGuiCol_TabHovered] = ImVec4(0.1176470592617989f, 0.1333333402872086f, 0.1490196138620377f, 1.0f);
+	style.Colors[ImGuiCol_TabActive] = ImVec4(0.1176470592617989f, 0.1333333402872086f, 0.1490196138620377f, 1.0f);
+	style.Colors[ImGuiCol_TabUnfocused] = ImVec4(0.0784313753247261f, 0.08627451211214066f, 0.1019607856869698f, 1.0f);
+	style.Colors[ImGuiCol_TabUnfocusedActive] = ImVec4(0.125490203499794f, 0.2745098173618317f, 0.572549045085907f, 1.0f);
+	style.Colors[ImGuiCol_PlotLines] = ImVec4(0.5215686559677124f, 0.6000000238418579f, 0.7019608020782471f, 1.0f);
+	style.Colors[ImGuiCol_PlotLinesHovered] = ImVec4(0.03921568766236305f, 0.9803921580314636f, 0.9803921580314636f, 1.0f);
+	style.Colors[ImGuiCol_PlotHistogram] = ImVec4(0.0313725508749485f, 0.9490196108818054f, 0.843137264251709f, 1.0f);
+	style.Colors[ImGuiCol_PlotHistogramHovered] = ImVec4(0.1568627506494522f, 0.1843137294054031f, 0.250980406999588f, 1.0f);
+	style.Colors[ImGuiCol_TableHeaderBg] = ImVec4(0.0470588244497776f, 0.05490196123719215f, 0.07058823853731155f, 1.0f);
+	style.Colors[ImGuiCol_TableBorderStrong] = ImVec4(0.0470588244497776f, 0.05490196123719215f, 0.07058823853731155f, 1.0f);
+	style.Colors[ImGuiCol_TableBorderLight] = ImVec4(0.0f, 0.0f, 0.0f, 1.0f);
+	style.Colors[ImGuiCol_TableRowBg] = ImVec4(0.1176470592617989f, 0.1333333402872086f, 0.1490196138620377f, 1.0f);
+	style.Colors[ImGuiCol_TableRowBgAlt] = ImVec4(0.09803921729326248f, 0.105882354080677f, 0.1215686276555061f, 1.0f);
+	style.Colors[ImGuiCol_TextSelectedBg] = ImVec4(0.9372549057006836f, 0.9372549057006836f, 0.9372549057006836f, 1.0f);
+	style.Colors[ImGuiCol_DragDropTarget] = ImVec4(0.4980392158031464f, 0.5137255191802979f, 1.0f, 1.0f);
+	style.Colors[ImGuiCol_NavHighlight] = ImVec4(0.2666666805744171f, 0.2901960909366608f, 1.0f, 1.0f);
+	style.Colors[ImGuiCol_NavWindowingHighlight] = ImVec4(0.4980392158031464f, 0.5137255191802979f, 1.0f, 1.0f);
+	style.Colors[ImGuiCol_NavWindowingDimBg] = ImVec4(0.196078434586525f, 0.1764705926179886f, 0.5450980663299561f, 0.501960813999176f);
+	style.Colors[ImGuiCol_ModalWindowDimBg] = ImVec4(0.196078434586525f, 0.1764705926179886f, 0.5450980663299561f, 0.501960813999176f);
+}
 void framebufferSizeCallback(GLFWwindow* window, int width, int height) {
     Game* game = static_cast<Game*>(glfwGetWindowUserPointer(window));
     if (!game) return;
@@ -57,7 +149,8 @@ Game::Game(int width, int height, const char* title)
       lightRenderer(nullptr),
       m_RenderMode(RenderMode::LIGHTING),
       m_playerMovementSystem(nullptr),
-      m_localPlayerNetworkID(0)
+      m_localPlayerNetworkID(0),
+      m_selectedEntityID(INVALID_ENTITY_ID)
 {
     glfwSetWindowUserPointer(m_Window, this);
     glfwSetFramebufferSizeCallback(m_Window, framebufferSizeCallback);
@@ -65,7 +158,7 @@ Game::Game(int width, int height, const char* title)
     fogRenderer = new FogRenderer2D(width, height);
     visionRenderer = new VisionRenderer2D(width, height);
     lightRenderer = new LightRenderer2D(width, height);
-
+    pseudo3DShader = new Shader("shaders/Pseudo3D.vert.glsl", "shaders/Pseudo3D.frag.glsl");
     // Create ECS scene
     m_scene = std::make_unique<Scene>("GameScene", 1);
     
@@ -92,6 +185,40 @@ Game::Game(int width, int height, const char* title)
     m_LightConfig.lightType = LightType::DIRECTIONAL_LIGHT;
     m_LightConfig.bloom = 0.5f;
     
+    // Setup ImGui
+    IMGUI_CHECKVERSION();
+    ImGui::CreateContext();
+    ImGuiIO& io = ImGui::GetIO(); (void)io;
+    io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
+    io.IniFilename = NULL;
+
+    // Ensure GLFW window context is current
+    glfwMakeContextCurrent(m_Window);
+
+    // Setup Platform/Renderer backends
+    bool glfwResult = ImGui_ImplGlfw_InitForOpenGL(m_Window, true);
+    if (!glfwResult) {
+        Logger::Error<Game>("Failed to initialize ImGui GLFW backend", this);
+        return;
+    }
+
+    bool openglResult = ImGui_ImplOpenGL3_Init("#version 330 core");
+    if (!openglResult) {
+        Logger::Error<Game>("Failed to initialize ImGui OpenGL3 backend", this);
+        ImGui_ImplGlfw_Shutdown();
+        return;
+    }
+
+    Logger::Info("ImGui initialized");
+    m_ImGuiInitialized = true;
+
+    // Setup GUIs
+    // m_GameInspector = std::make_unique<GuiLayout>("game_inspector");
+    // m_EcsInspector = std::make_unique<GuiLayout>("ecs_inspector");
+    // m_NetworkManager = std::make_unique<GuiLayout>("network_manager");
+    m_DebugInspector = std::make_unique<GuiLayout>("debug_inspector");
+
+    
     // Setup ECS systems and entities
     SetupECSScene();
 }
@@ -113,28 +240,64 @@ void Game::OnInit() {
     Logger::Info("Press B to play item pickup sound");
     Logger::Info("Press +/- to adjust master volume");
     
+
+
     // Initialize Inspector UI
-    m_inspectorUI = std::make_unique<GameInspectorUI>();
-    if (!m_inspectorUI->Initialize(m_Window)) {
-        Logger::Error<Game>("Failed to initialize Inspector UI", this);
-    } else {
-        // Set up entity destruction callback
-        m_inspectorUI->SetEntityDestructionCallback([this](EntityID entityID) {
-            m_scene->DestroyEntity(entityID);
-        });
-    }
+    // m_inspectorUI = std::make_unique<GameInspectorUI>();
+    // if (!m_inspectorUI->Initialize(m_Window)) {
+    //     Logger::Error<Game>("Failed to initialize Inspector UI", this);
+    // } else {
+    //     // Set up custom ImGui style
+    //     SetupImGuiStyle();
+    //     // Set up entity destruction callback
+    //     m_inspectorUI->SetEntityDestructionCallback([this](EntityID entityID) {
+    //         m_scene->DestroyEntity(entityID);
+    //     });
+    // }
     
-    // Initialize Network UI
-    m_networkUI = std::make_unique<NetworkUI>();
-    if (!m_networkUI->Initialize(m_Window)) {
-        Logger::Error<Game>("Failed to initialize Network UI", this);
-    }
+    // // Initialize Network UI
+    // m_networkUI = std::make_unique<NetworkUI>();
+    // if (!m_networkUI->Initialize(m_Window)) {
+    //     Logger::Error<Game>("Failed to initialize Network UI", this);
+    // }
     
+
+    // // Load GUIs from YAML
+    // GuiLayout m_GameInspector("game_inspector");
+    // //m_GameInspector.LoadFromYaml("build/resources/gui/layouts/game_inspector.yaml");
+    // GuiLayout m_EcsInspector("ecs_inspector");
+    // //m_EcsInspector.LoadFromYaml("build/resources/gui/layouts/ecs_inspector.yaml");
+    // GuiLayout m_NetworkManager("network_manager");
+    // //m_NetworkManager.LoadFromYaml("build/resources/gui/layouts/network_manager.yaml");
+
+    GuiCallbackRegistry::Instance().Register("destroy_selected_entity", [this](const std::string&) {
+        if (m_scene && m_selectedEntityID != INVALID_ENTITY_ID) {
+            m_scene->DestroyEntity(m_selectedEntityID);
+            Logger::Info("Destroyed entity ID: " + std::to_string(m_selectedEntityID));
+            m_selectedEntityID = INVALID_ENTITY_ID; // Optionally clear selection
+        }
+    });
+
     // Initialize Audio System
     SetupAudioSystem();
     
     // Set up networking packet handlers for game events
     SetupNetworkingHandlers();
+
+    GuiCallbackRegistry::Instance().Register("select_entity", [this](const std::string& entityName) {
+        // Find the entity by name in the current scene
+        if (m_scene) {
+            for (const Entity& entity : m_scene->GetAllEntities()) {
+                if (entity.GetName() == entityName) {
+                    m_selectedEntityID = entity.GetID();
+                    Logger::Info("Selected entity: " + entityName + " (ID: " + std::to_string(m_selectedEntityID) + ")");
+                    return;
+                }
+            }
+            m_selectedEntityID = INVALID_ENTITY_ID;
+            Logger::Warn<Game>("Entity not found: " + entityName);
+        }
+    });
 }
 
 void Game::SetupNetworkingHandlers() {
@@ -796,21 +959,21 @@ void Game::OnUpdate() {
         }
     }
     
-    // Toggle Inspector
-    if (Input::IsKeyPressed(GLFW_KEY_F1)) {
-        if (m_inspectorUI) {
-            m_inspectorUI->ToggleVisibility();
-            Logger::Info("Inspector " + std::string(m_inspectorUI->IsVisible() ? "ENABLED" : "DISABLED"));
-        }
-    }
+    // // Toggle Inspector
+    // if (Input::IsKeyPressed(GLFW_KEY_F1)) {
+    //     if (m_inspectorUI) {
+    //         m_inspectorUI->ToggleVisibility();
+    //         Logger::Info("Inspector " + std::string(m_inspectorUI->IsVisible() ? "ENABLED" : "DISABLED"));
+    //     }
+    // }
     
-    // Toggle Network UI
-    if (Input::IsKeyPressed(GLFW_KEY_F6)) {
-        if (m_networkUI) {
-            m_networkUI->ToggleVisibility();
-            Logger::Info("Network UI " + std::string(m_networkUI->IsVisible() ? "ENABLED" : "DISABLED"));
-        }
-    }
+    // // Toggle Network UI
+    // if (Input::IsKeyPressed(GLFW_KEY_F6)) {
+    //     if (m_networkUI) {
+    //         m_networkUI->ToggleVisibility();
+    //         Logger::Info("Network UI " + std::string(m_networkUI->IsVisible() ? "ENABLED" : "DISABLED"));
+    //     }
+    // }
     
     // Disconnect from server
     if (Input::IsKeyPressed(GLFW_KEY_F7)) {
@@ -921,15 +1084,17 @@ void Game::OnUpdate() {
     }
     
     // Update network UI if it exists
-    if (m_networkUI && m_networkUI->IsVisible()) {
-        // Don't call Render() here, we'll handle all ImGui rendering in OnDraw
-    }
+    // if (m_networkUI && m_networkUI->IsVisible()) {
+    //     // Don't call Render() here, we'll handle all ImGui rendering in OnDraw
+    // }
     
-    // Update inspector UI if it exists
-    if (m_inspectorUI && m_inspectorUI->IsVisible()) {
-        // Don't call Render() here, we'll handle all ImGui rendering in OnDraw
-    }
+    // // Update inspector UI if it exists
+    // if (m_inspectorUI && m_inspectorUI->IsVisible()) {
+    //     // Don't call Render() here, we'll handle all ImGui rendering in OnDraw
+    // }
 }
+
+std::unordered_map<std::string, std::string> variables;
 
 void Game::OnDraw() {
     if (m_isShuttingDown) {
@@ -1027,52 +1192,83 @@ void Game::OnDraw() {
             lightRenderer->DrawLightingOverlay(m_Lights, m_LightConfig);
             break;
     }
-    
+
+    // Render ImGui
+    ImGui_ImplOpenGL3_NewFrame();
+    ImGui_ImplGlfw_NewFrame();
+    ImGui::NewFrame();
+
+    // Build variable map for the inspector
+
+    // Set scene name/id, etc.
+    if (m_scene) {
+        variables["scene_name"] = m_scene->GetName();
+        variables["scene_id"] = std::to_string(m_scene->GetId());
+
+        // Build the entity list as a comma-separated string
+        std::string entityList;
+        for (const Entity& entity : m_scene->GetAllEntities()) {
+            if (!entityList.empty()) entityList += ",";
+            entityList += entity.GetName() + " (" + std::to_string(entity.GetID()) + ")";
+        }
+        variables["entity_list"] = entityList;
+    }
+
+    // ... set other variables as needed ...
+
+    // Render the inspector with the up-to-date variables
+    m_DebugInspector->Render(variables);
+
+    // End ImGui frame
+    ImGui::Render();
+    ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+
     glDisable(GL_BLEND);
     
     // Render UI - centralized ImGui frame handling
-    RenderUI();
+    //RenderUI();
 }
 
-void Game::RenderUI() {
-    // Only render UI if at least one system is initialized and visible
-    bool shouldRenderUI = false;
-    if (m_inspectorUI && m_inspectorUI->IsInitialized() && m_inspectorUI->IsVisible()) {
-        shouldRenderUI = true;
-    }
-    if (m_networkUI && m_networkUI->IsInitialized() && m_networkUI->IsVisible()) {
-        shouldRenderUI = true;
-    }
+// void Game::RenderUI() {
+//     // Only render UI if at least one system is initialized and visible
+//     bool shouldRenderUI = false;
+
+//     // if (m_inspectorUI && m_inspectorUI->IsInitialized() && m_inspectorUI->IsVisible()) {
+//     //     shouldRenderUI = true;
+//     // }
+//     // if (m_networkUI && m_networkUI->IsInitialized() && m_networkUI->IsVisible()) {
+//     //     shouldRenderUI = true;
+//     // }
     
-    if (!shouldRenderUI) {
-        return;
-    }
+//     if (!shouldRenderUI) {
+//         return;
+//     }
     
-    // Start ImGui frame (only once for all UI systems)
-    if (m_inspectorUI && m_inspectorUI->IsInitialized()) {
-        // Use the inspector's backend to start the frame
-        ImGui_ImplOpenGL3_NewFrame();
-        ImGui_ImplGlfw_NewFrame();
-        ImGui::NewFrame();
+//     // Start ImGui frame (only once for all UI systems)
+//     if (m_inspectorUI && m_inspectorUI->IsInitialized()) {
+//         // Use the inspector's backend to start the frame
+//         ImGui_ImplOpenGL3_NewFrame();
+//         ImGui_ImplGlfw_NewFrame();
+//         ImGui::NewFrame();
         
-        // Render Inspector UI content only
-        if (m_inspectorUI->IsVisible()) {
-            m_inspectorUI->RenderContent(m_scene.get());
+//         // Render Inspector UI content only
+//         if (m_inspectorUI->IsVisible()) {
+//             m_inspectorUI->RenderContent(m_scene.get());
             
-            // Update renderers if any changes were made in the inspector
-            UpdateRenderersFromECS();
-        }
+//             // Update renderers if any changes were made in the inspector
+//             UpdateRenderersFromECS();
+//         }
         
-        // Render Network UI content only
-        if (m_networkUI && m_networkUI->IsVisible()) {
-            m_networkUI->RenderContent();
-        }
+//         // Render Network UI content only
+//         if (m_networkUI && m_networkUI->IsVisible()) {
+//             m_networkUI->RenderContent();
+//         }
         
-        // End ImGui frame (only once for all UI systems)
-        ImGui::Render();
-        ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-    }
-}
+//         // End ImGui frame (only once for all UI systems)
+//         ImGui::Render();
+//         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+//     }
+// }
 
 void Game::OnResize(int width, int height) {
     windowWidth = width;
@@ -1091,6 +1287,13 @@ void Game::OnResize(int width, int height) {
 void Game::OnShutdown() {
     m_isShuttingDown = true;
     Logger::Info("Game Shutdown");
+    
+    if (m_ImGuiInitialized) {
+        ImGui_ImplOpenGL3_Shutdown();
+        ImGui_ImplGlfw_Shutdown();
+        ImGui::DestroyContext();
+        m_ImGuiInitialized = false;
+    }
     
     // Save scene before shutdown
     if (m_scene) {
@@ -1112,25 +1315,13 @@ void Game::OnShutdown() {
     // Clear network players first (to prevent access during shutdown)
     ClearNetworkPlayers();
     
-    // Shutdown inspector
-    if (m_inspectorUI) {
-        m_inspectorUI->Shutdown();
-        m_inspectorUI.reset();
-    }
-    
-    // Shutdown network UI
-    if (m_networkUI) {
-        m_networkUI->Shutdown();
-        m_networkUI.reset();
-    }
-    
     // Shutdown Audio System
     Audio::Shutdown();
     Logger::Info("Audio system shut down");
     
     // Add a small delay to ensure audio callbacks have completed
     std::this_thread::sleep_for(std::chrono::milliseconds(50));
-    
+
     // Clean up renderers safely
     Logger::Info("Starting renderer cleanup...");
     
@@ -1168,6 +1359,8 @@ void Game::OnShutdown() {
     catch (...) {
         Logger::Error<Game>("Unknown error during renderer cleanup", this);
     }
+    
+
     
     Logger::Info("Shutdown complete");
 }

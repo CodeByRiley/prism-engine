@@ -5,11 +5,12 @@
 #include <vector>
 #include <GLFW/glfw3.h>
 #include <engine/core/networking/NetworkManager.h>
+#include <engine/renderer/ui/InspectorUI.h>
 
 // Forward declarations to avoid full ImGui include in header
 struct ImGuiIO;
 
-class NetworkUI {
+class NetworkUI : public InspectorUI {
 public:
     NetworkUI();
     virtual ~NetworkUI();

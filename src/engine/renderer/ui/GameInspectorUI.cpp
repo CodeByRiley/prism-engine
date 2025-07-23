@@ -25,10 +25,6 @@ struct InputComponentInterface {
     bool enabled;
 };
 
-GameInspectorUI::GameInspectorUI() : InspectorUI() {
-    // Constructor
-}
-
 void GameInspectorUI::Render(Scene* scene) {
     // Call the base class render method
     InspectorUI::Render(scene);
@@ -74,17 +70,14 @@ void GameInspectorUI::DrawGameComponents(Entity& entity) {
             ImGui::Text("Light Type");
             const char* lightTypes[] = { "Point Light", "Directional Light", "Spot Light" };
             int currentType = static_cast<int>(light.type);
-            if (ImGui::Combo("Type", &currentType, lightTypes, IM_ARRAYSIZE(lightTypes))) {
-                light.type = static_cast<LightType>(currentType);
-            }
-            
+            ImGui::Combo("Type", &currentType, lightTypes, IM_ARRAYSIZE(lightTypes));
+            light.type = static_cast<LightType>(currentType);
             ImGui::Separator();
             
             // Color controls with multiple options
             ImGui::Text("Light Color");
             ImGui::ColorEdit3("RGB Color", &light.color.x, ImGuiColorEditFlags_DisplayRGB | ImGuiColorEditFlags_InputRGB | ImGuiColorEditFlags_PickerHueWheel);
             
-            // Color presets
             if (ImGui::Button("White")) light.color = glm::vec3(1.0f, 1.0f, 1.0f);
             ImGui::SameLine();
             if (ImGui::Button("Warm White")) light.color = glm::vec3(1.0f, 0.95f, 0.8f);
@@ -98,7 +91,7 @@ void GameInspectorUI::DrawGameComponents(Entity& entity) {
             if (ImGui::Button("Blue")) light.color = glm::vec3(0.0f, 0.0f, 1.0f);
             
             if (ImGui::Button("Orange")) light.color = glm::vec3(1.0f, 0.5f, 0.0f);
-            ImGui::SameLine();
+                ImGui::SameLine();
             if (ImGui::Button("Purple")) light.color = glm::vec3(0.5f, 0.0f, 1.0f);
             ImGui::SameLine();
             if (ImGui::Button("Yellow")) light.color = glm::vec3(1.0f, 1.0f, 0.0f);
@@ -107,9 +100,8 @@ void GameInspectorUI::DrawGameComponents(Entity& entity) {
             
             // Intensity controls
             ImGui::Text("Light Intensity");
-            ImGui::SliderFloat("Intensity", &light.intensity, 0.0f, 10.0f, "%.2f");
+            ImGui::SliderFloat("Intensity", &light.intensity, 0.0f, 10.0f);
             
-            // Intensity presets
             if (ImGui::Button("Dim (0.5)")) light.intensity = 0.5f;
             ImGui::SameLine();
             if (ImGui::Button("Normal (1.0)")) light.intensity = 1.0f;
@@ -118,7 +110,6 @@ void GameInspectorUI::DrawGameComponents(Entity& entity) {
             ImGui::SameLine();
             if (ImGui::Button("Very Bright (5.0)")) light.intensity = 5.0f;
             
-            // Fine-tune intensity with +/- buttons
             if (ImGui::Button("-0.1")) light.intensity = std::max(0.0f, light.intensity - 0.1f);
             ImGui::SameLine();
             if (ImGui::Button("+0.1")) light.intensity = std::min(10.0f, light.intensity + 0.1f);
@@ -149,7 +140,7 @@ void GameInspectorUI::DrawGameComponents(Entity& entity) {
             // Range controls (for Point and Spot lights)
             if (light.type != LightType::DIRECTIONAL_LIGHT) {
                 ImGui::Text("Light Range");
-                ImGui::DragFloat("Range", &light.range, 10.0f, 10.0f, 5000.0f, "%.1f");
+                ImGui::DragFloat("Range", &light.range, 10.0f, 10.0f, 5000.0f);
                 
                 // Range presets
                 if (ImGui::Button("Small (100)")) light.range = 100.0f;
@@ -165,8 +156,8 @@ void GameInspectorUI::DrawGameComponents(Entity& entity) {
             if (light.type == LightType::SPOT_LIGHT) {
                 ImGui::Separator();
                 ImGui::Text("Spot Light Cone");
-                ImGui::SliderFloat("Inner Angle", &light.innerAngle, 0.0f, 3.14159f, "%.3f rad");
-                ImGui::SliderFloat("Outer Angle", &light.outerAngle, 0.0f, 3.14159f, "%.3f rad");
+                ImGui::SliderFloat("Inner Angle", &light.innerAngle, 0.0f, 3.14159f);
+                ImGui::SliderFloat("Outer Angle", &light.outerAngle, 0.0f, 3.14159f);
                 
                 // Ensure inner angle <= outer angle
                 if (light.innerAngle > light.outerAngle) {
@@ -194,7 +185,7 @@ void GameInspectorUI::DrawGameComponents(Entity& entity) {
             
             // Bloom effect
             ImGui::Text("Bloom Effect");
-            ImGui::SliderFloat("Bloom", &light.bloom, 0.0f, 2.0f, "%.2f");
+            ImGui::SliderFloat("Bloom", &light.bloom, 0.0f, 2.0f);
             
             ImGui::Separator();
             
@@ -203,50 +194,46 @@ void GameInspectorUI::DrawGameComponents(Entity& entity) {
                 // Display current values for reference
                 ImGui::Text("Current Values:");
                 ImGui::Text("Type: %s", lightTypes[static_cast<int>(light.type)]);
-                ImGui::Text("Color: (%.2f, %.2f, %.2f)", light.color.r, light.color.g, light.color.b);
-                ImGui::Text("Intensity: %.2f", light.intensity);
+                ImGui::Text("Color: (%s, %s, %s)", std::to_string(light.color.r).c_str(), std::to_string(light.color.g).c_str(), std::to_string(light.color.b).c_str());
+                ImGui::Text("Intensity: %s", std::to_string(light.intensity).c_str());
                 if (light.type != LightType::DIRECTIONAL_LIGHT) {
-                    ImGui::Text("Position: (%.1f, %.1f)", light.position.x, light.position.y);
-                    ImGui::Text("Range: %.1f", light.range);
+                    ImGui::Text("Position: (%s, %s)", std::to_string(light.position.x).c_str(), std::to_string(light.position.y).c_str());
+                    ImGui::Text("Range: %s", std::to_string(light.range).c_str());
                 }
-                if (light.type != LightType::POINT_LIGHT) {
-                    ImGui::Text("Direction: (%.2f, %.2f)", light.direction.x, light.direction.y);
+                if (light.type != LightType::POINT_LIGHT) { 
+                    ImGui::Text("Direction: (%s, %s)", std::to_string(light.direction.x).c_str(), std::to_string(light.direction.y).c_str());
                 }
                 if (light.type == LightType::SPOT_LIGHT) {
-                    ImGui::Text("Inner Angle: %.2f° (%.3f rad)", light.innerAngle * 180.0f / 3.14159f, light.innerAngle);
-                    ImGui::Text("Outer Angle: %.2f° (%.3f rad)", light.outerAngle * 180.0f / 3.14159f, light.outerAngle);
+                    ImGui::Text("Inner Angle: %s° (%s)", std::to_string(light.innerAngle * 180.0f / 3.14159f).c_str(), std::to_string(light.innerAngle).c_str());
+                    ImGui::Text("Outer Angle: %s° (%s)", std::to_string(light.outerAngle * 180.0f / 3.14159f).c_str(), std::to_string(light.outerAngle).c_str());
                 }
-                ImGui::Text("Bloom: %.2f", light.bloom);
+                ImGui::Text("Bloom: %s", std::to_string(light.bloom).c_str());
                 
                 ImGui::Separator();
                 
                 // Color temperature simulation
                 static float colorTemperature = 6500.0f; // Default daylight
-                if (ImGui::SliderFloat("Color Temperature (K)", &colorTemperature, 1000.0f, 12000.0f, "%.0f K")) {
-                    // Simple color temperature to RGB conversion
-                    float temp = colorTemperature / 100.0f;
-                    glm::vec3 tempColor;
-                    
-                    if (temp <= 66.0f) {
-                        tempColor.r = 1.0f;
-                        tempColor.g = std::max(0.0f, std::min(1.0f, static_cast<float>((99.4708025861f * log(temp) - 161.1195681661f) / 255.0f)));
-                    } else {
-                        tempColor.r = std::max(0.0f, std::min(1.0f, static_cast<float>((329.698727446f * pow(temp - 60.0f, -0.1332047592f)) / 255.0f)));
-                        tempColor.g = std::max(0.0f, std::min(1.0f, static_cast<float>((288.1221695283f * pow(temp - 60.0f, -0.0755148492f)) / 255.0f)));
-                    }
-                    
-                    if (temp >= 66.0f) {
-                        tempColor.b = 1.0f;
-                    } else if (temp <= 19.0f) {
-                        tempColor.b = 0.0f;
-                    } else {
-                        tempColor.b = std::max(0.0f, std::min(1.0f, static_cast<float>((138.5177312231f * log(temp - 10.0f) - 305.0447927307f) / 255.0f)));
-                    }
-                    
-                    light.color = tempColor;
+                ImGui::SliderFloat("Color Temperature (K)", &colorTemperature, 1000.0f, 12000.0f);
+                float temp = colorTemperature / 100.0f;
+                glm::vec3 tempColor;
+                
+                if (temp <= 66.0f) {
+                    tempColor.r = 1.0f;
+                    tempColor.g = std::max(0.0f, std::min(1.0f, static_cast<float>((99.4708025861f * log(temp) - 161.1195681661f) / 255.0f)));
+                } else {
+                    tempColor.r = std::max(0.0f, std::min(1.0f, static_cast<float>((329.698727446f * pow(temp - 60.0f, -0.1332047592f)) / 255.0f)));
+                    tempColor.g = std::max(0.0f, std::min(1.0f, static_cast<float>((288.1221695283f * pow(temp - 60.0f, -0.0755148492f)) / 255.0f)));
                 }
                 
-                // Quick temperature presets
+                if (temp >= 66.0f) {
+                    tempColor.b = 1.0f;
+                } else if (temp <= 19.0f) {
+                    tempColor.b = 0.0f;
+                } else {
+                    tempColor.b = std::max(0.0f, std::min(1.0f, static_cast<float>((138.5177312231f * log(temp - 10.0f) - 305.0447927307f) / 255.0f)));
+                }
+                
+                light.color = tempColor;
                 if (ImGui::Button("Candle (1900K)")) {
                     colorTemperature = 1900.0f;
                     light.color = glm::vec3(1.0f, 0.6f, 0.2f);
@@ -309,4 +296,4 @@ void GameInspectorUI::DrawGameComponents(Entity& entity) {
             ImGui::TextColored(ImVec4(0.7f, 0.7f, 0.7f, 1.0f), "No custom game components found");
         }
     }
-} 
+}
