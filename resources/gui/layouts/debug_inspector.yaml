@@ -1,0 +1,8 @@
+                  - type: GROUP
+                    label: "Input Component"
+                    children:
+                      - type: CHECKBOX
+                        label: "Enabled"
+                        value: ${input_enabled}
+                        events:
+                          ON_CHANGE: "toggle_input_enabled"

@@ -1,0 +1,182 @@
+type: WINDOW
+label: "Debug Window"
+size: [900, 700]
+widgets:
+  - type: TAB_BAR
+    label: "Debug"
+    children:
+      - type: TAB # ECS Inspector
+        label: "ECS Inspector"
+        children:
+          - type: TEXT
+            label: "Scene: ${scene_name} (ID: ${scene_id})"
+          - type: SEPARATOR
+          - type: TAB_BAR
+            label: "InspectorTabs"
+            children:
+              - type: TAB
+                label: "Entities"
+                children:
+                  - type: LIST
+                    label: "Entities"
+                    items: ${entity_list}
+                    events:
+                      ON_CLICK: "select_entity"
+              - type: TAB
+                label: "Components"
+                children:
+                  - type: TEXT
+                    label: "Components for Entity: ${selected_entity_name} (ID: ${selected_entity_id})"
+                  - type: TEXT
+                    label: "Component List:"
+                    valueStr: "${components_list}"
+                  - type: GROUP
+                    label: "Transform"
+                    children:
+                      - type: SLIDER
+                        label: "Position X"
+                        value: ${transform_position_x}
+                        min: -1000
+                        max: 1000
+                        events:
+                          ON_CHANGE: "set_transform_x"
+                      - type: SLIDER
+                        label: "Position Y"
+                        value: ${transform_position_y}
+                        min: -1000
+                        max: 1000
+                        events:
+                          ON_CHANGE: "set_transform_y"
+                      - type: SLIDER
+                        label: "Position Z"
+                        value: ${transform_position_z}
+                        min: -1000
+                        max: 1000
+                        events:
+                          ON_CHANGE: "set_transform_z"
+                  - type: GROUP
+                    label: "Player Component"
+                    children:
+                      - type: SLIDER
+                        label: "Speed"
+                        value: ${player_speed}
+                        min: 0
+                        max: 2000
+                        events:
+                          ON_CHANGE: "set_player_speed"
+                      - type: TEXT
+                        label: "Direction"
+                        valueStr: "X: ${player_direction_x}, Y: ${player_direction_y}"
+                  - type: GROUP
+                    label: "Obstacle Component"
+                    children:
+                      - type: TEXT
+                        label: "Size"
+                        valueStr: "Width: ${obstacle_size_x}, Height: ${obstacle_size_y}"
+                  - type: GROUP
+                    label: "Input Component"
+                    children:
+                      - type: CHECKBOX
+                        label: "Enabled"
+                        value: ${input_enabled == "true" ? 1 : 0}
+                        events:
+                          ON_CHANGE: "toggle_input_enabled"
+                  # Add more groups for Renderable, Physics, etc.
+          - type: SEPARATOR
+          - type: BUTTON
+            label: "Destroy Entity"
+            events:
+              ON_CLICK: "destroy_selected_entity"
+      - type: TAB # Network Manager
+        label: "Network Manager"
+        children:
+          - type: TAB_BAR
+            label: "NetworkTabs"
+            children:
+              - type: TAB
+                label: "Connection"
+                children:
+                  - type: GROUP
+                    label: "Server"
+                    children:
+                      - type: TEXT
+                        label: "START SERVER"
+                        color: [0.0, 1.0, 0.0, 1.0]
+                      - type: TEXT_INPUT
+                        label: "Port"
+                        value: ${server_port}
+                        events:
+                          ON_CHANGE: "set_server_port"
+                      - type: TEXT_INPUT
+                        label: "Max Clients"
+                        value: ${max_clients}
+                        events:
+                          ON_CHANGE: "set_max_clients"
+                      - type: BUTTON
+                        label: "Start Server"
+                        events:
+                          ON_CLICK: "start_server"
+                  - type: GROUP
+                    label: "Client"
+                    children:
+                      - type: TEXT
+                        label: "CONNECT TO SERVER"
+                        color: [0.0, 0.5, 1.0, 1.0]
+                      - type: TEXT_INPUT
+                        label: "Address"
+                        value: ${client_address}
+                        events:
+                          ON_CHANGE: "set_client_address"
+                      - type: TEXT_INPUT
+                        label: "Port"
+                        value: ${client_port}
+                        events:
+                          ON_CHANGE: "set_client_port"
+                      - type: TEXT_INPUT
+                        label: "Player Name"
+                        value: ${player_name}
+                        events:
+                          ON_CHANGE: "set_player_name"
+                      - type: BUTTON
+                        label: "Connect"
+                        events:
+                          ON_CLICK: "connect_to_server"
+              - type: TAB
+                label: "Statistics"
+                children:
+                  - type: TEXT
+                    label: "Packets Sent: ${packets_sent}"
+                  - type: TEXT
+                    label: "Packets Received: ${packets_received}"
+                  # ... more stats
+              - type: TAB
+                label: "Peers"
+                children:
+                  - type: LIST
+                    label: "Connected Peers"
+                    items: ${peer_list}
+              - type: TAB
+                label: "Chat"
+                children:
+                  - type: LIST
+                    label: "Chat Messages"
+                    items: ${chat_messages}
+                  - type: TEXT_INPUT
+                    label: "Message"
+                    value: ${chat_input}
+                    events:
+                      ON_CHANGE: "set_chat_input"
+                  - type: BUTTON
+                    label: "Send"
+                    events:
+                      ON_CLICK: "send_chat_message"
+              - type: TAB
+                label: "Log"
+                children:
+                  - type: LIST
+                    label: "Log Entries"
+                    items: ${log_entries}
+                  - type: BUTTON
+                    label: "Clear Log"
+                    events:
+                      ON_CLICK: "clear_log"

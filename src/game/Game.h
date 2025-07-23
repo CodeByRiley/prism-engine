@@ -339,6 +339,107 @@ public:
     
     int viewportX = 0, viewportY = 0, viewportWidth = 1280, viewportHeight = 720;
 
+  void UpdateComponentsList(EntityID selectedEntity) {
+if (selectedEntity == INVALID_ENTITY_ID) {
+        Logger::Warn<Game>("Cannot update components list: Invalid entity ID");
+        return;
+    }
+
+    std::unordered_map<std::string, std::string> variables;
+    std::vector<std::string> componentItems;
+
+    // Get entity name if available
+    auto* entityManager = m_scene->GetEntityManager();
+    if (entityManager) {
+        std::string entityName = entityManager->GetEntityName(selectedEntity);
+        variables["selected_entity_name"] = entityName;
+        variables["selected_entity_id"] = std::to_string(selectedEntity);
+        Logger::Info("Updating components for entity: " + entityName + " (ID: " + std::to_string(selectedEntity) + ")");
+    }
+
+    // Get component manager from scene
+    auto* componentManager = m_scene->GetComponentManager();
+    if (!componentManager) {
+        Logger::Error<Game>("Component manager is null");
+        return;
+    }
+
+    // Check for each component type and add to the list if present
+    if (componentManager->HasComponent<TransformComponent>(selectedEntity)) {
+        auto* transform = componentManager->GetComponent<TransformComponent>(selectedEntity);
+        componentItems.push_back("TransformComponent");
+        variables["transform_position_x"] = std::to_string(transform->position.x);
+        variables["transform_position_y"] = std::to_string(transform->position.y);
+        variables["transform_position_z"] = std::to_string(transform->position.z);
+    }
+
+    if (componentManager->HasComponent<PlayerComponent>(selectedEntity)) {
+        auto* player = componentManager->GetComponent<PlayerComponent>(selectedEntity);
+        componentItems.push_back("PlayerComponent");
+        variables["player_speed"] = std::to_string(player->speed);
+        variables["player_direction_x"] = std::to_string(player->direction.x);
+        variables["player_direction_y"] = std::to_string(player->direction.y);
+    }
+
+    if (componentManager->HasComponent<ObstacleComponent>(selectedEntity)) {
+        auto* obstacle = componentManager->GetComponent<ObstacleComponent>(selectedEntity);
+        componentItems.push_back("ObstacleComponent");
+        variables["obstacle_size_x"] = std::to_string(obstacle->size.x);
+        variables["obstacle_size_y"] = std::to_string(obstacle->size.y);
+    }
+
+    if (componentManager->HasComponent<InputComponent>(selectedEntity)) {
+        auto* input = componentManager->GetComponent<InputComponent>(selectedEntity);
+        componentItems.push_back("InputComponent");
+        variables["input_enabled"] = input->enabled ? "1" : "0";
+    }
+
+    // Add similar checks for other component types
+
+    m_selectedEntityID = selectedEntity;
+
+    // Convert vector to comma-separated string for the UI
+    std::string componentsList;
+    for (size_t i = 0; i < componentItems.size(); ++i) {
+        componentsList += componentItems[i];
+        if (i < componentItems.size() - 1) {
+            componentsList += ",";
+        }
+    }
+
+    // Set the components_list variable in multiple formats to ensure compatibility
+    variables["components_list"] = componentsList;
+    variables["selected_entity"] = componentsList;  // Try alternate variable name
+    variables["entity_components"] = componentsList; // Try another alternate name
+
+    // Log the component list and all variables for debugging
+    Logger::Info("Components list for entity " + std::to_string(selectedEntity) + ": " + componentsList);
+    Logger::Info("Variable count: " + std::to_string(variables.size()));
+
+    // Explicitly set entity_list variable if needed by any widget with that source
+    variables["entity_list"] = componentsList;
+
+    // Set a standard name for specific entity details
+    std::string entityName = variables["selected_entity_name"];
+    if (!entityName.empty()) {
+        variables["entity_name"] = entityName;
+    }
+
+    // Render with the component variables
+    if (m_DebugInspector) {
+        m_DebugInspector->Reset(); // Reset UI state before rendering
+        m_DebugInspector->Render(variables);
+        Logger::Info("Updated debug inspector UI for entity " + std::to_string(selectedEntity));
+    } else if (m_EcsInspector) {
+        m_EcsInspector->Reset(); // Reset UI state before rendering
+        m_EcsInspector->Render(variables);
+        Logger::Info("Updated ECS inspector UI for entity " + std::to_string(selectedEntity));
+    } else {
+        Logger::Warn<Game>("No inspector UI available to render component data", this);
+    }
+}
+
+
     std::vector<Obstacle> m_Obstacles;
     void setupObstacles();
     void setupLights();
@@ -391,5 +492,6 @@ private:
     // Inspector UI
     //std::unique_ptr<GameInspectorUI> m_inspectorUI;
     EntityID m_selectedEntityID = INVALID_ENTITY_ID;
+    int m_buttonClickCount = 0;
 
 };

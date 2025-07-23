@@ -13,6 +13,8 @@
 #include "../../utils/ResourcePath.h"
 #include "../../utils/Logger.h"
 
+class GuiLayout;
+
 namespace Gui {
     enum class WidgetType {
         IMAGE_BUTTON,
@@ -71,6 +73,7 @@ namespace Gui {
         std::vector<std::string> items;
         int selectedIndex = 0;
         std::string valueStr; // For string value (variable or label)
+        std::string listSourceVariable; // Variable name to use as source for list items
 
         WidgetType widgetType = WidgetType::BUTTON;
         WidgetState widgetState = WidgetState::NORMAL;
@@ -102,7 +105,7 @@ namespace Gui {
         void SetParent(Widget* parent);
         Widget* GetParent() const;
 
-        inline std::string SubstituteVariables(const std::string& input, const std::unordered_map<std::string, std::string>& vars) const {
+        std::string SubstituteVariables(const std::string& input, const std::unordered_map<std::string, std::string>& vars) const {
             std::string output = input;
             for (const auto& pair : vars) {
                 // Try both ${var} and var
@@ -123,6 +126,32 @@ namespace Gui {
                 }
             }
             return output;
+        }
+
+        static void HandleWidgetSelection(const Gui::Widget& widget, int selectedIndex, const std::string& selectedItem, std::vector<std::pair<std::string, std::string>>& outChanges)
+        {
+            Logger::Info("HandleWidgetSelection called for widget '" + widget.name + "' with index " + std::to_string(selectedIndex));
+
+            const_cast<Gui::Widget&>(widget).selectedIndex = selectedIndex;
+
+            if (widget.events.find(Gui::WidgetCallback::ON_CLICK) != widget.events.end()) {
+                std::string action = widget.events.at(Gui::WidgetCallback::ON_CLICK);
+                Logger::Info("Found ON_CLICK event: " + action);
+
+                try {
+                    GuiCallbackRegistry::Instance().Execute(action, std::to_string(selectedIndex));
+                    Logger::Info("Successfully executed callback: " + action);
+                } catch (const std::exception& e) {
+                    Logger::Error<GuiLayout>("Exception when executing callback: " + std::string(e.what()));
+                }
+
+                outChanges.push_back({"selected_index", std::to_string(selectedIndex)});
+                outChanges.push_back({"selected_item", selectedItem});
+                Logger::Info("Added changes to outChanges vector");
+            } else {
+                Logger::Warn<GuiLayout>("No ON_CLICK event found for widget '" + widget.name + "'");
+            }
+
         }
     };
 
@@ -153,6 +182,7 @@ public:
                 const std::unordered_map<std::string, std::string>& variables,
                 std::vector<std::pair<std::string, std::string>>& outChanges);
     void Reload();
+    void Reset(); // Clear widget state (items, selections, etc.)
 
     const std::vector<std::unique_ptr<Gui::Widget>>& GetWidgets() const;
     Gui::Widget* GetWidget(const std::string& name) const;
@@ -160,6 +190,7 @@ public:
 private:
     void LoadFromYaml(const std::string& path);
     void RegisterWidgetEvents(const YAML::Node& node);
+    void ResetWidgetState(Gui::Widget* widget); // Helper to recursively reset widget state
 
     Gui::WidgetFactory m_WidgetFactory;
 

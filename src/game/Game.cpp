@@ -14,6 +14,8 @@
 #include <cmath>
 
 // ImGui includes for centralized UI rendering
+#include <numeric>
+
 #include "imgui.h"
 #include "backends/imgui_impl_glfw.h"
 #include "backends/imgui_impl_opengl3.h"
@@ -284,20 +286,83 @@ void Game::OnInit() {
     // Set up networking packet handlers for game events
     SetupNetworkingHandlers();
 
-    GuiCallbackRegistry::Instance().Register("select_entity", [this](const std::string& entityName) {
-        // Find the entity by name in the current scene
-        if (m_scene) {
-            for (const Entity& entity : m_scene->GetAllEntities()) {
-                if (entity.GetName() == entityName) {
-                    m_selectedEntityID = entity.GetID();
-                    Logger::Info("Selected entity: " + entityName + " (ID: " + std::to_string(m_selectedEntityID) + ")");
-                    return;
-                }
+   GuiCallbackRegistry::Instance().Register("select_entity", [this](const std::string& param) {
+        Logger::Info("Entity selection callback called with param: " + param);
+        int entityIndex = std::stoi(param);
+
+        // Get all entities
+        auto entities = m_scene->GetAllEntities();
+
+        // Make sure the index is valid
+        if (entityIndex >= 0 && entityIndex < entities.size()) {
+        Entity selectedEntity = entities[entityIndex];
+        EntityID selectedID = selectedEntity.GetID();
+        Logger::Info("Selected entity ID: " + std::to_string(selectedID));
+
+        // Update the UI with this entity's information
+        std::unordered_map<std::string, std::string> variables;
+
+        // Set entity information
+        variables["selected_entity_name"] = selectedEntity.GetName();
+        variables["selected_entity_id"] = std::to_string(selectedID);
+
+        // Get component information
+        std::string componentsList;
+        auto* componentManager = m_scene->GetComponentManager();
+
+        if (componentManager) {
+            // Check for TransformComponent
+            if (componentManager->HasComponent<TransformComponent>(selectedID)) {
+                auto* transform = componentManager->GetComponent<TransformComponent>(selectedID);
+                componentsList += "TransformComponent\n";
+                variables["transform_position_x"] = std::to_string(transform->position.x);
+                variables["transform_position_y"] = std::to_string(transform->position.y);
+                variables["transform_position_z"] = std::to_string(transform->position.z);
             }
-            m_selectedEntityID = INVALID_ENTITY_ID;
-            Logger::Warn<Game>("Entity not found: " + entityName);
+
+            // Check for PlayerComponent
+            if (componentManager->HasComponent<PlayerComponent>(selectedID)) {
+                auto* player = componentManager->GetComponent<PlayerComponent>(selectedID);
+                componentsList += "PlayerComponent\n";
+                variables["player_speed"] = std::to_string(player->speed);
+            }
+
+            // Check for ObstacleComponent
+            if (componentManager->HasComponent<ObstacleComponent>(selectedID)) {
+                auto* obstacle = componentManager->GetComponent<ObstacleComponent>(selectedID);
+                componentsList += "ObstacleComponent\n";
+                variables["obstacle_size_x"] = std::to_string(obstacle->size.x);
+                variables["obstacle_size_y"] = std::to_string(obstacle->size.y);
+            }
+
+            // Check for InputComponent
+            if (componentManager->HasComponent<InputComponent>(selectedID)) {
+                auto* input = componentManager->GetComponent<InputComponent>(selectedID);
+                componentsList += "InputComponent\n";
+                variables["input_enabled"] = input->enabled ? "1" : "0";
+            }
+        }
+
+        // Set the components list
+        variables["components_list"] = componentsList;
+        Logger::Info("Setting components_list to: " + componentsList);
+
+        // Set the selected entity ID
+        m_selectedEntityID = selectedID;
+
+        // Update the UI with the new variables
+        if (m_EcsInspector) {
+            m_EcsInspector->Render(variables);
+        }
+        } else {
+            Logger::Error<Game>("Invalid entity index: " + std::to_string(entityIndex));
         }
     });
+
+
+
+
+
 }
 
 void Game::SetupNetworkingHandlers() {
@@ -1194,81 +1259,106 @@ void Game::OnDraw() {
     }
 
     // Render ImGui
-    ImGui_ImplOpenGL3_NewFrame();
-    ImGui_ImplGlfw_NewFrame();
-    ImGui::NewFrame();
 
-    // Build variable map for the inspector
 
     // Set scene name/id, etc.
-    if (m_scene) {
-        variables["scene_name"] = m_scene->GetName();
-        variables["scene_id"] = std::to_string(m_scene->GetId());
-
-        // Build the entity list as a comma-separated string
-        std::string entityList;
-        for (const Entity& entity : m_scene->GetAllEntities()) {
-            if (!entityList.empty()) entityList += ",";
-            entityList += entity.GetName() + " (" + std::to_string(entity.GetID()) + ")";
-        }
-        variables["entity_list"] = entityList;
-    }
-
-    // ... set other variables as needed ...
-
-    // Render the inspector with the up-to-date variables
-    m_DebugInspector->Render(variables);
-
+    // if (m_scene) {
+    //     variables["scene_name"] = m_scene->GetName();
+    //     variables["scene_id"] = std::to_string(m_scene->GetId());
+    //     if (m_EcsInspector) {
+    //         std::unordered_map<std::string, std::string> variables;
+    //
+    //         // Populate the entities list
+    //         std::string entityList;
+    //         auto entities = m_scene->GetAllEntities();
+    //         for (auto entityID : entities) {
+    //             std::string entityName = "Entity " + std::to_string(entityID);
+    //             // If you have a name component, use that instead
+    //             auto nameComp = entities[entityID].GetComponent<TagComponent>();
+    //             if (nameComp) {
+    //                 entityName = nameComp->tag;
+    //             }
+    //             entityList += entityName + "\n";
+    //         }
+    //
+    //         variables["entities_list"] = entityList;
+    //         m_EcsInspector->Render(variables);
+    //     }
+    //
+    //     // Build the entity list as a comma-separated string
+    //     std::string entityList;
+    //     for (const Entity& entity : m_scene->GetAllEntities()) {
+    //         if (!entityList.empty()) entityList += ",";
+    //         entityList += entity.GetName() + " (" + std::to_string(entity.GetID()) + ")";
+    //     }
+    //     variables["entity_list"] = entityList;
+    // }
     // End ImGui frame
-    ImGui::Render();
-    ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+
 
     glDisable(GL_BLEND);
     
     // Render UI - centralized ImGui frame handling
-    //RenderUI();
+    if (m_ImGuiInitialized) {
+        ImGui_ImplOpenGL3_NewFrame();
+        ImGui_ImplGlfw_NewFrame();
+        ImGui::NewFrame();
+        RenderUI();
+        ImGui::Render();
+        ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+    }
 }
+void Game::RenderUI() {
+    // Create variables map for UI
+    std::unordered_map<std::string, std::string> variables;
+    variables["fps"] = std::to_string(static_cast<int>(1.0f / Time::DeltaTime()));
+    variables["render_mode"] = m_RenderMode == RenderMode::FOG ? "Fog" :
+                             (m_RenderMode == RenderMode::VISION ? "Vision" : "Lighting");
 
-// void Game::RenderUI() {
-//     // Only render UI if at least one system is initialized and visible
-//     bool shouldRenderUI = false;
+    // Get all entities for the entity list
+    auto entities = m_scene->GetAllEntities();
+    std::string entityListStr;
+    for (size_t i = 0; i < entities.size(); ++i) {
+        entityListStr += entities[i].GetName();
+        if (i < entities.size() - 1) {
+            entityListStr += ",";
+        }
+    }
+    variables["entity_list"] = entityListStr;
+    //sLogger::Info("Entity list: " + entityListStr);
 
-//     // if (m_inspectorUI && m_inspectorUI->IsInitialized() && m_inspectorUI->IsVisible()) {
-//     //     shouldRenderUI = true;
-//     // }
-//     // if (m_networkUI && m_networkUI->IsInitialized() && m_networkUI->IsVisible()) {
-//     //     shouldRenderUI = true;
-//     // }
-    
-//     if (!shouldRenderUI) {
-//         return;
-//     }
-    
-//     // Start ImGui frame (only once for all UI systems)
-//     if (m_inspectorUI && m_inspectorUI->IsInitialized()) {
-//         // Use the inspector's backend to start the frame
-//         ImGui_ImplOpenGL3_NewFrame();
-//         ImGui_ImplGlfw_NewFrame();
-//         ImGui::NewFrame();
-        
-//         // Render Inspector UI content only
-//         if (m_inspectorUI->IsVisible()) {
-//             m_inspectorUI->RenderContent(m_scene.get());
-            
-//             // Update renderers if any changes were made in the inspector
-//             UpdateRenderersFromECS();
-//         }
-        
-//         // Render Network UI content only
-//         if (m_networkUI && m_networkUI->IsVisible()) {
-//             m_networkUI->RenderContent();
-//         }
-        
-//         // End ImGui frame (only once for all UI systems)
-//         ImGui::Render();
-//         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-//     }
-// }
+    // Update selected entity info if one is selected
+    if (m_selectedEntityID != INVALID_ENTITY_ID) {
+        Entity selectedEntity = m_scene->GetEntity(m_selectedEntityID);
+        if (selectedEntity.IsValid()) {
+            variables["selected_entity_name"] = selectedEntity.GetName();
+            variables["selected_entity_id"] = std::to_string(m_selectedEntityID);
+
+            // Add component information
+            // This is already done in UpdateComponentsList, just make sure
+            // we're populating any global variables needed
+        }
+    }
+
+    // Render all UI elements
+    if (m_DebugInspector) {
+        m_DebugInspector->Render(variables);
+    }
+
+    // if (m_EcsInspector) {
+    //     // If there's a selected entity, update its components first
+    //     if (m_selectedEntityID != INVALID_ENTITY_ID) {
+    //         UpdateComponentsList(m_selectedEntityID);
+    //     } else {
+    //         // If no entity is selected, just render with current variables
+    //         m_EcsInspector->Render(variables);
+    //     }
+    // }
+    //
+    // if (m_NetworkManager) {
+    //     m_NetworkManager->Render(variables);
+    // }
+}
 
 void Game::OnResize(int width, int height) {
     windowWidth = width;
@@ -1293,6 +1383,8 @@ void Game::OnShutdown() {
         ImGui_ImplGlfw_Shutdown();
         ImGui::DestroyContext();
         m_ImGuiInitialized = false;
+
+
     }
     
     // Save scene before shutdown

@@ -5,6 +5,8 @@
 #include <unordered_map>
 #include <string>
 
+#include "engine/utils/Time.h"
+
 
 namespace Gui {
 
@@ -83,8 +85,15 @@ namespace Gui {
     std::unique_ptr<Widget> WidgetFactory::CreateWidgetFromYaml(const YAML::Node& node) {
         std::string type = node["type"] ? node["type"].as<std::string>() : "BUTTON";
         std::string name = node["name"] ? node["name"].as<std::string>() : "";
+
+        // Assign a default name for LIST widgets if name is empty
+        if (type == "LIST" && name.empty()) {
+            static int yamlListCounter = 0;
+            name = "list_widget_yaml_" + std::to_string(yamlListCounter++);
+        }
+
         auto widget = CreateWidget(type, name);
-        
+
         if (node["label"]) widget->label = node["label"].as<std::string>();
         if (node["tooltip"]) widget->tooltip = node["tooltip"].as<std::string>();
         if (node["icon"]) widget->icon = node["icon"].as<std::string>();
@@ -143,11 +152,22 @@ namespace Gui {
                 }
             }
         }
+
+        // For list widgets, check for a source variable
+        if (widget->widgetType == WidgetType::LIST && node["source"]) {
+            widget->listSourceVariable = node["source"].as<std::string>();
+            //::Info("List widget " + widget->name + " will use source variable: " + widget->listSourceVariable);
+        }
         return widget;
     }
 
 
+
+
+
 }
+
+
 
 void GuiLayout::Render() {
     std::unordered_map<std::string, std::string> dummy;
@@ -155,9 +175,14 @@ void GuiLayout::Render() {
 }
 
 
+int d = 0;
 void GuiLayout::Render(std::unordered_map<std::string, std::string>& variables) {
     std::vector<std::pair<std::string, std::string>> changes;
+    d += 1 * Time::DeltaTime();
     for (const auto& widget : m_Widgets) {
+        if (d >= 1) {
+            Logger::Info("Got Widget: " + widget->name);
+        }
         Render(*widget, variables, changes);
     }
     // Apply changes
@@ -165,6 +190,8 @@ void GuiLayout::Render(std::unordered_map<std::string, std::string>& variables) 
         variables[var] = value;
     }
 }
+
+
 
 void GuiLayout::Render(const Gui::Widget& widget,
                        const std::unordered_map<std::string, std::string>& variables,
@@ -260,24 +287,107 @@ void GuiLayout::Render(const Gui::Widget& widget,
                 }
             }
             break;
-        case Gui::WidgetType::LIST:
-        {
-            int selected = 0;
-            std::vector<std::string> items;
-            for (const auto& child : widget.children) {
-                items.push_back(child->SubstituteVariables(child->label, variables));
+        case Gui::WidgetType::LIST: {
+             // If the widget doesn't have a name, assign a unique default name
+            if (widget.name.empty()) {
+                static int listCounter = 0;
+                std::string uniqueName = "list_widget_" + std::to_string(listCounter++);
+                const_cast<Gui::Widget&>(widget).name = uniqueName;
+                Logger::Info("Assigned unique default name '" + uniqueName + "' to unnamed list widget");
             }
-            if (ImGui::ListBoxHeader(widget.SubstituteVariables(widget.label, variables).c_str(), static_cast<int>(items.size()))) {
-                for (const auto& item : items) {
-                    if (ImGui::Selectable(item.c_str())) {
-                        if (widget.events.count(Gui::WidgetCallback::ON_CLICK)) {
-                            std::string action = widget.events.at(Gui::WidgetCallback::ON_CLICK);
-                            GuiCallbackRegistry::Instance().Execute(action, item); // Pass the entity name
-                        }
+
+            // First check if widget has a custom source variable specified
+            std::string varName = "";
+            bool sourceFound = false;
+            
+            // Check for a custom source variable first
+            if (!widget.listSourceVariable.empty()) {
+                if (variables.find(widget.listSourceVariable) != variables.end()) {
+                    varName = widget.listSourceVariable;
+                    sourceFound = true;
+                    Logger::Info("Using custom source variable '" + varName + "' for list widget '" + widget.name + "'");
+                } else {
+                    Logger::Warn<GuiLayout>("Could not find custom source variable '" + widget.listSourceVariable + "' for list widget '" + widget.name + "'");
+                }
+            }
+            
+            // If no custom source or it wasn't found, try using widget name as source
+            if (!sourceFound && !widget.name.empty() && variables.find(widget.name) != variables.end()) {
+                varName = widget.name;
+                sourceFound = true;
+                Logger::Info("Using widget name '" + widget.name + "' as source variable");
+            }
+            
+            // If still no source, check for common variable names (as a fallback)
+            if (!sourceFound) {
+                // Try common variable names in order of preference
+                const std::vector<std::string> commonVarNames = {
+                    "components_list", "entity_components", "selected_entity", "entity_list"
+                };
+                
+                for (const auto& commonVar : commonVarNames) {
+                    if (variables.find(commonVar) != variables.end()) {
+                        varName = commonVar;
+                        sourceFound = true;
+                        break;
                     }
                 }
-                ImGui::ListBoxFooter();
             }
+
+            // If we found a source variable, process it
+            if (sourceFound) {
+                std::string sourceContent = variables.at(varName);
+                // Split by comma
+                std::string token;
+                std::istringstream tokenStream(sourceContent);
+                std::vector<std::string> items;
+
+                while (std::getline(tokenStream, token, ',')) {
+                    // Trim whitespace
+                    token.erase(0, token.find_first_not_of(" \t\n\r\f\v"));
+                    token.erase(token.find_last_not_of(" \t\n\r\f\v") + 1);
+
+                    if (!token.empty()) {
+                        items.push_back(token);
+                    }
+                }
+
+                // IMPORTANT: Always clear the items first before populating from source
+                const_cast<Gui::Widget&>(widget).items.clear();
+                
+                // Then populate with new items
+                if (!items.empty()) {
+                    const_cast<Gui::Widget&>(widget).items = std::move(items);
+                    Logger::Info("Added " + std::to_string(const_cast<Gui::Widget&>(widget).items.size()) + 
+                         " items to list widget '" + widget.name + "' from variable '" + varName + "'");
+                } else {
+                    Logger::Info("List widget '" + widget.name + "' found variable '" + varName + "' but it has no items");
+                }
+            } else if (widget.items.empty()) {
+                // Only log if the widget doesn't already have predefined items
+                Logger::Info("List widget '" + widget.name + "' has no source variable in the variables map");
+            }
+
+            // Continue with the original list rendering code
+            if (ImGui::BeginListBox((widget.label.empty() ? "##" + widget.name : widget.label.c_str()).c_str(),
+                                   ImVec2(widget.size.x > 0 ? widget.size.x : 200,
+                                          widget.size.y > 0 ? widget.size.y : 200))) {
+                for (int i = 0; i < widget.items.size(); i++) {
+                    std::string item = widget.SubstituteVariables(widget.items[i], variables);
+                    bool isSelected = (widget.selectedIndex == i);
+
+                    if (ImGui::Selectable(item.c_str(), isSelected)) {
+                        // Call the handler
+                        Gui::Widget::HandleWidgetSelection(widget, i, item, outChanges);
+                    }
+
+                    if (isSelected) {
+                        ImGui::SetItemDefaultFocus();
+                    }
+                }
+                ImGui::EndListBox();
+            }
+            break;
         }
         break;
         // Containers: only recurse in these cases
@@ -357,7 +467,30 @@ Gui::Widget* GuiLayout::GetWidget(const std::string& name) const {
 
 void GuiLayout::Reload() {
     Logger::Info("Reloading GUI");
-    // idk what to do here
+    // Reload from YAML file
+    LoadFromYaml(ResourcePath::GetFullPath("gui/layouts/" + m_Type + ".yaml"));
+}
+
+// Clear all widget state (items, selections, etc.)
+void GuiLayout::Reset() {
+    Logger::Info("Resetting GUI state");
+    for (auto& widget : m_Widgets) {
+        ResetWidgetState(widget.get());
+    }
+}
+
+// Recursively reset widget state
+void GuiLayout::ResetWidgetState(Gui::Widget* widget) {
+    if (!widget) return;
+
+    // Clear items and reset selection
+    widget->items.clear();
+    widget->selectedIndex = 0;
+
+    // Reset children recursively
+    for (auto& child : widget->children) {
+        ResetWidgetState(child.get());
+    }
 }
 
 void GuiLayout::LoadFromYaml(const std::string& path) {

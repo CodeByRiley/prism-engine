@@ -11,6 +11,8 @@
 #include <queue>
 #include <functional>
 
+#undef PlaySound
+
 // Forward declaration for raudio types
 struct Sound;   // raudio Sound
 struct Music;   // raudio Music
